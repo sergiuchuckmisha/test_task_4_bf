@@ -3,10 +3,8 @@ package pageObjects.voting.pageElements;
 import org.openqa.selenium.By;
 import selenium.utils.DriverHelper;
 
+@FunctionalInterface
 public interface iTopMenu {
-    By backArrowLocator = By.xpath("//div[@class='toolbar-return-button pull-left' and @ng-show='backState']");
-    By helpLocator = By.xpath("//div[@class='toolbar-help-button pull-right' and text()='HELP']");
-
     String getTopMenuName();
 
     default boolean isTopMenuNamePresent(){
@@ -14,10 +12,10 @@ public interface iTopMenu {
     }
 
     default void pressTopMenuBackArrow(){
-        DriverHelper.click(backArrowLocator);
+        DriverHelper.click(By.xpath("//div[@class='toolbar-return-button pull-left' and @ng-show='backState']"));
     }
 
     default void pressTopMenuHelp(){
-        DriverHelper.click(helpLocator);
+        DriverHelper.click(By.xpath("//div[@class='toolbar-help-button pull-right' and text()='HELP']"));
     }
 }

@@ -1,6 +1,6 @@
 package pageObjects.voting;
 
-import pageObjects.voting.pageElements.iVoteConfirmationPopUp;
+import pageObjects.voting.pageElements.iDecryptConfirmationPopUp;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,10 +8,10 @@ import pageObjects.voting.pageElements.iVoteConfirmationPopUp;
  * Date: 9/16/15
  * Time: 3:03 PM
  * purpose of the class is to describe html elements on page
- * https://exonum.com/demo/voting/#/monitor
+ * https://exonum.com/demo/voting/#/elections/ballot
  * pageObject pattern is implemented
  */
-public class VoteConfirmationPopUpPage implements iVoteConfirmationPopUp {
+public class DecryptConfirmationPopUpPage implements iDecryptConfirmationPopUp {
 
     //this method should not be called
     @Override

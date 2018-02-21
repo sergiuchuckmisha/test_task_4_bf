@@ -2,8 +2,6 @@ package actions.voting;
 
 import actions.ActionsBase;
 import pageObjects.voting.MonitorPage;
-import pageObjects.voting.pageElements.iTopMenu;
-import selenium.utils.DriverHelper;
 
 /**
  * Created with IntelliJ IDEA.

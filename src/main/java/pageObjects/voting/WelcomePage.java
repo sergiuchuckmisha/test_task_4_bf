@@ -16,8 +16,8 @@ import selenium.utils.DriverHelper;
  */
 public class WelcomePage implements iPage, iVoteInElectionButton {
 
-    private static By headerLocator = By.xpath("//div[@class='app-header' and text()='e-Voting']");
-    private static By monitorElectionProcessButtonLocator = By.xpath("//div[@class='button' and text()='Monitor election process']");
+    private static final By headerLocator = By.xpath("//div[@class='app-header' and text()='e-Voting']");
+    private static final By monitorElectionProcessButtonLocator = By.xpath("//div[@class='button' and text()='Monitor election process']");
 
     @Override
     public String getUrl() {

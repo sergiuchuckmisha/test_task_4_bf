@@ -8,21 +8,16 @@ import selenium.utils.DriverHelper;
  * idea is to represent confirmation pop-up  which appears after voting for somebody
  */
 public interface iVoteConfirmationPopUp extends iPage{
-
-    By yesButtonLocator = By.xpath("//div[@class='button button-red' and @ng-click='submitCandidate()' and text() = 'YES']");
-    By cancelButtonLocator = By.xpath("//div[@class='button' and @data-dismiss='modal' and text() = 'CANCEL']");
-    By headerLocator = By.xpath("//div[@class='confirm-choise-block-title' and contains(text(), 'Are you sure you want to prepare')]");
-
     default void pressVoteConfirmationPopUpYesButton() {
-        DriverHelper.click(yesButtonLocator);
+        DriverHelper.click(By.xpath("//div[@class='button button-red' and @ng-click='submitCandidate()' and text() = 'YES']"));
     }
 
     default void pressVoteConfirmationPopUpCancelButton() {
-        DriverHelper.click(cancelButtonLocator);
+        DriverHelper.click(By.xpath("//div[@class='button' and @data-dismiss='modal' and text() = 'CANCEL']"));
     }
 
     @Override
     default boolean isOnPage(){
-        return DriverHelper.isElementPresent(headerLocator);
+        return DriverHelper.isElementPresent(By.xpath("//div[@class='confirm-choise-block-title' and contains(text(), 'Are you sure you want to prepare')]"));
     }
 }

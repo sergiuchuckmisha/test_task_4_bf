@@ -2,7 +2,6 @@ package actions.voting;
 
 import actions.ActionsBase;
 import pageObjects.voting.CandidatesOfElectionPage;
-import pageObjects.voting.ElectionsPage;
 
 /**
  * Created with IntelliJ IDEA.

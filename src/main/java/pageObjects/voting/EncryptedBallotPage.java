@@ -13,21 +13,14 @@ import selenium.utils.DriverHelper;
  * Date: 9/16/15
  * Time: 3:03 PM
  * purpose of the class is to describe html elements on page
- * https://exonum.com/demo/voting/#/elections/ballot
+ * https://exonum.com/demo/voting/#/elections/decrypted
  * pageObject pattern is implemented
  */
-public class UnsignedBallotPage implements iPage, iTopMenu, iBottomMenu, iUnsignedBallotPageDiscardDecryptSignButtons {
-
-    public String getBallotReceipt3WordMemo(){
-        return DriverHelper.findElement(By.xpath("//div[text() = 'Ballot reciept 3-word memo']/following-sibling::div")).getText();
-    }
-    public String getBallotSHA256Hash(){
-        return DriverHelper.findElement(By.xpath("//div[text() = 'Ballot  SHA256 hash']/following-sibling::div")).getText();
-    }
+public class EncryptedBallotPage implements iPage, iTopMenu, iBottomMenu, iUnsignedBallotPageDiscardDecryptSignButtons {
 
     @Override
     public String getUrl() {
-        return "https://exonum.com/demo/voting/#/elections/ballot";
+        return "https://exonum.com/demo/voting/#/elections/decrypted";
     }
 
     @Override
@@ -37,6 +30,10 @@ public class UnsignedBallotPage implements iPage, iTopMenu, iBottomMenu, iUnsign
 
     @Override
     public String getTopMenuName() {
-        return "Your Unsigned Ballot";
+        return "Your Decrypted Ballot";
+    }
+
+    public void pressReturnButton(){
+        DriverHelper.click(By.xpath("//div[@class='button button-link' and @ng-click='electionWizardReset()' and text() = 'RETURN']"));
     }
 }

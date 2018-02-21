@@ -47,7 +47,7 @@ public class DriverHelper {
 	{
 		waitUntilPageIsLoaded();
 		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-		boolean result = WebDriverFactory.getDriver().findElements(locator).size() != 0;
+		boolean result = !WebDriverFactory.getDriver().findElements(locator).isEmpty();
 		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		return result;
 	}

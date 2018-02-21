@@ -1,7 +1,6 @@
 package pageObjects.voting.pageElements;
 
 import org.openqa.selenium.By;
-import pageObjects.iPage;
 import selenium.utils.DriverHelper;
 
 /**
@@ -14,19 +13,15 @@ import selenium.utils.DriverHelper;
  */
 public interface iBottomMenu {
 
-    By electionsButtonLocator = By.xpath("//div[@class='bottom-menu-item-title' and text()='Elections']");
-    By monitorButtonLocator = By.xpath("//div[@class='bottom-menu-item-title' and text()='Monitor']");
-    By settingsButtonLocator = By.xpath("//div[@class='bottom-menu-item-title' and text()='Settings']");
-
     default void pressBottomMenuElections(){
-        DriverHelper.click(electionsButtonLocator);
+        DriverHelper.click(By.xpath("//div[@class='bottom-menu-item-title' and text()='Elections']"));
     }
 
     default void pressBottomMenuMonitor(){
-        DriverHelper.click(monitorButtonLocator);
+        DriverHelper.click(By.xpath("//div[@class='bottom-menu-item-title' and text()='Monitor']"));
     }
 
-    default void pressSettings(){
-        DriverHelper.click(settingsButtonLocator);
+    default void pressBottomMenuSettings(){
+        DriverHelper.click(By.xpath("//div[@class='bottom-menu-item-title' and text()='Settings']"));
     }
 }

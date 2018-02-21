@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 public class CheckboxTableTest extends SeleniumBaseTest {
 
 	private static final WelcomeActions welcomeActions = new WelcomeActions();
-	private static final MonitorActions monitorActions = new MonitorActions();
+//	private static final MonitorActions monitorActions = new MonitorActions();//is not used because monitor page is unfinished
 	private static final ElectionsActions electionsActions = new ElectionsActions();
 	private static final CandidatesOfElectionActions candidatesOfElectionActions = new CandidatesOfElectionActions();
 
@@ -58,8 +58,6 @@ public class CheckboxTableTest extends SeleniumBaseTest {
 			candidatesOfElectionActions.pressTopMenuBackArrow();
 			assertTrue(electionsActions.isOnPage());
 		}
-
-
 
 	}
 

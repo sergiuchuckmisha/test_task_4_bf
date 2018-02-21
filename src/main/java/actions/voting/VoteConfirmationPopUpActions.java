@@ -1,7 +1,6 @@
 package actions.voting;
 
 import actions.ActionsBase;
-import pageObjects.voting.CandidatesOfElectionPage;
 import pageObjects.voting.VoteConfirmationPopUpPage;
 import pageObjects.voting.pageElements.iVoteConfirmationPopUp;
 

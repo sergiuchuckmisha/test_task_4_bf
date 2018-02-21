@@ -13,9 +13,8 @@ import selenium.utils.DriverHelper;
  */
 public interface iVoteInElectionButton {
 
-    By voteInElectionButtonLocator = By.xpath("//div[@class='button button-red' and text()='VOTE IN ELECTION']");
-
     default void pressVoteInElectionButton(){
-        DriverHelper.click(voteInElectionButtonLocator);
+        DriverHelper.click(By.xpath("//div[@class='button button-red' and text()='VOTE IN ELECTION']"));
     }
+
 }

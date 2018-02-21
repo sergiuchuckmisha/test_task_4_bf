@@ -16,7 +16,7 @@ public class GoogleActions extends ActionsBase<GooglePage> {
 	public GoogleActions()
 	{
 		super();
-		page = new GooglePage();//in this case we
+		page = new GooglePage();
 	}
 
 

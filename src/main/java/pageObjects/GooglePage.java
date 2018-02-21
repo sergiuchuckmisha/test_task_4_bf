@@ -1,6 +1,5 @@
 package pageObjects;
 
-import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -8,10 +7,7 @@ import org.openqa.selenium.WebElement;
 import selenium.browsers.WebDriverFactory;
 import selenium.utils.DriverHelper;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,7 +20,7 @@ import java.util.Date;
  */
 public class GooglePage implements iPage {
 
-    private static By searchFieldLocator = By.name("q");
+    private static final By searchFieldLocator = By.name("q");
 
     @Override
     public String getUrl() {
