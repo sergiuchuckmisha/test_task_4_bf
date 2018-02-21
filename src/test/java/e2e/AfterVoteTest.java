@@ -24,6 +24,8 @@ public class AfterVoteTest extends SeleniumBaseTest {
 	private static final UnsignedBallotActions unsignedBallotActions = new UnsignedBallotActions();
 	private static final DecryptConfirmationPopUpActions decryptConfirmationPopUpActions = new DecryptConfirmationPopUpActions();
 	private static final EncryptedBallotActions encryptedBallotActions = new EncryptedBallotActions();
+	private static final SignConfirmationPopUpActions signConfirmationPopUpActions = new SignConfirmationPopUpActions();
+	private static final SignedBallotActions signedBallotActions = new SignedBallotActions();
 
 	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
 	@Before
@@ -107,5 +109,35 @@ public class AfterVoteTest extends SeleniumBaseTest {
 
 		encryptedBallotActions.pressReturnButton();
 		assertTrue(welcomeActions.isOnPage());
+	}
+
+	/**
+	 *  * purpose of the method is to check following scenario:
+	 * 1. Opens https://exonum.com/demo/voting/#/welcome in browser
+	 * 2. vote for smb
+	 * 3. press sign and cancel then and get to 'Your Unsigned Ballot' page
+	 * */
+	@Test
+	public void signCancelTest(){
+		unsignedBallotActions.signButtonClick();
+		assertTrue(signConfirmationPopUpActions.isOnPage());
+
+		signConfirmationPopUpActions.pressSignConfirmationPopUpCancelButton();
+		assertTrue(unsignedBallotActions.isOnPage());
+	}
+
+	/**
+	 *  * purpose of the method is to check following scenario:
+	 * 1. Opens https://exonum.com/demo/voting/#/welcome in browser
+	 * 2. vote for smb
+	 * 3. press sign and get to 'Ballot has been signed' page
+	 * */
+	@Test
+	public void signConfirmTest(){
+		unsignedBallotActions.signButtonClick();
+		assertTrue(signConfirmationPopUpActions.isOnPage());
+
+		signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
+		assertTrue(signedBallotActions.isOnPage());
 	}
 }
