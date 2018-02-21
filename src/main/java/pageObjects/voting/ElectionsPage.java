@@ -1,6 +1,7 @@
 package pageObjects.voting;
 
 import pageObjects.iPage;
+import pageObjects.voting.pageElements.checkboxTableElements.iCheckboxTable;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iTopMenu;
 import pageObjects.voting.pageElements.iVoteInElectionButton;
@@ -14,7 +15,7 @@ import pageObjects.voting.pageElements.iVoteInElectionButton;
  * https://exonum.com/demo/voting/#/elections
  * pageObject pattern is implemented
  */
-public class ElectionsPage implements iPage, iTopMenu, iBottomMenu, iVoteInElectionButton {
+public class ElectionsPage implements iPage, iTopMenu, iBottomMenu, iVoteInElectionButton, iCheckboxTable {
 
     @Override
     public String getTopMenuName() {
@@ -28,6 +29,6 @@ public class ElectionsPage implements iPage, iTopMenu, iBottomMenu, iVoteInElect
 
     @Override
     public boolean isOnPage() {
-        return isNamePresent();
+        return isTopMenuNamePresent();
     }
 }

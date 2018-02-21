@@ -11,7 +11,7 @@ import selenium.browsers.WebDriverFactory;
  * User: sergiuchuckmisha
  * Date: 9/16/15
  * Time: 7:08 PM
- * purpose of the class is to contain simple smoke web UI test which calls factory for Chrome browser, opens google
+ * purpose of the class is to contain simple smoke web UI basicNavigation which calls factory for Chrome browser, opens google
  * todo: perform some search
  */
 public class DriverHelperTest {

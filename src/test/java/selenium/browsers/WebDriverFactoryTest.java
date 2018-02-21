@@ -30,7 +30,7 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 		}
 	}
 
-	/**purpose of the test is to start FF driver, open google and check for presence of a search field*/
+	/**purpose of the basicNavigation is to start FF driver, open google and check for presence of a search field*/
 	@Test
 	public void testFireFoxBrowserCreation()
 	{
@@ -50,7 +50,7 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 	}
 
 
-	/**purpose of the test is to start HU driver, open google and check for presence of a search field*/
+	/**purpose of the basicNavigation is to start HU driver, open google and check for presence of a search field*/
 	@Test
 	public void testHtmlUnitCreation()
 	{

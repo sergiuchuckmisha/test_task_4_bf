@@ -1,7 +1,6 @@
 package pageObjects.voting.pageElements;
 
 import org.openqa.selenium.By;
-import pageObjects.iPage;
 import selenium.utils.DriverHelper;
 
 /**
@@ -14,9 +13,9 @@ import selenium.utils.DriverHelper;
  */
 public interface iVoteInElectionButton {
 
-    By voteButtonLocator = By.xpath("//div[@class='button button-red' and text()='VOTE IN ELECTION']");
+    By voteInElectionButtonLocator = By.xpath("//div[@class='button button-red' and text()='VOTE IN ELECTION']");
 
-    default void pressVote(){
-        DriverHelper.click(voteButtonLocator);
+    default void pressVoteInElectionButton(){
+        DriverHelper.click(voteInElectionButtonLocator);
     }
 }

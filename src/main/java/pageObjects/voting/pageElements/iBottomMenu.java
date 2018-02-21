@@ -18,15 +18,15 @@ public interface iBottomMenu {
     By monitorButtonLocator = By.xpath("//div[@class='bottom-menu-item-title' and text()='Monitor']");
     By settingsButtonLocator = By.xpath("//div[@class='bottom-menu-item-title' and text()='Settings']");
 
-    static void pressElections(){
+    default void pressBottomMenuElections(){
         DriverHelper.click(electionsButtonLocator);
     }
 
-    static void pressMonitor(){
+    default void pressBottomMenuMonitor(){
         DriverHelper.click(monitorButtonLocator);
     }
 
-    static void pressSettings(){
+    default void pressSettings(){
         DriverHelper.click(settingsButtonLocator);
     }
 }

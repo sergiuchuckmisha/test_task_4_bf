@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.browsers.WebDriverFactory;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,6 +92,12 @@ public class DriverHelper {
 		}
 
 		waitForJsAsync();
+	}
+
+	public static List<WebElement> findElements(By locator)
+	{
+		waitUntilPageIsLoaded();
+		return WebDriverFactory.getDriver().findElements(locator);
 	}
 
 	public static WebElement findElement(By locator) {

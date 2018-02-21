@@ -28,7 +28,7 @@ public class UnsignedBallotPage implements iPage, iTopMenu, iBottomMenu {
 
     @Override
     public boolean isOnPage() {
-        return isNamePresent();
+        return isTopMenuNamePresent();
     }
 
     public void discardButtonClick(){

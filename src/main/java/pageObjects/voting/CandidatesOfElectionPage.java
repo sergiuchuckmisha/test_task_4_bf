@@ -23,7 +23,7 @@ public class CandidatesOfElectionPage implements iPage, iBottomMenu, iTopMenu, i
 
     @Override
     public boolean isOnPage() {
-        return isNamePresent();
+        return isTopMenuNamePresent();
     }
 
     @Override

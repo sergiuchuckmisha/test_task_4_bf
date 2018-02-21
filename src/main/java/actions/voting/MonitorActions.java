@@ -14,8 +14,6 @@ import selenium.utils.DriverHelper;
  */
 public class MonitorActions extends ActionsBase<MonitorPage> implements iBottomMenuActions, iTopMenuActions {
 
-	private static String url = "https://exonum.com/demo/voting/#/monitor";
-
 	/**purpose of the constructor is to initialize page field*/
 	public MonitorActions()
 	{
@@ -24,7 +22,7 @@ public class MonitorActions extends ActionsBase<MonitorPage> implements iBottomM
 	}
 
 	@Override
-	public iTopMenu getTopMenu() {
-		return page;
+	public String getTopMenuName() {
+		return page.getTopMenuName();
 	}
 }

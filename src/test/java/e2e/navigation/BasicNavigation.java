@@ -1,8 +1,8 @@
 package e2e.navigation;
 
+import actions.voting.ElectionsActions;
 import actions.voting.MonitorActions;
 import actions.voting.WelcomeActions;
-import actions.voting.iTopMenuActions;
 import base.SeleniumBaseTest;
 import org.junit.Test;
 
@@ -19,21 +19,36 @@ public class BasicNavigation extends SeleniumBaseTest {
 
 	private static final WelcomeActions welcomeActions = new WelcomeActions();
 	private static final MonitorActions monitorActions = new MonitorActions();
+	private static final ElectionsActions electionsActions = new ElectionsActions();
 
 	/**
 	 *  * purpose of the method is to check following scenario:
-	 * 1. Opens google.com in browser (HtmlUnit is preferred, but you're free to use any)
-	 * 2. fill search field with "qwerty" and press Enter
-	 * 3. verify that search results contain string "qwerty"
+	 * 1. Opens https://exonum.com/demo/voting/#/welcome in browser
+	 * 2. navigate over pages, check buttons and top and bottom menus
 	 * */
 	@Test
-	public void test() {
+	public void basicNavigation() {
 		welcomeActions.navigateTo();
+
+		//welcome page check 'Monitor election process'
 		welcomeActions.pressMonitorElectionProcess();
 		assertTrue(monitorActions.isOnPage());
 
-		iTopMenuActions.pressBackArrow();
+		// top menu check back arrow
+		monitorActions.pressTopMenuBackArrow();
 		assertTrue(welcomeActions.isOnPage());
+
+		//welcome page check 'VOTE IN ELECTION'
+		welcomeActions.pressVoteInElectionButton();
+		assertTrue(electionsActions.isOnPage());
+
+		//check bottom menu 'Monitor'
+		electionsActions.pressBottomMenuMonitor();
+		assertTrue(monitorActions.isOnPage());
+
+		//check bottom menu 'Elections'
+		monitorActions.pressBottomMenuElections();
+		assertTrue(electionsActions.isOnPage());
 	}
 
 }

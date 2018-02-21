@@ -1,10 +1,8 @@
 package actions.voting;
 
 import actions.ActionsBase;
+import pageObjects.voting.CandidatesOfElectionPage;
 import pageObjects.voting.ElectionsPage;
-import pageObjects.voting.MonitorPage;
-import pageObjects.voting.pageElements.iTopMenu;
-import selenium.utils.DriverHelper;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,13 +11,13 @@ import selenium.utils.DriverHelper;
  * Time: 3:11 PM
  * purpose of this class is to describe business logic actions that can be performed on monitor page
  */
-public class ElectionsActions extends ActionsBase<ElectionsPage> implements iBottomMenuActions, iTopMenuActions, iCheckboxTableActions, iVoteInElectionButtonActions {
+public class CandidatesOfElectionActions extends ActionsBase<CandidatesOfElectionPage> implements iBottomMenuActions, iTopMenuActions, iCheckboxTableActions, iVoteInElectionButtonActions {
 
 	/**purpose of the constructor is to initialize page field*/
-	public ElectionsActions()
+	public CandidatesOfElectionActions()
 	{
 		super();
-		page = new ElectionsPage();
+		page = new CandidatesOfElectionPage();
 	}
 
 	@Override

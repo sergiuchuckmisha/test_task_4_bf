@@ -2,7 +2,6 @@ package actions.voting;
 
 import actions.ActionsBase;
 import pageObjects.voting.WelcomePage;
-import selenium.utils.DriverHelper;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,9 +21,9 @@ public class WelcomeActions extends ActionsBase<WelcomePage> {
 		page = new WelcomePage();
 	}
 
-	public WelcomeActions pressVote()
+	public WelcomeActions pressVoteInElectionButton()
 	{
-		page.pressVote();
+		page.pressVoteInElectionButton();
 		return this;
 	}
 

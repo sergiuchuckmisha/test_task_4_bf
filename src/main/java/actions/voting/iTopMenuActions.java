@@ -9,21 +9,21 @@ import pageObjects.voting.pageElements.iTopMenu;
  * Time: 3:11 PM
  * purpose of this class is to describe business logic actions that can be performed with top menu elements
  */
-public interface iTopMenuActions {
+public interface iTopMenuActions extends iTopMenu {
 
 //	iTopMenu topMenu = null;
 
-	iTopMenu getTopMenu();
-
-	static void pressBackArrow() {
-		iTopMenu.pressBackArrow();
-	}
-
-	static void pressHelp() {
-		iTopMenu.pressHelp();
-	}
-
-	default boolean isNamePresent() {
-		return getTopMenu().isNamePresent();
-	}
+//	iTopMenu getTopMenu();
+//
+//	static void pressBackArrow() {
+//		iTopMenu.pressTopMenuBackArrow();
+//	}
+//
+//	static void pressHelp() {
+//		iTopMenu.pressTopMenuHelp();
+//	}
+//
+//	default boolean isNamePresent() {
+//		return getTopMenu().isTopMenuNamePresent();
+//	}
 }
