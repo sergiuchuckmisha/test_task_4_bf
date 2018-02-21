@@ -22,6 +22,11 @@ public class ElectionsPage implements iPage, iTopMenu, iBottomMenu, iVoteInElect
     }
 
     @Override
+    public String getUrl() {
+        return "https://exonum.com/demo/voting/#/elections";
+    }
+
+    @Override
     public boolean isOnPage() {
         return isNamePresent();
     }

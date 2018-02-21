@@ -16,6 +16,11 @@ import pageObjects.voting.pageElements.iTopMenu;
 public class MonitorPage implements iPage, iTopMenu, iBottomMenu {
 
     @Override
+    public String getUrl() {
+        return "https://exonum.com/demo/voting/#/monitor";
+    }
+
+    @Override
     public boolean isOnPage() {
         return isNamePresent();
     }

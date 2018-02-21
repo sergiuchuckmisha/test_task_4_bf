@@ -20,6 +20,11 @@ public class WelcomePage implements iPage, iVoteInElectionButton {
     private static By monitorElectionProcessButtonLocator = By.xpath("//div[@class='button' and text()='Monitor election process']");
 
     @Override
+    public String getUrl() {
+        return "https://exonum.com/demo/voting/#/welcome";
+    }
+
+    @Override
     public boolean isOnPage() {
         return DriverHelper.isElementPresent(headerLocator);
     }

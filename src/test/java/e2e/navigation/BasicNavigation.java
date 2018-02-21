@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
  * User: sergiuchuckmisha
  * Date: 9/16/15
  * Time: 3:01 PM
- * purpose of the class is to contain relatively "long" scenarios like search and verify results
+ * purpose of the class is to contain relatively "long" scenarios like navigation
  */
 public class BasicNavigation extends SeleniumBaseTest {
 

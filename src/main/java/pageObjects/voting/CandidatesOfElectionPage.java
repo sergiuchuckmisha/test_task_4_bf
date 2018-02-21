@@ -17,6 +17,11 @@ import pageObjects.voting.pageElements.iVoteInElectionButton;
 public class CandidatesOfElectionPage implements iPage, iBottomMenu, iTopMenu, iVoteInElectionButton {
 
     @Override
+    public String getUrl() {
+        return "https://exonum.com/demo/voting/#/elections/candidates";
+    }
+
+    @Override
     public boolean isOnPage() {
         return isNamePresent();
     }

@@ -12,12 +12,10 @@ import selenium.utils.DriverHelper;
  * Time: 3:11 PM
  * purpose of this class is to describe business logic actions that can be performed on monitor page
  */
-public class MonitorActions extends ActionsBase<MonitorPage> implements iBottomMenuActions, iTopMenuActions {
-
-	private static String url = "https://exonum.com/demo/voting/#/monitor";
+public class ElectionsActions extends ActionsBase<MonitorPage> implements iBottomMenuActions, iTopMenuActions {
 
 	/**purpose of the constructor is to initialize page field*/
-	public MonitorActions()
+	public ElectionsActions()
 	{
 		super();
 		page = new MonitorPage();

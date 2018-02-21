@@ -10,5 +10,7 @@ package pageObjects;
  * https://code.google.com/p/selenium/wiki/PageObjects
  */
 public interface iPage {
-	public boolean isOnPage();
+
+	String getUrl();
+	boolean isOnPage();
 }

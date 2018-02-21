@@ -22,6 +22,11 @@ public class UnsignedBallotPage implements iPage, iTopMenu, iBottomMenu {
     private static By signButton = By.xpath("//div[@class='button-group']/div[@class='button button-red' and text()='SIGN']");
 
     @Override
+    public String getUrl() {
+        return "https://exonum.com/demo/voting/#/elections/ballot";
+    }
+
+    @Override
     public boolean isOnPage() {
         return isNamePresent();
     }

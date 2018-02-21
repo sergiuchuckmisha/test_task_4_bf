@@ -22,12 +22,6 @@ public class WelcomeActions extends ActionsBase<WelcomePage> {
 		page = new WelcomePage();
 	}
 
-	@Override
-	public void navigateTo() {
-		if(!page.isOnPage())
-		DriverHelper.navigateToCertainUrl(url);
-	}
-
 	public WelcomeActions pressVote()
 	{
 		page.pressVote();

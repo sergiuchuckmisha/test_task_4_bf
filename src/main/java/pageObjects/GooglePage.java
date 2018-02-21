@@ -27,6 +27,11 @@ public class GooglePage implements iPage {
     private static By searchFieldLocator = By.name("q");
 
     @Override
+    public String getUrl() {
+        return "https://google.com";
+    }
+
+    @Override
     public boolean isOnPage() {
         return DriverHelper.isElementPresent(searchFieldLocator) && "Google".equals(DriverHelper.getTitle());
     }

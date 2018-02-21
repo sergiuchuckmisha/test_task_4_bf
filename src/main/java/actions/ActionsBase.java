@@ -1,6 +1,7 @@
 package actions;
 
 import pageObjects.iPage;
+import selenium.utils.DriverHelper;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +18,11 @@ public abstract class ActionsBase<T extends iPage>  {
 	protected T page;
 
 	/**each Actions class should be able to navigate to appropriate page*/
-	public abstract void navigateTo();
+	public void navigateTo(){
+		if(!page.isOnPage())
+			DriverHelper.navigateToCertainUrl(page.getUrl());
+	}
+
 
 	public boolean isOnPage(){
 		return page.isOnPage();

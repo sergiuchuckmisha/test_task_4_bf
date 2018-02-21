@@ -12,19 +12,11 @@ import selenium.utils.DriverHelper;
  */
 public class GoogleActions extends ActionsBase<GooglePage> {
 
-	private static String url = "https://google.com";
-
 	/**purpose of the constructor is to initialize page field*/
 	public GoogleActions()
 	{
 		super();
 		page = new GooglePage();//in this case we
-	}
-
-	@Override
-	public void navigateTo() {
-		if(!page.isOnPage())
-		DriverHelper.navigateToCertainUrl(url);
 	}
 
 
