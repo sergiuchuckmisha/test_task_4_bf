@@ -46,7 +46,10 @@ public class DriverHelper {
 	public static boolean isElementPresent(By locator)
 	{
 		waitUntilPageIsLoaded();
-		return WebDriverFactory.getDriver().findElements(locator).size() != 0;
+		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		boolean result = WebDriverFactory.getDriver().findElements(locator).size() != 0;
+		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		return result;
 	}
 
 	public static void navigateToCertainUrl(String url)
