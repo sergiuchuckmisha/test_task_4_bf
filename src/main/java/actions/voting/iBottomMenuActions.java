@@ -1,0 +1,21 @@
+package actions.voting;
+
+import pageObjects.voting.pageElements.iBottomMenu;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: sergiuchuckmisha
+ * Date: 9/16/15
+ * Time: 3:11 PM
+ * purpose of this class is to describe business logic actions that can be performed with bottom menu elements
+ */
+public interface iBottomMenuActions {
+
+	default void pressElections() {
+		iBottomMenu.pressElections();
+	}
+
+	default void pressMonitor() {
+		iBottomMenu.pressMonitor();
+	}
+}
