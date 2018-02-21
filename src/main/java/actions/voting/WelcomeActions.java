@@ -10,21 +10,13 @@ import pageObjects.voting.WelcomePage;
  * Time: 3:11 PM
  * purpose of this class is to describe business logic actions that can be performed on welcome page
  */
-public class WelcomeActions extends ActionsBase<WelcomePage> {
-
-	private static String url = "https://exonum.com/demo/voting/#/welcome";
+public class WelcomeActions extends ActionsBase<WelcomePage> implements iVoteInElectionButtonActions {
 
 	/**purpose of the constructor is to initialize page field*/
 	public WelcomeActions()
 	{
 		super();
 		page = new WelcomePage();
-	}
-
-	public WelcomeActions pressVoteInElectionButton()
-	{
-		page.pressVoteInElectionButton();
-		return this;
 	}
 
 	public WelcomeActions pressMonitorElectionProcess()
