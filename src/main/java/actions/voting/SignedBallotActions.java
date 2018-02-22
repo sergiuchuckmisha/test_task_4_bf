@@ -1,8 +1,6 @@
 package actions.voting;
 
 import actions.ActionsBase;
-import dataModels.CryptoDetails;
-import pageObjects.voting.MonitorPage;
 import pageObjects.voting.SignedBallotPage;
 
 /**

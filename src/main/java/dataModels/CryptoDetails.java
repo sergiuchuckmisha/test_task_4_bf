@@ -40,8 +40,8 @@ public class CryptoDetails {
     }
 
     private String getWordsFromEmailBody(String emailBody){
-        Pattern MY_PATTERN = Pattern.compile("MNEMONIC CODE PLAINTEXT: ([a-zA-Z]+ [a-zA-Z]+ [a-zA-Z]+)");
-        Matcher mat = MY_PATTERN.matcher(emailBody);
+        Pattern pattern = Pattern.compile("MNEMONIC CODE PLAINTEXT: ([a-zA-Z]+ [a-zA-Z]+ [a-zA-Z]+)");
+        Matcher mat = pattern.matcher(emailBody);
 
         String result;
         if (!mat.find()) {

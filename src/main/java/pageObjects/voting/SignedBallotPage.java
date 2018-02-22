@@ -2,7 +2,6 @@ package pageObjects.voting;
 
 import org.openqa.selenium.By;
 import pageObjects.iPage;
-import pageObjects.voting.pageElements.checkboxTableElements.iCheckboxTable;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iTopMenu;
 import selenium.utils.DriverHelper;

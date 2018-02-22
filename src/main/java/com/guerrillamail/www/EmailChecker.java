@@ -1,14 +1,9 @@
 package com.guerrillamail.www;
 
 import dataModels.CryptoDetails;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.CookieStore;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
@@ -18,28 +13,13 @@ import java.util.stream.Collectors;
 
 /**idea of class is to provide object which can create email and check it. Also it can retrieve hash and 'MNEMONIC CODE PLAINTEXT' from email*/
 public class EmailChecker {
-    private HttpClient httpclient = new DefaultHttpClient();
     private HttpContext httpContext = new BasicHttpContext();
     private CookieStore cookieStore = new BasicCookieStore();
-    private HttpResponse httpResponse;
-    private HttpPost httpPost;
-    private HttpGet httpGet;
-    private String stringResponse;
 
     private GuerrillaMail tester;
-    private ArrayList<EMail> emails;
     private ArrayList<Integer> emailIdsToDelete;
 
     private String currentEmail;
-
-    public void testSetup() throws Exception{
-        tester = new GuerrillaMail();
-        emails = new ArrayList<EMail>();
-        httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
-        emailIdsToDelete = new ArrayList<Integer>();
-        emailIdsToDelete.add(1);
-        emailIdsToDelete.add(2);
-    }
 
     public EmailChecker(String currentEmail) throws Exception {
         this.currentEmail = currentEmail;
@@ -51,6 +31,15 @@ public class EmailChecker {
         testSetup();
         currentEmail = tester.getEmailAddress();
     }
+
+    public void testSetup() throws Exception{
+        tester = new GuerrillaMail();
+        httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+        emailIdsToDelete = new ArrayList<>();
+        emailIdsToDelete.add(1);
+        emailIdsToDelete.add(2);
+    }
+
 
     public String getCurrentEmail() {
         return currentEmail;
@@ -100,7 +89,7 @@ public class EmailChecker {
             if(currentVotingCryptoDetails().contains(cryptoDetails)){
                 return;
             }
-            Thread.sleep(1000*60);
+            Thread.sleep(1000L*60);
         }
         throw new IllegalStateException(String.format("%d minutes have expired. Email with Cryptodetails: %s is not observed yet ", minutesToWait, cryptoDetails));
     }

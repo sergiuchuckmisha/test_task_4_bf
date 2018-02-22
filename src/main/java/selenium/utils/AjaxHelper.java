@@ -15,6 +15,8 @@ import selenium.browsers.WebDriverFactory;
  */
 public class AjaxHelper {
 
+	private AjaxHelper() {}
+
 	private static JavascriptExecutor getJsExecutor() {
 		return (JavascriptExecutor) WebDriverFactory.getDriver();
 	}
@@ -29,7 +31,7 @@ public class AjaxHelper {
 
 	public static Boolean isPageLoaded() {
 		try {
-			return getJsExecutor().executeScript("return document.readyState").equals("complete");
+			return ("complete").equals(getJsExecutor().executeScript("return document.readyState"));
 		} catch (WebDriverException ex) {
 			return true;
 		}

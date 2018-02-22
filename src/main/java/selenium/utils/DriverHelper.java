@@ -48,7 +48,7 @@ public class DriverHelper {
 		waitUntilPageIsLoaded();
 		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 		boolean result = !WebDriverFactory.getDriver().findElements(locator).isEmpty();
-		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
 		return result;
 	}
 
@@ -86,11 +86,7 @@ public class DriverHelper {
 		WebDriverWait wait = new WebDriverWait(WebDriverFactory.getDriver(), DEFAULT_TIMEOUT_SECONDS);
 
 		try {
-			wait.until(new ExpectedCondition<Boolean>() {
-				public Boolean apply(WebDriver driver) {
-					return AjaxHelper.isPageLoaded();
-				}
-			});
+			wait.until(driver -> AjaxHelper.isPageLoaded());
 		} catch (Exception ignored) {
 		}
 

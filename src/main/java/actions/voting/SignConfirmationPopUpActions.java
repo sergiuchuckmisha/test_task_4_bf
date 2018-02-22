@@ -1,9 +1,7 @@
 package actions.voting;
 
 import actions.ActionsBase;
-import pageObjects.voting.DecryptConfirmationPopUpPage;
 import pageObjects.voting.SignConfirmationPopUpPage;
-import pageObjects.voting.pageElements.iDecryptConfirmationPopUp;
 import pageObjects.voting.pageElements.iSignConfirmationPopUp;
 
 /**

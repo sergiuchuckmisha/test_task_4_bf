@@ -1,6 +1,5 @@
 package pageObjects.voting;
 
-import pageObjects.voting.pageElements.iDecryptConfirmationPopUp;
 import pageObjects.voting.pageElements.iSignConfirmationPopUp;
 
 /**
