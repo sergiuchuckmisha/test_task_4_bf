@@ -39,7 +39,7 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 			method.invoke(null, browsers.FireFox);
 
 			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver());
-			WebDriverFactory.getDriver().get("http://www.google.com");
+			WebDriverFactory.getDriver().get("http://com.guerrillamail.www.google.com");
 			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver().findElement(By.name("q")));
 
 //		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
@@ -59,7 +59,7 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 			method.invoke(null, browsers.HtmlUnit);
 
 			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver());
-			WebDriverFactory.getDriver().get("http://www.google.com");
+			WebDriverFactory.getDriver().get("http://com.guerrillamail.www.google.com");
 			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver().findElement(By.name("q")));
 
 //		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7

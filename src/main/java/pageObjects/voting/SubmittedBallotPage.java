@@ -13,14 +13,14 @@ import selenium.utils.DriverHelper;
  * Date: 9/16/15
  * Time: 3:03 PM
  * purpose of the class is to describe html elements on page
- * https://exonum.com/demo/voting/#/elections/signed
+ * https://exonum.com/demo/voting/#/elections/submitted
  * pageObject pattern is implemented
  */
-public class SignedBallotPage implements iPage, iTopMenu, iBottomMenu {
+public class SubmittedBallotPage implements iPage, iTopMenu, iBottomMenu, iCheckboxTable {
 
     @Override
     public String getUrl() {
-        return "https://exonum.com/demo/voting/#/elections/signed";
+        return "https://exonum.com/demo/voting/#/elections/submitted";
     }
 
     @Override
@@ -30,18 +30,15 @@ public class SignedBallotPage implements iPage, iTopMenu, iBottomMenu {
 
     @Override
     public String getTopMenuName() {
-        return "Ballot has been signed";
+        return "Ballot has been submitted to voting server";
     }
 
-    public void pressDiscardButton(){
-        DriverHelper.click(By.xpath("//div[@class='button button-link' and @ng-click='electionWizardReset()' and text() = 'DISCARD BALLOT']"));
+
+    public String getBallotReceipt3WordMemo(){
+        return DriverHelper.getText(By.xpath("//div[text() = 'Ballot receipt 3-word memo and hash']/following-sibling::div"));
     }
 
-    public void pressSubmitButton(){
-        DriverHelper.click(By.xpath("//div[@class='button button-green' and text() = 'SUBMIT BALLOT']"));
-    }
-
-    public void typeEmail(String email){
-        DriverHelper.type(By.xpath("//div[text() = 'E-mail:']/following-sibling::input"), email);
+    public String getBallotReceiptHash(){
+        return DriverHelper.getText(By.xpath("//div[text() = 'Ballot receipt 3-word memo and hash']/following-sibling::div[2]"));
     }
 }

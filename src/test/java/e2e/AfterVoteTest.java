@@ -2,6 +2,7 @@ package e2e;
 
 import actions.voting.*;
 import base.SeleniumBaseTest;
+import dataModels.CryptoDetails;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,6 +27,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 	private static final EncryptedBallotActions encryptedBallotActions = new EncryptedBallotActions();
 	private static final SignConfirmationPopUpActions signConfirmationPopUpActions = new SignConfirmationPopUpActions();
 	private static final SignedBallotActions signedBallotActions = new SignedBallotActions();
+	private static final SubmittedBallotActions submittedBallotActions = new SubmittedBallotActions();
 
 	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
 	@Before
@@ -131,13 +133,48 @@ public class AfterVoteTest extends SeleniumBaseTest {
 	 * 1. Opens https://exonum.com/demo/voting/#/welcome in browser
 	 * 2. vote for smb
 	 * 3. press sign and get to 'Ballot has been signed' page
+	 * 4. press discard and move to welcome page
 	 * */
 	@Test
-	public void signConfirmTest(){
+	public void signConfirmAndDiscardTest(){
 		unsignedBallotActions.signButtonClick();
 		assertTrue(signConfirmationPopUpActions.isOnPage());
 
 		signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
 		assertTrue(signedBallotActions.isOnPage());
+
+		signedBallotActions.pressDiscardButton();
+		assertTrue(welcomeActions.isOnPage());
+	}
+
+	/**
+	 *  * purpose of the method is to check following scenario:
+	 * 1. Opens https://exonum.com/demo/voting/#/welcome in browser
+	 * 2. vote for smb
+	 * 3. press sign and get to 'Ballot has been signed' page
+	 * 4. press discard and move to welcome page
+	 * 5. verify that 'BALLOT RECEIPT 3-WORD MEMO AND HASH' details are same on different pages
+	 * */
+	@Test
+	public void signConfirmAndSubmitTest(){
+
+		CryptoDetails cryptoDetailsOnUnsignedPage = unsignedBallotActions.getCryptoDetails();
+
+		unsignedBallotActions.signButtonClick();
+		assertTrue(signConfirmationPopUpActions.isOnPage());
+
+		signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
+		assertTrue(signedBallotActions.isOnPage());
+
+		signedBallotActions.typeEmail("ahfkvwnf@guerrillamailblock.com");
+//		signedBallotActions.typeEmail("sergiuchuckmisha@gmail.com");
+
+		signedBallotActions.pressSubmitButton();
+		assertTrue(submittedBallotActions.isOnPage());
+
+		System.out.println("Ballot receipt 3-word memo and hash");
+		System.out.println(submittedBallotActions.getCryptoDetails());
+
+		assertEquals(submittedBallotActions.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
 	}
 }

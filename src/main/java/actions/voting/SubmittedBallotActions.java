@@ -2,8 +2,7 @@ package actions.voting;
 
 import actions.ActionsBase;
 import dataModels.CryptoDetails;
-import pageObjects.voting.MonitorPage;
-import pageObjects.voting.SignedBallotPage;
+import pageObjects.voting.SubmittedBallotPage;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,13 +11,13 @@ import pageObjects.voting.SignedBallotPage;
  * Time: 3:11 PM
  * purpose of this class is to describe business logic actions that can be performed on 'Ballot has been signed' page
  */
-public class SignedBallotActions extends ActionsBase<SignedBallotPage> implements iBottomMenuActions, iTopMenuActions {
+public class SubmittedBallotActions extends ActionsBase<SubmittedBallotPage> implements iBottomMenuActions, iTopMenuActions {
 
 	/**purpose of the constructor is to initialize page field*/
-	public SignedBallotActions()
+	public SubmittedBallotActions()
 	{
 		super();
-		page = new SignedBallotPage();
+		page = new SubmittedBallotPage();
 	}
 
 	@Override
@@ -26,15 +25,8 @@ public class SignedBallotActions extends ActionsBase<SignedBallotPage> implement
 		return page.getTopMenuName();
 	}
 
-	public void pressDiscardButton(){
-		page.pressDiscardButton();
+	public CryptoDetails getCryptoDetails(){
+		return new CryptoDetails(page.getBallotReceiptHash(), page.getBallotReceipt3WordMemo());
 	}
 
-	public void pressSubmitButton(){
-		page.pressSubmitButton();
-	}
-
-	public void typeEmail(String email){
-		page.typeEmail(email);
-	}
 }

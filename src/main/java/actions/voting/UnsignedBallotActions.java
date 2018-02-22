@@ -1,6 +1,7 @@
 package actions.voting;
 
 import actions.ActionsBase;
+import dataModels.CryptoDetails;
 import pageObjects.voting.UnsignedBallotPage;
 import pageObjects.voting.pageElements.iUnsignedBallotPageDiscardDecryptSignButtons;
 
@@ -26,10 +27,7 @@ public class UnsignedBallotActions extends ActionsBase<UnsignedBallotPage> imple
 		return page.getTopMenuName();
 	}
 
-	public String getBallotReceipt3WordMemo(){
-		return page.getBallotReceipt3WordMemo();
-	}
-	public String getBallotSHA256Hash(){
-		return page.getBallotSHA256Hash();
+	public CryptoDetails getCryptoDetails(){
+		return new CryptoDetails(page.getBallotSHA256Hash(), page.getBallotReceipt3WordMemo());
 	}
 }
