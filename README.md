@@ -15,7 +15,7 @@ Purpose of this project is to cover https://exonum.com/demo/voting/#/welcome wit
   - run tests manually from IDE
 
   * need to note that I was not able to config webdriver to get stable results. Sometimes tests are fail without any obvious reason.
-  However, if run tests in iterations: run all tests, then rerun all failed, then again rerun all failed - Usually it take me 3 iterations to run all tests successfully.
+  However, if run tests in iterations: run all tests, then rerun all failed, then again rerun all failed - Usually it takes me 3 iterations to run all tests successfully.
 
   Few notes about testing framework: it contains 3 logical layers: pageObjects, actions and tests.
   Theoretically, pageObjects deal with locators and primitive types (String, boolean),
