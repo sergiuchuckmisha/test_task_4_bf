@@ -22,8 +22,8 @@ public class CryptoDetails {
 
     //using code from https://stackoverflow.com/a/10432594
     private String getHashFromString(String emailBody) {
-        Pattern MY_PATTERN = Pattern.compile("HEXADECIMAL: (\\w+)");
-        Matcher mat = MY_PATTERN.matcher(emailBody);
+        Pattern pattern = Pattern.compile("HEXADECIMAL: (\\w+)");
+        Matcher mat = pattern.matcher(emailBody);
 
         String result;
         if (!mat.find()) {

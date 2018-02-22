@@ -9,6 +9,8 @@ import org.junit.Test;
 import java.util.logging.Logger;
 
 import static config.Config.emailToReceiveCryptoDetails;
+import static dataModels.ValidationUtils.is01;
+import static dataModels.ValidationUtils.isHexadecimal;
 import static org.junit.Assert.*;
 
 /**
@@ -85,8 +87,13 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 		assertTrue(tallyingAuthoritiesAggregatePublicKeyActions.isOnPage());
 
 		//print info from TallyingAuthoritiesAggregatePublicKeyPage
-		log.info("ModulusHexadecimal: " + tallyingAuthoritiesAggregatePublicKeyActions.getModulusHexadecimal());
-		log.info("PublicExponent: " + tallyingAuthoritiesAggregatePublicKeyActions.getPublicExponent());
+		String modulusHexadecimal = tallyingAuthoritiesAggregatePublicKeyActions.getModulusHexadecimal();
+		log.info("ModulusHexadecimal: " + modulusHexadecimal);
+		assertTrue(isHexadecimal(modulusHexadecimal));
+		assertTrue(256 == modulusHexadecimal.length());
+		String publicExponent = tallyingAuthoritiesAggregatePublicKeyActions.getPublicExponent();
+		log.info("PublicExponent: " + publicExponent);
+		assertTrue(is01(publicExponent));//todo is it correct check?
 
 		tallyingAuthoritiesAggregatePublicKeyActions.pressTopMenuBackArrow();
 		assertTrue(decryptedBallotActions.isOnPage());
@@ -106,7 +113,10 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 		assertTrue(encryptedBallotActions.isOnPage());
 
 		//print info from EncryptedBallotPage
-		log.info("EncryptedBallotHexadecimal: " + encryptedBallotActions.getEncryptedBallotHexadecimal());
+		String encryptedBallotHexadecimal = encryptedBallotActions.getEncryptedBallotHexadecimal();
+		log.info("EncryptedBallotHexadecimal: " + encryptedBallotHexadecimal);
+		assertTrue(isHexadecimal(encryptedBallotHexadecimal));
+		assertTrue(256 == encryptedBallotHexadecimal.length());
 
 		encryptedBallotActions.pressTopMenuBackArrow();
 		assertTrue(decryptedBallotActions.isOnPage());
@@ -116,8 +126,14 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 		assertTrue(ballotSHA256HashActions.isOnPage());
 
 		//print info from BallotSHA256HashPage
-		log.info("HashHexadecimal: " + ballotSHA256HashActions.getHashHexadecimal());
-		log.info("HashPrefixHexadecimal: " + ballotSHA256HashActions.getHashPrefixHexadecimal());
+		String hashHexadecimal = ballotSHA256HashActions.getHashHexadecimal();
+		String hashPrefixHexadecimal = ballotSHA256HashActions.getHashPrefixHexadecimal();
+		log.info("HashHexadecimal: " + hashHexadecimal);
+		assertTrue(isHexadecimal(hashHexadecimal));
+		assertTrue(64 == hashHexadecimal.length());
+		log.info("HashPrefixHexadecimal: " + hashPrefixHexadecimal);
+		assertTrue(isHexadecimal(hashPrefixHexadecimal));
+		assertTrue(8 == hashPrefixHexadecimal.length());
 
 		ballotSHA256HashActions.pressTopMenuBackArrow();
 		assertTrue(decryptedBallotActions.isOnPage());
