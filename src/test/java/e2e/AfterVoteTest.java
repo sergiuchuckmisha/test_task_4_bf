@@ -8,7 +8,9 @@ import org.junit.Test;
 
 import java.util.logging.Logger;
 
+import static config.Config.emailToReceiveCryptoDetails;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -113,6 +115,9 @@ public class AfterVoteTest extends SeleniumBaseTest {
 		decryptConfirmationPopUpActions.pressDecryptBallotConfirmationPopUpButton();
 		assertTrue(encryptedBallotActions.isOnPage());
 
+		//at encryptedBallot page top menu back arrow is absent
+		assertFalse(encryptedBallotActions.isTopMenuBackArrowVisible());
+
 		encryptedBallotActions.pressReturnButton();
 		assertTrue(welcomeActions.isOnPage());
 	}
@@ -171,10 +176,16 @@ public class AfterVoteTest extends SeleniumBaseTest {
 		signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
 		assertTrue(signedBallotActions.isOnPage());
 
-		signedBallotActions.typeEmail("ahfkvwnf@guerrillamailblock.com");
+		signedBallotActions.typeEmail(emailToReceiveCryptoDetails);
+
+		//at signedBallot page top menu back arrow is absent
+		assertFalse(signedBallotActions.isTopMenuBackArrowVisible());
 
 		signedBallotActions.pressSubmitButton();
 		assertTrue(submittedBallotActions.isOnPage());
+
+		//at submittedBallot page top menu back arrow is absent
+		assertFalse(submittedBallotActions.isTopMenuBackArrowVisible());
 
 
 		assertEquals(submittedBallotActions.getCryptoDetails(), cryptoDetailsOnUnsignedPage);

@@ -21,6 +21,7 @@ public class Config {
 	public static final File DRIVER_IE_PATH;
 
 	public static final int howManyMinutesToWaitForEmail = 60;//meaning email with CryptoDetails
+	public static final String emailToReceiveCryptoDetails = "ahfkvwnf@guerrillamailblock.com";//meaning email with CryptoDetails
 
 	static {
 

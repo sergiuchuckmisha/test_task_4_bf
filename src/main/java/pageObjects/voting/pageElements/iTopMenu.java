@@ -15,6 +15,11 @@ public interface iTopMenu {
         DriverHelper.click(By.xpath("//div[@class='toolbar-return-button pull-left' and @ng-show='backState']"));
     }
 
+    default boolean isTopMenuBackArrowVisible(){
+        return DriverHelper.findElement(By.xpath("//div[@class='toolbar-return-button pull-left' and @ng-show='backState']")).isDisplayed();
+
+    }
+
     default void pressTopMenuHelp(){
         DriverHelper.click(By.xpath("//div[@class='toolbar-help-button pull-right' and text()='HELP']"));
     }

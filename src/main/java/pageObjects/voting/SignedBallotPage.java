@@ -32,6 +32,12 @@ public class SignedBallotPage implements iPage, iTopMenu, iBottomMenu {
         return "Ballot has been signed";
     }
 
+    @Override
+    @Deprecated
+    public void pressTopMenuBackArrow(){
+        //method should not be used because TopMenuBackArrow is absent on SignedBallotPage
+    }
+
     public void pressDiscardButton(){
         DriverHelper.click(By.xpath("//div[@class='button button-link' and @ng-click='electionWizardReset()' and text() = 'DISCARD BALLOT']"));
     }

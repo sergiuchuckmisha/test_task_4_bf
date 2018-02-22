@@ -51,4 +51,5 @@ public class BasicNavigation extends SeleniumBaseTest {
 		assertTrue(electionsActions.isOnPage());
 	}
 
+
 }

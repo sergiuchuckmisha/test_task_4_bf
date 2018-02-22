@@ -33,6 +33,12 @@ public class EncryptedBallotPage implements iPage, iTopMenu, iBottomMenu, iUnsig
         return "Your Decrypted Ballot";
     }
 
+    @Override
+    @Deprecated
+    public void pressTopMenuBackArrow(){
+        //method should not be used because TopMenuBackArrow is absent on EncryptedBallotPage
+    }
+
     public void pressReturnButton(){
         DriverHelper.click(By.xpath("//div[@class='button button-link' and @ng-click='electionWizardReset()' and text() = 'RETURN']"));
     }

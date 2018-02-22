@@ -20,6 +20,12 @@ public class SignedBallotActions extends ActionsBase<SignedBallotPage> implement
 	}
 
 	@Override
+	@Deprecated
+	public void pressTopMenuBackArrow(){
+		//method should not be used because TopMenuBackArrow is absent on SignedBallotPage
+	}
+
+	@Override
 	public String getTopMenuName() {
 		return page.getTopMenuName();
 	}

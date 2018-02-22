@@ -21,6 +21,12 @@ public class SubmittedBallotActions extends ActionsBase<SubmittedBallotPage> imp
 	}
 
 	@Override
+	@Deprecated
+	public void pressTopMenuBackArrow(){
+		//method should not be used because TopMenuBackArrow is absent on SubmittedBallotPage
+	}
+
+	@Override
 	public String getTopMenuName() {
 		return page.getTopMenuName();
 	}

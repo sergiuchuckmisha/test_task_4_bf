@@ -33,6 +33,12 @@ public class SubmittedBallotPage implements iPage, iTopMenu, iBottomMenu, iCheck
         return "Ballot has been submitted to voting server";
     }
 
+    @Override
+    @Deprecated
+    public void pressTopMenuBackArrow(){
+        //method should not be used because TopMenuBackArrow is absent on SubmittedBallotPage
+    }
+
 
     public String getBallotReceipt3WordMemo(){
         return DriverHelper.getText(By.xpath("//div[text() = 'Ballot receipt 3-word memo and hash']/following-sibling::div"));

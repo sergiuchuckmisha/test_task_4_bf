@@ -20,6 +20,12 @@ public class EncryptedBallotActions extends ActionsBase<EncryptedBallotPage> imp
 	}
 
 	@Override
+	@Deprecated
+	public void pressTopMenuBackArrow(){
+		//method should not be used because TopMenuBackArrow is absent on EncryptedBallotPage
+	}
+
+	@Override
 	public String getTopMenuName() {
 		return page.getTopMenuName();
 	}
