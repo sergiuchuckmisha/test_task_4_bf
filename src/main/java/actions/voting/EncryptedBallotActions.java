@@ -26,4 +26,8 @@ public class EncryptedBallotActions extends ActionsBase<EncryptedBallotPage> imp
 	public String getTopMenuName() {
 		return page.getTopMenuName();
 	}
+
+	public String getEncryptedBallotHexadecimal(){
+		return page.getEncryptedBallotHexadecimal();
+	}
 }

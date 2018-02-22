@@ -26,4 +26,8 @@ public class CandidateOptionSelectedAndEncryptionRandomnessActions extends Actio
 	public String getTopMenuName() {
 		return page.getTopMenuName();
 	}
+
+	public String getPlaintextCandidateAndRandomness(){
+		return page.getPlaintextCandidateAndRandomness();
+	}
 }

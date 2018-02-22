@@ -3,6 +3,7 @@ package pageObjects.voting;
 import pageObjects.iPage;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iDecryptedBallotSubPageName;
+import pageObjects.voting.pageElements.iGetTextFromFieldWithCertainName;
 import pageObjects.voting.pageElements.iTopMenu;
 
 /**
@@ -14,7 +15,7 @@ import pageObjects.voting.pageElements.iTopMenu;
  * https://exonum.com/demo/voting/#/elections/hash
  * pageObject pattern is implemented
  */
-public class BallotSHA256HashPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName {
+public class BallotSHA256HashPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName, iGetTextFromFieldWithCertainName {
 
     @Override
     public String getUrl() {
@@ -29,5 +30,13 @@ public class BallotSHA256HashPage implements iPage, iTopMenu, iBottomMenu, iDecr
     @Override
     public String getTopMenuName() {
         return "Full Ballot Encryption Details";
+    }
+
+    public String getHashHexadecimal(){
+        return getDecryptedBallotSubPageName("Hash hexadecimal");
+    }
+
+    public String getHashPrefixHexadecimal(){
+        return getDecryptedBallotSubPageName("Hash prefix hexadecimal");
     }
 }

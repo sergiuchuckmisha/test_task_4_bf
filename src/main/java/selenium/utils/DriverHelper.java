@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class DriverHelper {
 	private static Logger log = Logger.getLogger(DriverHelper.class.toString());
-	public static final int DEFAULT_TIMEOUT_SECONDS = 5; //wait up to this time for element to appear or page to be loaded
+	public static final int DEFAULT_TIMEOUT_SECONDS = 20; //wait up to this time for element to appear or page to be loaded
 
 	/**
 	 * Gets text from element

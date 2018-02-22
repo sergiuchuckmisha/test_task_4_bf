@@ -26,4 +26,12 @@ public class TallyingAuthoritiesAggregatePublicKeyActions extends ActionsBase<Ta
 	public String getTopMenuName() {
 		return page.getTopMenuName();
 	}
+
+	public String getModulusHexadecimal(){
+		return page.getModulusHexadecimal();
+	}
+
+	public String getPublicExponent(){
+		return page.getPublicExponent();
+	}
 }

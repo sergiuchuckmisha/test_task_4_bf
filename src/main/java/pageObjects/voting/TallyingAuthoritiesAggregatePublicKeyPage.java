@@ -3,6 +3,7 @@ package pageObjects.voting;
 import pageObjects.iPage;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iDecryptedBallotSubPageName;
+import pageObjects.voting.pageElements.iGetTextFromFieldWithCertainName;
 import pageObjects.voting.pageElements.iTopMenu;
 
 /**
@@ -14,7 +15,7 @@ import pageObjects.voting.pageElements.iTopMenu;
  * https://exonum.com/demo/voting/#/elections/tallying
  * pageObject pattern is implemented
  */
-public class TallyingAuthoritiesAggregatePublicKeyPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName {
+public class TallyingAuthoritiesAggregatePublicKeyPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName, iGetTextFromFieldWithCertainName {
 
     @Override
     public String getUrl() {
@@ -29,5 +30,13 @@ public class TallyingAuthoritiesAggregatePublicKeyPage implements iPage, iTopMen
     @Override
     public String getTopMenuName() {
         return "Full Ballot Encryption Details";
+    }
+
+    public String getModulusHexadecimal(){
+        return getDecryptedBallotSubPageName("Modulus hexadecimal (1024 bit)");
+    }
+
+    public String getPublicExponent(){
+        return getDecryptedBallotSubPageName("Public exponent");
     }
 }

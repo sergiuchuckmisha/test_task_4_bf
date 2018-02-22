@@ -25,4 +25,8 @@ public class ThreeWordMemoByBIPMnemonicCodeAlgorithmActions extends ActionsBase<
 	public String getTopMenuName() {
 		return page.getTopMenuName();
 	}
+
+	public String getMnemonicCodePlaintext(){
+		return page.getMnemonicCodePlaintext();
+	}
 }

@@ -3,6 +3,7 @@ package pageObjects.voting;
 import pageObjects.iPage;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iDecryptedBallotSubPageName;
+import pageObjects.voting.pageElements.iGetTextFromFieldWithCertainName;
 import pageObjects.voting.pageElements.iTopMenu;
 
 /**
@@ -14,7 +15,7 @@ import pageObjects.voting.pageElements.iTopMenu;
  * https://exonum.com/demo/voting/#/elections/memo
  * pageObject pattern is implemented
  */
-public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName {
+public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName, iGetTextFromFieldWithCertainName {
 
     @Override
     public String getUrl() {
@@ -29,5 +30,9 @@ public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage implements iPage, iTopM
     @Override
     public String getTopMenuName() {
         return "Full Ballot Encryption Details";
+    }
+
+    public String getMnemonicCodePlaintext(){
+        return getDecryptedBallotSubPageName("Mnemonic code plaintext");
     }
 }

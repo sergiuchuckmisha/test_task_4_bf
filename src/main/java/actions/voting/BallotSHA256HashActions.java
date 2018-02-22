@@ -26,4 +26,13 @@ public class BallotSHA256HashActions extends ActionsBase<BallotSHA256HashPage> i
 	public String getTopMenuName() {
 		return page.getTopMenuName();
 	}
+
+
+	public String getHashHexadecimal(){
+		return page.getHashHexadecimal();
+	}
+
+	public String getHashPrefixHexadecimal(){
+		return page.getHashPrefixHexadecimal();
+	}
 }
