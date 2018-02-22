@@ -11,19 +11,19 @@ import pageObjects.voting.pageElements.iTopMenu;
  * Date: 9/16/15
  * Time: 3:03 PM
  * purpose of the class is to describe html elements on page
- * https://exonum.com/demo/voting/#/elections/encrypted
+ * https://exonum.com/demo/voting/#/elections/tallying
  * pageObject pattern is implemented
  */
-public class EncryptedBallotPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName {
+public class TallyingAuthoritiesAggregatePublicKeyPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName {
 
     @Override
     public String getUrl() {
-        return "https://exonum.com/demo/voting/#/elections/encrypted";
+        return "https://exonum.com/demo/voting/#/elections/tallying";
     }
 
     @Override
     public boolean isOnPage() {
-        return isTopMenuNamePresent() && "Encrypted ballot".equals(getDecryptedBallotSubPageName());
+        return isTopMenuNamePresent() && "Tallying Authorities Aggregate Public Key".equals(getDecryptedBallotSubPageName());
     }
 
     @Override

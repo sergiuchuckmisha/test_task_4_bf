@@ -11,19 +11,19 @@ import pageObjects.voting.pageElements.iTopMenu;
  * Date: 9/16/15
  * Time: 3:03 PM
  * purpose of the class is to describe html elements on page
- * https://exonum.com/demo/voting/#/elections/encrypted
+ * https://exonum.com/demo/voting/#/elections/memo
  * pageObject pattern is implemented
  */
-public class EncryptedBallotPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName {
+public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage implements iPage, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName {
 
     @Override
     public String getUrl() {
-        return "https://exonum.com/demo/voting/#/elections/encrypted";
+        return "https://exonum.com/demo/voting/#/elections/memo";
     }
 
     @Override
     public boolean isOnPage() {
-        return isTopMenuNamePresent() && "Encrypted ballot".equals(getDecryptedBallotSubPageName());
+        return isTopMenuNamePresent() && "3-word memo BIP 0039 Mnemonic algorithm".equals(getDecryptedBallotSubPageName());
     }
 
     @Override

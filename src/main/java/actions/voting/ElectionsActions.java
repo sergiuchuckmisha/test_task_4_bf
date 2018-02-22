@@ -1,6 +1,10 @@
 package actions.voting;
 
 import actions.ActionsBase;
+import actions.voting.interfaces.iBottomMenuActions;
+import actions.voting.interfaces.iCheckboxTableActions;
+import actions.voting.interfaces.iTopMenuActions;
+import actions.voting.interfaces.iVoteInElectionButtonActions;
 import pageObjects.voting.ElectionsPage;
 
 /**

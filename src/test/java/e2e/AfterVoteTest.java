@@ -30,7 +30,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 	private static final VoteConfirmationPopUpActions voteConfirmationPopUpActions = new VoteConfirmationPopUpActions();
 	private static final UnsignedBallotActions unsignedBallotActions = new UnsignedBallotActions();
 	private static final DecryptConfirmationPopUpActions decryptConfirmationPopUpActions = new DecryptConfirmationPopUpActions();
-	private static final EncryptedBallotActions encryptedBallotActions = new EncryptedBallotActions();
+	private static final DecryptedBallotActions decryptedBallotActions = new DecryptedBallotActions();
 	private static final SignConfirmationPopUpActions signConfirmationPopUpActions = new SignConfirmationPopUpActions();
 	private static final SignedBallotActions signedBallotActions = new SignedBallotActions();
 	private static final SubmittedBallotActions submittedBallotActions = new SubmittedBallotActions();
@@ -113,12 +113,12 @@ public class AfterVoteTest extends SeleniumBaseTest {
 		assertTrue(decryptConfirmationPopUpActions.isOnPage());
 
 		decryptConfirmationPopUpActions.pressDecryptBallotConfirmationPopUpButton();
-		assertTrue(encryptedBallotActions.isOnPage());
+		assertTrue(decryptedBallotActions.isOnPage());
 
 		//at encryptedBallot page top menu back arrow is absent
-		assertFalse(encryptedBallotActions.isTopMenuBackArrowVisible());
+		assertFalse(decryptedBallotActions.isTopMenuBackArrowVisible());
 
-		encryptedBallotActions.pressReturnButton();
+		decryptedBallotActions.pressReturnButton();
 		assertTrue(welcomeActions.isOnPage());
 	}
 

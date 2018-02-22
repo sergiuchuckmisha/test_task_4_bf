@@ -1,6 +1,7 @@
 package actions.voting;
 
 import actions.ActionsBase;
+import actions.voting.interfaces.iVoteInElectionButtonActions;
 import pageObjects.voting.WelcomePage;
 
 /**

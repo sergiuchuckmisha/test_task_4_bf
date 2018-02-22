@@ -1,4 +1,4 @@
-package actions.voting;
+package actions.voting.interfaces;
 
 import pageObjects.voting.pageElements.checkboxTableElements.iCheckboxTable;
 

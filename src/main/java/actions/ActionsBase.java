@@ -17,6 +17,7 @@ public abstract class ActionsBase<T extends iPage>  {
 	/**page should be initialized in constructor of the legatee*/
 	protected T page;
 
+	//todo get rid of this legacy code
 	/**each Actions class should be able to navigate to appropriate page*/
 	public void navigateTo(){
 		if(!page.isOnPage())
@@ -28,6 +29,7 @@ public abstract class ActionsBase<T extends iPage>  {
 		return page.isOnPage();
 	}
 
+	//todo get rid of this legacy code
 	/**purpose of this method is to navigate to the page of certain Actions class (this Actions is a parameter)*/
 	public <T1 extends ActionsBase<T>> T1 navigateTo(Class<T1> clazz) {
 		if (!page.isOnPage()) {

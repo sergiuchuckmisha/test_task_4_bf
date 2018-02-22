@@ -1,6 +1,8 @@
 package actions.voting;
 
 import actions.ActionsBase;
+import actions.voting.interfaces.iBottomMenuActions;
+import actions.voting.interfaces.iTopMenuActions;
 import dataModels.CryptoDetails;
 import pageObjects.voting.UnsignedBallotPage;
 import pageObjects.voting.pageElements.iUnsignedBallotPageDiscardDecryptSignButtons;

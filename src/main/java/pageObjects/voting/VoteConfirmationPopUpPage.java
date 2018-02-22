@@ -8,12 +8,13 @@ import pageObjects.voting.pageElements.iVoteConfirmationPopUp;
  * Date: 9/16/15
  * Time: 3:03 PM
  * purpose of the class is to describe html elements on page
- * https://exonum.com/demo/voting/#/monitor
+ * https://exonum.com/demo/voting/#/elections/candidates when confirming vote
  * pageObject pattern is implemented
  */
 public class VoteConfirmationPopUpPage implements iVoteConfirmationPopUp {
 
     //this method should not be called
+    @Deprecated
     @Override
     public String getUrl() {
         return "null";

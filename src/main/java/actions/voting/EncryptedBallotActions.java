@@ -1,6 +1,9 @@
 package actions.voting;
 
 import actions.ActionsBase;
+import actions.voting.interfaces.iBottomMenuActions;
+import actions.voting.interfaces.iTopMenuActions;
+import pageObjects.voting.CandidateOptionSelectedAndEncryptionRandomnessPage;
 import pageObjects.voting.EncryptedBallotPage;
 
 /**
@@ -8,7 +11,7 @@ import pageObjects.voting.EncryptedBallotPage;
  * User: sergiuchuckmisha
  * Date: 9/16/15
  * Time: 3:11 PM
- * purpose of this class is to describe business logic actions that can be performed on 'Your Decrypted Ballot' page
+ * purpose of this class is to describe business logic actions that can be performed on EncryptedBallotPage
  */
 public class EncryptedBallotActions extends ActionsBase<EncryptedBallotPage> implements iBottomMenuActions, iTopMenuActions {
 
@@ -20,17 +23,7 @@ public class EncryptedBallotActions extends ActionsBase<EncryptedBallotPage> imp
 	}
 
 	@Override
-	@Deprecated
-	public void pressTopMenuBackArrow(){
-		//method should not be used because TopMenuBackArrow is absent on EncryptedBallotPage
-	}
-
-	@Override
 	public String getTopMenuName() {
 		return page.getTopMenuName();
-	}
-
-	public void pressReturnButton(){
-		page.pressReturnButton();
 	}
 }

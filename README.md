@@ -24,3 +24,5 @@ found issues:
  - when voting for US president in confirmation popup link to Estionian site (http://www.vvk.ee/?lang=en) is present
  - when signing ballot some PIN2 code is asked. What is it? What is PIN1 code?
   - this PIN code is not required and is not validated (can sign without and with partially entered PIN code)
+ - 'SAVE BALLOT DETAILS' button on page 'Your Decrypted Ballot' does nothing
+ - on page https://exonum.com/demo/voting/#/elections/hash BIP 0039 verification instructions are announced, but absent
