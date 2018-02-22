@@ -20,6 +20,8 @@ public class Config {
 	public static final String FIREBUG_VER;
 	public static final File DRIVER_IE_PATH;
 
+	public static final int howManyMinutesToWaitForEmail = 60;//meaning email with CryptoDetails
+
 	static {
 
 		FIREBUG_VER = "1.10.4";

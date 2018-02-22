@@ -2,9 +2,12 @@ package e2e;
 
 import actions.voting.*;
 import base.SeleniumBaseTest;
+import com.guerrillamail.www.EmailChecker;
+import config.Config;
 import dataModels.CryptoDetails;
 import org.junit.Before;
 import org.junit.Test;
+import selenium.browsers.WebDriverFactory;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -156,7 +159,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 	 * 5. verify that 'BALLOT RECEIPT 3-WORD MEMO AND HASH' details are same on different pages
 	 * */
 	@Test
-	public void signConfirmAndSubmitTest(){
+	public void signConfirmAndSubmitTest() throws Exception {
 
 		CryptoDetails cryptoDetailsOnUnsignedPage = unsignedBallotActions.getCryptoDetails();
 
@@ -167,14 +170,45 @@ public class AfterVoteTest extends SeleniumBaseTest {
 		assertTrue(signedBallotActions.isOnPage());
 
 		signedBallotActions.typeEmail("ahfkvwnf@guerrillamailblock.com");
-//		signedBallotActions.typeEmail("sergiuchuckmisha@gmail.com");
 
 		signedBallotActions.pressSubmitButton();
 		assertTrue(submittedBallotActions.isOnPage());
 
-		System.out.println("Ballot receipt 3-word memo and hash");
-		System.out.println(submittedBallotActions.getCryptoDetails());
 
 		assertEquals(submittedBallotActions.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
+	}
+
+	/**
+	 *  * purpose of the method is to check following scenario:
+	 * 1. vote for smb
+	 * 2. sign ballot
+	 * 3. wait for email with same CryptoDetails
+	 * */
+	@Test
+	public void signBallotAndWaitForEmail() throws Exception {
+
+		EmailChecker emailChecker = new EmailChecker();
+		System.out.println("current email: " + emailChecker.getCurrentEmail());
+
+		CryptoDetails cryptoDetailsOnUnsignedPage = unsignedBallotActions.getCryptoDetails();
+
+		unsignedBallotActions.signButtonClick();
+		assertTrue(signConfirmationPopUpActions.isOnPage());
+
+		signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
+		assertTrue(signedBallotActions.isOnPage());
+
+		signedBallotActions.typeEmail(emailChecker.getCurrentEmail());
+
+		signedBallotActions.pressSubmitButton();
+		assertTrue(submittedBallotActions.isOnPage());
+
+
+		assertEquals(submittedBallotActions.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
+
+		//no need to keep page while waiting for email
+		WebDriverFactory.clearDriver();
+
+		emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.howManyMinutesToWaitForEmail);
 	}
 }
