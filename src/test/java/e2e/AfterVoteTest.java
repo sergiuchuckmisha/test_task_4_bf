@@ -2,12 +2,11 @@ package e2e;
 
 import actions.voting.*;
 import base.SeleniumBaseTest;
-import com.guerrillamail.www.EmailChecker;
-import config.Config;
 import dataModels.CryptoDetails;
 import org.junit.Before;
 import org.junit.Test;
-import selenium.browsers.WebDriverFactory;
+
+import java.util.logging.Logger;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -20,6 +19,8 @@ import static org.junit.Assert.assertTrue;
  * purpose of the class is to contain scenarios which go after vote: decrypt and sign
  */
 public class AfterVoteTest extends SeleniumBaseTest {
+
+	private static Logger log = Logger.getLogger(AfterVoteTest.class.toString());
 
 	private static final WelcomeActions welcomeActions = new WelcomeActions();
 	private static final ElectionsActions electionsActions = new ElectionsActions();
@@ -162,6 +163,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 	public void signConfirmAndSubmitTest() throws Exception {
 
 		CryptoDetails cryptoDetailsOnUnsignedPage = unsignedBallotActions.getCryptoDetails();
+		log.info("cryptoDetailsOnUnsignedPage: " + String.valueOf(cryptoDetailsOnUnsignedPage));
 
 		unsignedBallotActions.signButtonClick();
 		assertTrue(signConfirmationPopUpActions.isOnPage());
@@ -176,39 +178,5 @@ public class AfterVoteTest extends SeleniumBaseTest {
 
 
 		assertEquals(submittedBallotActions.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
-	}
-
-	/**
-	 *  * purpose of the method is to check following scenario:
-	 * 1. vote for smb
-	 * 2. sign ballot
-	 * 3. wait for email with same CryptoDetails
-	 * */
-	@Test
-	public void signBallotAndWaitForEmail() throws Exception {
-
-		EmailChecker emailChecker = new EmailChecker();
-		System.out.println("current email: " + emailChecker.getCurrentEmail());
-
-		CryptoDetails cryptoDetailsOnUnsignedPage = unsignedBallotActions.getCryptoDetails();
-
-		unsignedBallotActions.signButtonClick();
-		assertTrue(signConfirmationPopUpActions.isOnPage());
-
-		signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
-		assertTrue(signedBallotActions.isOnPage());
-
-		signedBallotActions.typeEmail(emailChecker.getCurrentEmail());
-
-		signedBallotActions.pressSubmitButton();
-		assertTrue(submittedBallotActions.isOnPage());
-
-
-		assertEquals(submittedBallotActions.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
-
-		//no need to keep page while waiting for email
-		WebDriverFactory.clearDriver();
-
-		emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.howManyMinutesToWaitForEmail);
 	}
 }

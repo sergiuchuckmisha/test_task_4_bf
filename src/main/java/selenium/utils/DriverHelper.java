@@ -2,9 +2,7 @@ package selenium.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.browsers.WebDriverFactory;
@@ -22,7 +20,7 @@ import java.util.logging.Logger;
  * this class wraps calls to WebDriver instance in order to add checks, try-catch etc to common WebDriver functions
  */
 public class DriverHelper {
-	private static Logger LOG = Logger.getLogger(DriverHelper.class.toString());
+	private static Logger log = Logger.getLogger(DriverHelper.class.toString());
 	public static final int DEFAULT_TIMEOUT_SECONDS = 5; //wait up to this time for element to appear or page to be loaded
 
 	/**
@@ -91,6 +89,7 @@ public class DriverHelper {
 		}
 
 		waitForJsAsync();
+		waitForJsAsync();
 	}
 
 	public static List<WebElement> findElements(By locator)
@@ -104,14 +103,14 @@ public class DriverHelper {
 	}
 
 	public static WebElement findElement(By locator, int newTimeOutSeconds) {
-		LOG.log(Level.WARNING,"Find element: " + locator);
+		log.log(Level.WARNING,"Find element: " + locator);
 		WebElement webElement = null;
 
 		try {
 			webElement = new WebDriverWait(WebDriverFactory.getDriver(), newTimeOutSeconds).until(ExpectedConditions.presenceOfElementLocated(locator));
-			LOG.log(Level.WARNING,"Find element: " + locator + " => true");
+			log.log(Level.WARNING,"Find element: " + locator + " => true");
 		} catch (Exception ex) {
-				LOG.log(Level.WARNING,"Web element not found: " + locator);
+				log.log(Level.WARNING,"Web element not found: " + locator);
 			}
 		return webElement;
 	}

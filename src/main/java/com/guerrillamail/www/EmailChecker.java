@@ -9,10 +9,14 @@ import org.apache.http.protocol.HttpContext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**idea of class is to provide object which can create email and check it. Also it can retrieve hash and 'MNEMONIC CODE PLAINTEXT' from email*/
 public class EmailChecker {
+
+    private static Logger log = Logger.getLogger(EmailChecker.class.toString());
+
     private HttpContext httpContext = new BasicHttpContext();
     private CookieStore cookieStore = new BasicCookieStore();
 
@@ -36,7 +40,7 @@ public class EmailChecker {
         tester = new GuerrillaMail();
         httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
         emailIdsToDelete = new ArrayList<>();
-        emailIdsToDelete.add(1);
+        emailIdsToDelete.add(1);//copypaste from GuerrillaMailTest
         emailIdsToDelete.add(2);
     }
 
@@ -51,7 +55,7 @@ public class EmailChecker {
                 .getEmailList()
                 .stream()
                 .filter(eMail -> "Voter, your ballot has been successfully posted on public bulletin board".equals(eMail.getSubject()))
-                .map(eMail -> eMail.getId())
+                .map(EMail::getId)
                 .collect(Collectors.toList());
     }
 
@@ -67,6 +71,7 @@ public class EmailChecker {
                     String emailBody = "";
                     try {
                         emailBody = tester.fetchEmail(eMail.getId()).getBody();
+                        log.fine("emailBody" + emailBody);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

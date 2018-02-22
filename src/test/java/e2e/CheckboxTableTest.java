@@ -7,6 +7,8 @@ import actions.voting.WelcomeActions;
 import base.SeleniumBaseTest;
 import org.junit.Test;
 
+import java.util.logging.Logger;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -18,6 +20,8 @@ import static org.junit.Assert.assertTrue;
  * purpose of the class is to contain relatively "long" scenarios like navigation
  */
 public class CheckboxTableTest extends SeleniumBaseTest {
+
+	private static Logger log = Logger.getLogger(CheckboxTableTest.class.toString());
 
 	private static final WelcomeActions welcomeActions = new WelcomeActions();
 //	private static final MonitorActions monitorActions = new MonitorActions();//is not used because monitor page is unfinished
