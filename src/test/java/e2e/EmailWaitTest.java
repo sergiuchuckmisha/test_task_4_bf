@@ -72,6 +72,7 @@ public class EmailWaitTest {
         unsignedBallotActions.signButtonClick();
         assertTrue(signConfirmationPopUpActions.isOnPage());
 
+        signConfirmationPopUpActions.enterSomePINCode();
         signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
         assertTrue(signedBallotActions.isOnPage());
 

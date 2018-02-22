@@ -149,6 +149,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 		unsignedBallotActions.signButtonClick();
 		assertTrue(signConfirmationPopUpActions.isOnPage());
 
+		signConfirmationPopUpActions.enterSomePINCode();
 		signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
 		assertTrue(signedBallotActions.isOnPage());
 
@@ -173,6 +174,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 		unsignedBallotActions.signButtonClick();
 		assertTrue(signConfirmationPopUpActions.isOnPage());
 
+		signConfirmationPopUpActions.enterSomePINCode();
 		signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
 		assertTrue(signedBallotActions.isOnPage());
 

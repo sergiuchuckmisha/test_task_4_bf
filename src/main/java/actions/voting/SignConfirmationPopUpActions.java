@@ -25,4 +25,15 @@ public class SignConfirmationPopUpActions extends ActionsBase<SignConfirmationPo
 	public String getUrl() {
 		return "null";
 	}
+
+	public void pressNumber(int i){
+		page.pressNumber(i);
+	}
+
+	public void enterSomePINCode(){
+		pressNumber(1);
+		pressNumber(2);
+		pressNumber(3);
+		pressNumber(4);
+	}
 }
