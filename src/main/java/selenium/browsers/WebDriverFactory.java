@@ -10,6 +10,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static config.Config.DRIVER_CHROME_PATH;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sergiuchuckmisha
@@ -39,7 +41,7 @@ public class WebDriverFactory {
 	 * WebDriverFactory will take member of this enum as parameter
 	 * String label of browser should be converted to enum instance asap using method getBrowserByLabel()*/
 	public enum browsers{
-		FireFox("FF"), HtmlUnit("HU"), Chrome("CH");
+		HtmlUnit("HU"), Chrome("CH");
 		public final String label;
 
 
@@ -72,7 +74,7 @@ public class WebDriverFactory {
 		}
 		try {
 			driver.getCurrentUrl();//touch with stick
-		} catch (Throwable t) {
+		} catch (Exception t) {
 			t.printStackTrace();
 			newWebDriver( browser);
 			return driver;
@@ -93,8 +95,6 @@ public class WebDriverFactory {
 		{
 			case Chrome:
 				return newChromeDriver();
-//			case FireFox:
-//				return newFireFoxDiver();
 			case HtmlUnit:
 				return newHtmlUnitDiver();
 			default:
@@ -103,8 +103,7 @@ public class WebDriverFactory {
 	}
 
 	private static WebDriver newChromeDriver() {
-//		System.setProperty("webdriver.chrome.driver", "C:\\dev\\programs\\drivers\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver", "C:/dev/programs/drivers/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", DRIVER_CHROME_PATH);
 		return new ChromeDriver();
 	}
 
@@ -117,37 +116,4 @@ public class WebDriverFactory {
 //		return new HtmlUnitDriver(capabilities);
 		return new HtmlUnitDriver(true);
 	}
-//
-//	private static WebDriver newFireFoxDiver() {
-//		capabilities = new DesiredCapabilities().firefox();
-//		capabilities.setBrowserName("firefox");
-//		//capabilities.setCapability("unexpectedAlertBehaviour", "ACCEPT");
-//		//setCommonCapabilities();
-//		//capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, "ACCEPT");
-//
-//		FirefoxDriver firefoxDriver;
-//
-//		FirefoxProfile firefoxProfile = new FirefoxProfile();
-//		firefoxProfile.setPreference("setAcceptUntrustedCertificates", "true");
-//		firefoxProfile.setPreference("extensions.firebug.currentVersion", Config.FIREBUG_VER);
-//		firefoxProfile.setPreference("browser.download.folderList", 2);
-//		firefoxProfile.setPreference("browser.helperApps.neverAsk.saveToDisk", "image/jpg, text/csv, text/xml, " +
-//				"application/xml, application/vnd.ms-excel, application/x-excel, application/x-msexcel, application/excel, application/pdf");
-//
-//		try {
-//			firefoxDriver = new FirefoxDriver(new FirefoxBinary(new File(Config.FIREFOX_PATH)), firefoxProfile, capabilities);
-//		} catch (Exception e1) {
-//			LOG.log(Level.SEVERE, "creation of firefox webdriver instance with capabilities has failed \n try to create firefox webdriver instance without capabilities");
-//			firefoxDriver = new FirefoxDriver(firefoxProfile);  //without capabilities
-//		}
-//
-//		return firefoxDriver;
-//	}
-//
-
-
-
-
-
-
 }

@@ -14,26 +14,14 @@ import java.io.File;
  */
 public class Config {
 	public static WebDriverFactory.browsers BROWSER;
-	public static final File DRIVER_CHROME_PATH;
-	public static final String CHROME_BROWSER_PATH;
-	public static final String FIREFOX_PATH;
-	public static final String FIREBUG_VER;
-	public static final File DRIVER_IE_PATH;
+	public static final String DRIVER_CHROME_PATH;
 
 	public static final int howManyMinutesToWaitForEmail = 60;//meaning email with CryptoDetails
 	public static final String emailToReceiveCryptoDetails = "ahfkvwnf@guerrillamailblock.com";//meaning email with CryptoDetails
 
 	static {
 
-		FIREBUG_VER = "1.10.4";
-//		FIREFOX_PATH = "C:\\dev\\programs\\firefox\\firefox.exe";
-		FIREFOX_PATH = "D:\\dev\\programs\\firefox\\firefox.exe";
-//		FIREFOX_PATH = "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe";
-		DRIVER_CHROME_PATH = new File("C:\\dev\\programs\\drivers\\chromedriver.exe");
-//		DRIVER_CHROME_PATH = new File("D:\\dev\\programs\\drivers\\chromedriver.exe");
-		CHROME_BROWSER_PATH = null; //"C:\\dev\\programs\\Google\\Chrome\\Application\\chrome.exe";
-//		DRIVER_IE_PATH = new File("C:\\dev\\drivers\\IEDriverServer.exe");
-		DRIVER_IE_PATH = new File("D:\\dev\\programs\\drivers\\IEDriverServer.exe");
+		DRIVER_CHROME_PATH = "C:\\dev\\programs\\drivers\\chromedriver.exe";
 
 		try {
 			if(StringUtils.isEmpty(getEnvVariable("browser")))//todo refactoring seems to be required because 2 checks (try/catch and if) are intersected

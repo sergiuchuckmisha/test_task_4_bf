@@ -22,32 +22,12 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 	public void testEnumBrowsers()
 	{
 		try {
-			assert browsers.FireFox.equals(browsers.getBrowserByLabel("FF"));
+			assert browsers.Chrome.equals(browsers.getBrowserByLabel("CH"));
 			assert browsers.HtmlUnit.equals(browsers.getBrowserByLabel("HU"));
 		} catch (Exception e) {
 			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 		}
 	}
-
-	/**purpose of the basicNavigation is to start FF driver, open google and check for presence of a search field*/
-	@Test
-	public void testFireFoxBrowserCreation()
-	{
-		try {
-			Method method = WebDriverFactory.class.getDeclaredMethod("getDriver", browsers.class);
-			method.setAccessible(true);
-			method.invoke(null, browsers.FireFox);
-
-			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver());
-			WebDriverFactory.getDriver().get("http://com.guerrillamail.www.google.com");
-			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver().findElement(By.name("q")));
-
-//		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
-        } catch (Exception e) {                                                                   //this is for Java6
-        e.printStackTrace();
-		}
-	}
-
 
 	/**purpose of the basicNavigation is to start HU driver, open google and check for presence of a search field*/
 	@Test
@@ -59,12 +39,12 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 			method.invoke(null, browsers.HtmlUnit);
 
 			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver());
-			WebDriverFactory.getDriver().get("http://com.guerrillamail.www.google.com");
+			WebDriverFactory.getDriver().get("http://www.google.com");
 			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver().findElement(By.name("q")));
 
 //		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
     } catch (Exception e) {                                                                   //this is for Java6
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			e.printStackTrace();
 		}
 	}
 }
