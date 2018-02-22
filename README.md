@@ -9,6 +9,7 @@ Purpose of this project is to cover https://exonum.com/demo/voting/#/welcome wit
   - last Chrome (version 64)
   - last chromedriver (version 2.35) can be downloaded at https://chromedriver.storage.googleapis.com/index.html?path=2.35/
    - driver should be placed in folder 'C:\dev\programs\drivers\chromedriver.exe' (this path is hardcoded in config/Config.java:31) or this path can be customized in case of another OS
+  - instruction for chrome driver installation: https://sites.google.com/a/chromium.org/chromedriver/getting-started
  - How to run:
   - mvn clean install
   - run tests manually from IDE
