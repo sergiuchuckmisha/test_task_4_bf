@@ -4,7 +4,6 @@ import actions.ActionsBase;
 import actions.voting.interfaces.iBottomMenuActions;
 import actions.voting.interfaces.iTopMenuActions;
 import pageObjects.voting.BallotSHA256HashPage;
-import pageObjects.voting.TallyingAuthoritiesAggregatePublicKeyPage;
 
 /**
  * Created with IntelliJ IDEA.

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 /**idea of class is to provide object which can create email and check it. Also it can retrieve hash and 'MNEMONIC CODE PLAINTEXT' from email*/
 public class EmailChecker {
 
-    private static Logger log = Logger.getLogger(EmailChecker.class.toString());
+    private static final Logger log = Logger.getLogger(EmailChecker.class.toString());
 
     private HttpContext httpContext = new BasicHttpContext();
     private CookieStore cookieStore = new BasicCookieStore();

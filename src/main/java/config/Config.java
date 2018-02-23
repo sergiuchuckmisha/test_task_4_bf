@@ -3,8 +3,6 @@ package config;
 import org.apache.commons.lang3.StringUtils;
 import selenium.browsers.WebDriverFactory;
 
-import java.io.File;
-
 /**
  * Created with IntelliJ IDEA.
  * User: sergiuchuckmisha

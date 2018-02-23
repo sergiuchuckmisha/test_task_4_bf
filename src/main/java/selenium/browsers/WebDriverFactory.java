@@ -27,7 +27,7 @@ import static config.Config.DRIVER_CHROME_PATH;
 public class WebDriverFactory {
 
 	private static WebDriver driver;
-	private static Logger LOG = Logger.getLogger(WebDriverFactory.class.toString());
+	private static final Logger LOG = Logger.getLogger(WebDriverFactory.class.toString());
 
 	private static DesiredCapabilities capabilities;
 

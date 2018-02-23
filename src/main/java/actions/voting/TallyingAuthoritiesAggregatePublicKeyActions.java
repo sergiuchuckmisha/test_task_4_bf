@@ -3,7 +3,6 @@ package actions.voting;
 import actions.ActionsBase;
 import actions.voting.interfaces.iBottomMenuActions;
 import actions.voting.interfaces.iTopMenuActions;
-import pageObjects.voting.MonitorPage;
 import pageObjects.voting.TallyingAuthoritiesAggregatePublicKeyPage;
 
 /**

@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class AfterVoteTest extends SeleniumBaseTest {
 
-	private static Logger log = Logger.getLogger(AfterVoteTest.class.toString());
+	private static final Logger log = Logger.getLogger(AfterVoteTest.class.toString());
 
 	private static final WelcomeActions welcomeActions = new WelcomeActions();
 	private static final ElectionsActions electionsActions = new ElectionsActions();
@@ -37,7 +37,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 
 	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
 	@Before
-	public void voteForSmbTest() {
+	public void voteForSmbPrerequisite() {
 		welcomeActions.navigateTo();
 
 		//welcome page check 'VOTE IN ELECTION'

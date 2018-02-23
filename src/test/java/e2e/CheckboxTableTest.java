@@ -2,7 +2,6 @@ package e2e;
 
 import actions.voting.CandidatesOfElectionActions;
 import actions.voting.ElectionsActions;
-import actions.voting.MonitorActions;
 import actions.voting.WelcomeActions;
 import base.SeleniumBaseTest;
 import org.junit.Test;

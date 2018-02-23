@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * this class wraps calls to WebDriver instance in order to add checks, try-catch etc to common WebDriver functions
  */
 public class DriverHelper {
-	private static Logger log = Logger.getLogger(DriverHelper.class.toString());
+	private static final Logger log = Logger.getLogger(DriverHelper.class.toString());
 	public static final int DEFAULT_TIMEOUT_SECONDS = 20; //wait up to this time for element to appear or page to be loaded
 
 	/**

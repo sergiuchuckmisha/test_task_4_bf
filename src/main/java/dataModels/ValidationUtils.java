@@ -1,7 +1,5 @@
 package dataModels;
 
-import java.util.regex.Pattern;
-
 /**idea of the class is to provide functionality to validate strings
  * like:
  * verify that it is hexadecimal

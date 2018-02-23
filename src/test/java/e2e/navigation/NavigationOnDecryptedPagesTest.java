@@ -2,16 +2,15 @@ package e2e.navigation;
 
 import actions.voting.*;
 import base.SeleniumBaseTest;
-import dataModels.CryptoDetails;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.logging.Logger;
 
-import static config.Config.emailToReceiveCryptoDetails;
 import static dataModels.ValidationUtils.is01;
 import static dataModels.ValidationUtils.isHexadecimal;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,7 +21,7 @@ import static org.junit.Assert.*;
  */
 public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 
-	private static Logger log = Logger.getLogger(NavigationOnDecryptedPagesTest.class.toString());
+	private static final Logger log = Logger.getLogger(NavigationOnDecryptedPagesTest.class.toString());
 
 	private static final WelcomeActions welcomeActions = new WelcomeActions();
 	private static final ElectionsActions electionsActions = new ElectionsActions();

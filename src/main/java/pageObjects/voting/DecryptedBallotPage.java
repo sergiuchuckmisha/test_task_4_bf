@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import pageObjects.iPage;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iTopMenu;
-import pageObjects.voting.pageElements.iUnsignedBallotPageDiscardDecryptSignButtons;
 import selenium.utils.DriverHelper;
 
 /**
