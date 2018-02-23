@@ -25,6 +25,8 @@ Purpose of this project is to cover https://exonum.com/demo/voting/#/welcome wit
   and because of this I often use same interfaces both for pageObjects and for actions.
   Also, I tried to use interfaces as much as possible.
 
+  # idea of new branch is to get rid of page layer in entities ierarchy. Page interfaces instead of page objects.
+
   to work with email I used code from https://github.com/redcodeg/JGuerrillaMail
 
 
