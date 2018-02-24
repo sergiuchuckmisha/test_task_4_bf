@@ -12,10 +12,11 @@ Purpose of this project is to cover https://exonum.com/demo/voting/#/welcome wit
   - instruction for chrome driver installation: https://sites.google.com/a/chromium.org/chromedriver/getting-started
  - How to run:
   - mvn clean install
-  - run tests manually from IDE
+  - or mvn test
+  - and look for surefire-reports in target directory
+  - also it is possible to run tests manually from IDE
 
-  * need to note that I was not able to config webdriver to get stable results. Sometimes tests are fail without any obvious reason.
-  However, if run tests in iterations: run all tests, then rerun all failed, then again rerun all failed - Usually it takes me 3 iterations to run all tests successfully.
+  * need to note that it is possible to to run all tests successfully. Approximately 4 times out of 5 green build is observed.
 
   Few notes about testing framework: it contains 3 logical layers: pageObjects, actions and tests.
   Theoretically, pageObjects deal with locators and primitive types (String, boolean),

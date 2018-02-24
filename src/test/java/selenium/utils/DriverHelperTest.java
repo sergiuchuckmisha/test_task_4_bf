@@ -2,6 +2,7 @@ package selenium.utils;
 
 import base.SeleniumBaseTest;
 import org.openqa.selenium.By;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 /**
@@ -14,6 +15,7 @@ import org.testng.annotations.Test;
  */
 public class DriverHelperTest extends SeleniumBaseTest {
 
+	@Ignore
 	@Test
 	public void navigateToCertainUrlTest()
 	{

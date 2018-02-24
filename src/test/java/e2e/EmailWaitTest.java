@@ -1,6 +1,7 @@
 package e2e;
 
 import com.guerrillamail.www.EmailChecker;
+import config.Config;
 import dataModels.CryptoDetails;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -88,6 +89,6 @@ public class EmailWaitTest {
         //no need to keep page while waiting for email
         WebDriverFactory.clearDriver();
 
-//        emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.howManyMinutesToWaitForEmail);
+        emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.howManyMinutesToWaitForEmail);
     }
 }

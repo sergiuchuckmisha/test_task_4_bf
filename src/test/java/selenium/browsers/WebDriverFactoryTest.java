@@ -2,6 +2,7 @@ package selenium.browsers;
 
 import base.SeleniumBaseTest;
 import org.openqa.selenium.By;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
@@ -30,6 +31,7 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 	}
 
 	/**purpose of the basicNavigation is to start HU driver, open google and check for presence of a search field*/
+	@Ignore
 	@Test
 	public void testHtmlUnitCreation()
 	{
