@@ -12,7 +12,7 @@ import pageObjects.voting.pageElements.*;
  * https://exonum.com/demo/voting/#/elections/randomness
  * pageObject pattern is implemented
  */
-public class CandidateOptionSelectedAndEncryptionRandomnessPage implements iPage, NavigateTo, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName, iGetTextFromFieldWithCertainName {
+public class CandidateOptionSelectedAndEncryptionRandomnessPage implements iPage, iNavigateTo, iTopMenu, iBottomMenu, iDecryptedBallotSubPageName, iGetTextFromFieldWithCertainName {
 
     @Override
     public String getUrl() {

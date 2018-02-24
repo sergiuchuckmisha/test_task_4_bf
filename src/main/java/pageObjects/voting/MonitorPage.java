@@ -1,7 +1,7 @@
 package pageObjects.voting;
 
 import pageObjects.iPage;
-import pageObjects.voting.pageElements.NavigateTo;
+import pageObjects.voting.pageElements.iNavigateTo;
 import pageObjects.voting.pageElements.checkboxTableElements.iCheckboxTable;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iTopMenu;
@@ -15,7 +15,7 @@ import pageObjects.voting.pageElements.iTopMenu;
  * https://exonum.com/demo/voting/#/monitor
  * pageObject pattern is implemented
  */
-public class MonitorPage implements iPage, NavigateTo, iTopMenu, iBottomMenu, iCheckboxTable {
+public class MonitorPage implements iPage, iNavigateTo, iTopMenu, iBottomMenu, iCheckboxTable {
 
     @Override
     public String getUrl() {

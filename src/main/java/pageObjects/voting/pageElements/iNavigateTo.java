@@ -6,7 +6,7 @@ import selenium.utils.DriverHelper;
 /**
  * allows navigation (via url or smth else)
  */
-public interface NavigateTo extends iPage, HasUrl {
+public interface iNavigateTo extends iPage, iHasUrl {
 
     default void navigateTo() {
         if (!isOnPage()) {

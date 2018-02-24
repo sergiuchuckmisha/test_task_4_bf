@@ -1,7 +1,7 @@
 package pageObjects.voting;
 
-import pageObjects.voting.pageElements.HasUrl;
-import pageObjects.voting.pageElements.NavigateTo;
+import pageObjects.voting.pageElements.iHasUrl;
+import pageObjects.voting.pageElements.iNavigateTo;
 import org.openqa.selenium.By;
 import pageObjects.iPage;
 import pageObjects.voting.pageElements.iVoteInElectionButton;
@@ -16,7 +16,7 @@ import selenium.utils.DriverHelper;
  * https://exonum.com/demo/voting/#/welcome
  * pageObject pattern is implemented
  */
-public class WelcomePage implements iPage, iVoteInElectionButton, HasUrl, NavigateTo {
+public class WelcomePage implements iPage, iVoteInElectionButton, iHasUrl, iNavigateTo {
     private static final By headerLocator = By.xpath("//div[@class='app-header' and text()='e-Voting']");
     private static final By monitorElectionProcessButtonLocator = By.xpath("//div[@class='button' and text()='Monitor election process']");
 

@@ -3,7 +3,7 @@ package pageObjects.voting;
 import dataModels.CryptoDetails;
 import org.openqa.selenium.By;
 import pageObjects.iPage;
-import pageObjects.voting.pageElements.NavigateTo;
+import pageObjects.voting.pageElements.iNavigateTo;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iTopMenu;
 import pageObjects.voting.pageElements.iUnsignedBallotPageDiscardDecryptSignButtons;
@@ -18,7 +18,7 @@ import selenium.utils.DriverHelper;
  * https://exonum.com/demo/voting/#/elections/ballot
  * pageObject pattern is implemented
  */
-public class UnsignedBallotPage implements iPage, NavigateTo, iTopMenu, iBottomMenu, iUnsignedBallotPageDiscardDecryptSignButtons {
+public class UnsignedBallotPage implements iPage, iNavigateTo, iTopMenu, iBottomMenu, iUnsignedBallotPageDiscardDecryptSignButtons {
 
     public String getBallotReceipt3WordMemo(){
         return DriverHelper.findElement(By.xpath("//div[text() = 'Ballot reciept 3-word memo']/following-sibling::div")).getText();
