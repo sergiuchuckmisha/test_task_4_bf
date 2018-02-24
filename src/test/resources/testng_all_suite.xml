@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="All" verbose="1" >
+    <test name="all"   >
+        <packages>
+            <package name=".*" />
+        </packages>
+    </test>
+
+    <listeners>
+        <listener class-name="testng.TestListener"/>
+    </listeners>
+</suite>
