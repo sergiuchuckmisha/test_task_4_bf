@@ -66,6 +66,16 @@ public class DriverHelper {
 		}
 	}
 
+	public static void waitForAngularLoad(){
+		String angularReadyScript = "return angular.element(document).injector().get('$http').pendingRequests.length === 0";
+		waitUntilExpectedCondition(webDriver -> (Boolean) ((JavascriptExecutor) webDriver).executeScript(angularReadyScript));
+	}
+
+	public static void wait4jQuery(){
+		String angularReadyScript = "return jQuery.active==0";
+		waitUntilExpectedCondition(webDriver -> (Boolean) ((JavascriptExecutor) webDriver).executeScript(angularReadyScript));
+	}
+
 	public static void waitForJsAsync(){
 		WebDriverFactory.getDriver().manage().timeouts().setScriptTimeout(DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
 
@@ -109,11 +119,12 @@ public class DriverHelper {
 		WebDriverWait wait = new WebDriverWait(WebDriverFactory.getDriver(), DEFAULT_TIMEOUT_SECONDS);
 
 		try {
-			wait.until(driver -> AjaxHelper.isPageLoaded());
+			wait.until(driver -> AjaxHelper.isPageLoaded());//return document.readyState == complete
 		} catch (Exception ignored) {
 		}
 
-		waitForJsAsync();
+		wait4jQuery();
+		waitForAngularLoad();
 		waitForJsAsync();
 	}
 
