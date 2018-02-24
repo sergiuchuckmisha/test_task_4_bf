@@ -2,6 +2,7 @@ package pageObjects.voting;
 
 import org.openqa.selenium.By;
 import pageObjects.iPage;
+import pageObjects.voting.pageElements.NavigateTo;
 import pageObjects.voting.pageElements.iBottomMenu;
 import pageObjects.voting.pageElements.iTopMenu;
 import selenium.utils.DriverHelper;
@@ -15,7 +16,7 @@ import selenium.utils.DriverHelper;
  * https://exonum.com/demo/voting/#/elections/decrypted
  * pageObject pattern is implemented
  */
-public class DecryptedBallotPage implements iPage, iTopMenu, iBottomMenu {
+public class DecryptedBallotPage implements iPage, NavigateTo, iTopMenu, iBottomMenu {
 
     @Override
     public String getUrl() {

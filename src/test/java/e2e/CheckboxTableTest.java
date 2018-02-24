@@ -1,15 +1,15 @@
 package e2e;
 
-import actions.voting.CandidatesOfElectionActions;
-import actions.voting.ElectionsActions;
-import actions.voting.WelcomeActions;
 import base.SeleniumBaseTest;
-import org.junit.Test;
+import org.testng.annotations.Test;
+import pageObjects.voting.CandidatesOfElectionPage;
+import pageObjects.voting.ElectionsPage;
+import pageObjects.voting.WelcomePage;
 
 import java.util.logging.Logger;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,10 +22,10 @@ public class CheckboxTableTest extends SeleniumBaseTest {
 
 	private static Logger log = Logger.getLogger(CheckboxTableTest.class.toString());
 
-	private static final WelcomeActions welcomeActions = new WelcomeActions();
-//	private static final MonitorActions monitorActions = new MonitorActions();//is not used because monitor page is unfinished
-	private static final ElectionsActions electionsActions = new ElectionsActions();
-	private static final CandidatesOfElectionActions candidatesOfElectionActions = new CandidatesOfElectionActions();
+	private static final WelcomePage welcomePage = new WelcomePage();
+//	private static final MonitorPage monitorPage = new MonitorPage();//is not used because monitor page is unfinished
+	private static final ElectionsPage electionsPage = new ElectionsPage();
+	private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
 
 	/**
 	 *  * purpose of the method is to check following scenario:
@@ -36,30 +36,30 @@ public class CheckboxTableTest extends SeleniumBaseTest {
 	 * */
 	@Test
 	public void checkboxTablesTest() {
-		welcomeActions.navigateTo();
+		welcomePage.navigateTo();
 
 		//welcome page check 'VOTE IN ELECTION'
-		welcomeActions.pressVoteInElectionButton();
-		assertTrue(electionsActions.isOnPage());
+		welcomePage.pressVoteInElectionButton();
+		assertTrue(electionsPage.isOnPage());
 
 		//only one option can be selected
-		assertEquals(1, electionsActions.howManyOptionsChecked());
+		assertEquals(1, electionsPage.howManyOptionsChecked());
 
-		for(String value: electionsActions.getCheckBoxTableValues()){
-			electionsActions.selectCheckBoxTableValue(value);
+		for(String value: electionsPage.getCheckBoxTableValues()){
+			electionsPage.selectCheckBoxTableValue(value);
 
-			assertEquals(1, electionsActions.howManyOptionsChecked());
+			assertEquals(1, electionsPage.howManyOptionsChecked());
 
 			//same check for 'Candidates of Election' pages
-			electionsActions.pressVoteInElectionButton();
-			assertTrue(candidatesOfElectionActions.isOnPage());
-			for(String value2: candidatesOfElectionActions.getCheckBoxTableValues()) {
-				candidatesOfElectionActions.selectCheckBoxTableValue(value2);
+			electionsPage.pressVoteInElectionButton();
+			assertTrue(candidatesOfElectionPage.isOnPage());
+			for(String value2: candidatesOfElectionPage.getCheckBoxTableValues()) {
+				candidatesOfElectionPage.selectCheckBoxTableValue(value2);
 
-				assertEquals(1, candidatesOfElectionActions.howManyOptionsChecked());
+				assertEquals(1, candidatesOfElectionPage.howManyOptionsChecked());
 			}
-			candidatesOfElectionActions.pressTopMenuBackArrow();
-			assertTrue(electionsActions.isOnPage());
+			candidatesOfElectionPage.pressTopMenuBackArrow();
+			assertTrue(electionsPage.isOnPage());
 		}
 
 	}

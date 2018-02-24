@@ -13,9 +13,11 @@ import selenium.browsers.WebDriverFactory;
 public class Config {
 	public static WebDriverFactory.browsers BROWSER;
 	public static final String DRIVER_CHROME_PATH;
+	public static final String SCREENSHOTS_PATH = "C:\\dev\\tmp\\screenshots\\";//used in TestListener
 
 	public static final int howManyMinutesToWaitForEmail = 60;//meaning email with CryptoDetails
 	public static final String emailToReceiveCryptoDetails = "ahfkvwnf@guerrillamailblock.com";//meaning email to receive confirmations with CryptoDetails
+
 
 	static {
 

@@ -1,8 +1,8 @@
 package dataModels;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 /**idea is to check CryptoDetails class*/
 public class CryptoDetailsTest {

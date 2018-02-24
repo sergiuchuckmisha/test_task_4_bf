@@ -12,11 +12,4 @@ import pageObjects.voting.pageElements.iVoteConfirmationPopUp;
  * pageObject pattern is implemented
  */
 public class VoteConfirmationPopUpPage implements iVoteConfirmationPopUp {
-
-    //this method should not be called
-    @Deprecated
-    @Override
-    public String getUrl() {
-        return "null";
-    }
 }

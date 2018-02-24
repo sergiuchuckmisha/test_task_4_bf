@@ -15,18 +15,18 @@ import selenium.utils.DriverHelper;
  */
 public class SignConfirmationPopUpPage implements iSignConfirmationPopUp {
 
-    //this method should not be called
-    @Deprecated
-    @Override
-    public String getUrl() {
-        return "null";
-    }
-
     /**method should be used to enter PIN code*/
     public void pressNumber(int i){
         if(i < 0 || i > 9) {
             throw new IllegalArgumentException(String.format("argument expected: number from 0 to 9; provided: %d", i));
         }
         DriverHelper.click(By.xpath(String.format("//div[contains(@class, 'keyboard-button') and text() = '%d']", i)));
+    }
+
+    public void enterSomePINCode(){
+        pressNumber(1);
+        pressNumber(2);
+        pressNumber(3);
+        pressNumber(4);
     }
 }

@@ -29,6 +29,10 @@ public class AjaxHelper {
 		}
 	}
 
+	public static void navigate(String url){
+		getJsExecutor().executeScript(String.format("window.location.href = '%s'", url));
+	}
+
 	public static Boolean isPageLoaded() {
 		try {
 			return ("complete").equals(getJsExecutor().executeScript("return document.readyState"));

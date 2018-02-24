@@ -76,7 +76,7 @@ public class WebDriverFactory {
 			driver.getCurrentUrl();//touch with stick
 		} catch (Exception t) {
 			t.printStackTrace();
-			newWebDriver( browser);
+			driver = newWebDriver( browser);
 			return driver;
 		}
 		return driver;

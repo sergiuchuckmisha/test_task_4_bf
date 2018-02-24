@@ -21,7 +21,8 @@ public abstract class ActionsBase<T extends iPage>  {
 	/**each Actions class should be able to navigate to appropriate page*/
 	public void navigateTo(){
 		if(!page.isOnPage())
-			DriverHelper.navigateToCertainUrl(page.getUrl());
+//			DriverHelper.navigateToCertainUrl(page.getUrl());
+			DriverHelper.navigateToCertainUrl("");
 	}
 
 

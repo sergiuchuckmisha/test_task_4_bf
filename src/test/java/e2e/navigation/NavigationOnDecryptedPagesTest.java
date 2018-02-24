@@ -1,16 +1,16 @@
 package e2e.navigation;
 
-import actions.voting.*;
 import base.SeleniumBaseTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pageObjects.voting.*;
 
 import java.util.logging.Logger;
 
 import static dataModels.ValidationUtils.is01;
 import static dataModels.ValidationUtils.isHexadecimal;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,49 +23,49 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 
 	private static final Logger log = Logger.getLogger(NavigationOnDecryptedPagesTest.class.toString());
 
-	private static final WelcomeActions welcomeActions = new WelcomeActions();
-	private static final ElectionsActions electionsActions = new ElectionsActions();
-	private static final CandidatesOfElectionActions candidatesOfElectionActions = new CandidatesOfElectionActions();
-	private static final VoteConfirmationPopUpActions voteConfirmationPopUpActions = new VoteConfirmationPopUpActions();
-	private static final UnsignedBallotActions unsignedBallotActions = new UnsignedBallotActions();
-	private static final DecryptConfirmationPopUpActions decryptConfirmationPopUpActions = new DecryptConfirmationPopUpActions();
-	private static final DecryptedBallotActions decryptedBallotActions = new DecryptedBallotActions();
-	private static final TallyingAuthoritiesAggregatePublicKeyActions tallyingAuthoritiesAggregatePublicKeyActions = new TallyingAuthoritiesAggregatePublicKeyActions();
-	private static final CandidateOptionSelectedAndEncryptionRandomnessActions candidateOptionSelectedAndEncryptionRandomnessActions = new CandidateOptionSelectedAndEncryptionRandomnessActions();
-	private static final EncryptedBallotActions encryptedBallotActions = new EncryptedBallotActions();
-	private static final BallotSHA256HashActions ballotSHA256HashActions = new BallotSHA256HashActions();
-	private static final ThreeWordMemoByBIPMnemonicCodeAlgorithmActions threeWordMemoByBIPMnemonicCodeAlgorithmActions = new ThreeWordMemoByBIPMnemonicCodeAlgorithmActions();
+	private static final WelcomePage welcomePage = new WelcomePage();
+	private static final ElectionsPage electionsPage = new ElectionsPage();
+	private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
+	private static final VoteConfirmationPopUpPage voteConfirmationPopUpPage = new VoteConfirmationPopUpPage();
+	private static final UnsignedBallotPage unsignedBallotPage = new UnsignedBallotPage();
+	private static final DecryptConfirmationPopUpPage decryptConfirmationPopUpPage = new DecryptConfirmationPopUpPage();
+	private static final DecryptedBallotPage decryptedBallotPage = new DecryptedBallotPage();
+	private static final TallyingAuthoritiesAggregatePublicKeyPage tallyingAuthoritiesAggregatePublicKeyPage = new TallyingAuthoritiesAggregatePublicKeyPage();
+	private static final CandidateOptionSelectedAndEncryptionRandomnessPage candidateOptionSelectedAndEncryptionRandomnessPage = new CandidateOptionSelectedAndEncryptionRandomnessPage();
+	private static final EncryptedBallotPage encryptedBallotPage = new EncryptedBallotPage();
+	private static final BallotSHA256HashPage ballotSHA256HashPage = new BallotSHA256HashPage();
+	private static final ThreeWordMemoByBIPMnemonicCodeAlgorithmPage threeWordMemoByBIPMnemonicCodeAlgorithmPage = new ThreeWordMemoByBIPMnemonicCodeAlgorithmPage();
 
 	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
-	@Before
+	@BeforeMethod
 	public void decryptedBallotPagePrecondition() {
-		welcomeActions.navigateTo();
+		welcomePage.navigateTo();
 
 		//welcome page check 'VOTE IN ELECTION'
-		welcomeActions.pressVoteInElectionButton();
-		assertTrue(electionsActions.isOnPage());
+		welcomePage.pressVoteInElectionButton();
+		assertTrue(electionsPage.isOnPage());
 
 		//only one option can be selected
-		assertEquals(1, electionsActions.howManyOptionsChecked());
+		assertEquals(1, electionsPage.howManyOptionsChecked());
 
 		//select voting
-		electionsActions.pressVoteInElectionButton();
-		assertTrue(candidatesOfElectionActions.isOnPage());
+		electionsPage.pressVoteInElectionButton();
+		assertTrue(candidatesOfElectionPage.isOnPage());
 
 		//vote for smb
-		assertEquals(1, candidatesOfElectionActions.howManyOptionsChecked());
-		candidatesOfElectionActions.pressVoteInElectionButton();
+		assertEquals(1, candidatesOfElectionPage.howManyOptionsChecked());
+		candidatesOfElectionPage.pressVoteInElectionButton();
 
-		assertTrue(voteConfirmationPopUpActions.isOnPage());
-		voteConfirmationPopUpActions.pressVoteConfirmationPopUpYesButton();
+		assertTrue(voteConfirmationPopUpPage.isOnPage());
+		voteConfirmationPopUpPage.pressVoteConfirmationPopUpYesButton();
 
-		assertTrue(unsignedBallotActions.isOnPage());
+		assertTrue(unsignedBallotPage.isOnPage());
 
-		unsignedBallotActions.decryptButtonClick();
-		assertTrue(decryptConfirmationPopUpActions.isOnPage());
+		unsignedBallotPage.decryptButtonClick();
+		assertTrue(decryptConfirmationPopUpPage.isOnPage());
 
-		decryptConfirmationPopUpActions.pressDecryptBallotConfirmationPopUpButton();
-		assertTrue(decryptedBallotActions.isOnPage());
+		decryptConfirmationPopUpPage.pressDecryptBallotConfirmationPopUpButton();
+		assertTrue(decryptedBallotPage.isOnPage());
 	}
 
 	/**
@@ -79,54 +79,54 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 	 * */
 	@Test
 	public void navigationOnDecryptedBallotSubPagesTest(){
-		assertTrue(decryptedBallotActions.isOnPage());
+		assertTrue(decryptedBallotPage.isOnPage());
 
 		//navigate to TallyingAuthoritiesAggregatePublicKeyPage and come back
-		decryptedBallotActions.pressTallyingAuthoritiesAggregatePublicKey();
-		assertTrue(tallyingAuthoritiesAggregatePublicKeyActions.isOnPage());
+		decryptedBallotPage.pressTallyingAuthoritiesAggregatePublicKey();
+		assertTrue(tallyingAuthoritiesAggregatePublicKeyPage.isOnPage());
 
 		//print info from TallyingAuthoritiesAggregatePublicKeyPage
-		String modulusHexadecimal = tallyingAuthoritiesAggregatePublicKeyActions.getModulusHexadecimal();
+		String modulusHexadecimal = tallyingAuthoritiesAggregatePublicKeyPage.getModulusHexadecimal();
 		log.info("ModulusHexadecimal: " + modulusHexadecimal);
 		assertTrue(isHexadecimal(modulusHexadecimal));
 		assertTrue(256 == modulusHexadecimal.length());
-		String publicExponent = tallyingAuthoritiesAggregatePublicKeyActions.getPublicExponent();
+		String publicExponent = tallyingAuthoritiesAggregatePublicKeyPage.getPublicExponent();
 		log.info("PublicExponent: " + publicExponent);
 		assertTrue(is01(publicExponent));//todo is it correct check?
 
-		tallyingAuthoritiesAggregatePublicKeyActions.pressTopMenuBackArrow();
-		assertTrue(decryptedBallotActions.isOnPage());
+		tallyingAuthoritiesAggregatePublicKeyPage.pressTopMenuBackArrow();
+		assertTrue(decryptedBallotPage.isOnPage());
 
 		//navigate to CandidateOptionSelectedAndEncryptionRandomnessPage and come back
-		decryptedBallotActions.pressCandidateOptionSelectedAndEncryptionRandomness();
-		assertTrue(candidateOptionSelectedAndEncryptionRandomnessActions.isOnPage());
+		decryptedBallotPage.pressCandidateOptionSelectedAndEncryptionRandomness();
+		assertTrue(candidateOptionSelectedAndEncryptionRandomnessPage.isOnPage());
 
 		//print info from CandidateOptionSelectedAndEncryptionRandomnessPage
-		log.info("PlaintextCandidateAndRandomness: " + candidateOptionSelectedAndEncryptionRandomnessActions.getPlaintextCandidateAndRandomness());
+		log.info("PlaintextCandidateAndRandomness: " + candidateOptionSelectedAndEncryptionRandomnessPage.getPlaintextCandidateAndRandomness());
 
-		candidateOptionSelectedAndEncryptionRandomnessActions.pressTopMenuBackArrow();
-		assertTrue(decryptedBallotActions.isOnPage());
+		candidateOptionSelectedAndEncryptionRandomnessPage.pressTopMenuBackArrow();
+		assertTrue(decryptedBallotPage.isOnPage());
 
 		//navigate to EncryptedBallotPage and come back
-		decryptedBallotActions.pressEncryptedBallot();
-		assertTrue(encryptedBallotActions.isOnPage());
+		decryptedBallotPage.pressEncryptedBallot();
+		assertTrue(encryptedBallotPage.isOnPage());
 
 		//print info from EncryptedBallotPage
-		String encryptedBallotHexadecimal = encryptedBallotActions.getEncryptedBallotHexadecimal();
+		String encryptedBallotHexadecimal = encryptedBallotPage.getEncryptedBallotHexadecimal();
 		log.info("EncryptedBallotHexadecimal: " + encryptedBallotHexadecimal);
 		assertTrue(isHexadecimal(encryptedBallotHexadecimal));
 		assertTrue(256 == encryptedBallotHexadecimal.length());
 
-		encryptedBallotActions.pressTopMenuBackArrow();
-		assertTrue(decryptedBallotActions.isOnPage());
+		encryptedBallotPage.pressTopMenuBackArrow();
+		assertTrue(decryptedBallotPage.isOnPage());
 
 		//navigate to BallotSHA256HashPage and come back
-		decryptedBallotActions.pressBallotSHA256Hash();
-		assertTrue(ballotSHA256HashActions.isOnPage());
+		decryptedBallotPage.pressBallotSHA256Hash();
+		assertTrue(ballotSHA256HashPage.isOnPage());
 
 		//print info from BallotSHA256HashPage
-		String hashHexadecimal = ballotSHA256HashActions.getHashHexadecimal();
-		String hashPrefixHexadecimal = ballotSHA256HashActions.getHashPrefixHexadecimal();
+		String hashHexadecimal = ballotSHA256HashPage.getHashHexadecimal();
+		String hashPrefixHexadecimal = ballotSHA256HashPage.getHashPrefixHexadecimal();
 		log.info("HashHexadecimal: " + hashHexadecimal);
 		assertTrue(isHexadecimal(hashHexadecimal));
 		assertTrue(64 == hashHexadecimal.length());
@@ -134,17 +134,17 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 		assertTrue(isHexadecimal(hashPrefixHexadecimal));
 		assertTrue(8 == hashPrefixHexadecimal.length());
 
-		ballotSHA256HashActions.pressTopMenuBackArrow();
-		assertTrue(decryptedBallotActions.isOnPage());
+		ballotSHA256HashPage.pressTopMenuBackArrow();
+		assertTrue(decryptedBallotPage.isOnPage());
 
 		//navigate to ThreeWordMemoByBIPMnemonicCodeAlgorithmPage and come back
-		decryptedBallotActions.press3WordMemoByBIPMnemonicCodeAlgorithm();
-		assertTrue(threeWordMemoByBIPMnemonicCodeAlgorithmActions.isOnPage());
+		decryptedBallotPage.press3WordMemoByBIPMnemonicCodeAlgorithm();
+		assertTrue(threeWordMemoByBIPMnemonicCodeAlgorithmPage.isOnPage());
 
 		//print info from ThreeWordMemoByBIPMnemonicCodeAlgorithmPage
-		log.info("MnemonicCodePlaintext: " + threeWordMemoByBIPMnemonicCodeAlgorithmActions.getMnemonicCodePlaintext());
+		log.info("MnemonicCodePlaintext: " + threeWordMemoByBIPMnemonicCodeAlgorithmPage.getMnemonicCodePlaintext());
 
-		threeWordMemoByBIPMnemonicCodeAlgorithmActions.pressTopMenuBackArrow();
-		assertTrue(decryptedBallotActions.isOnPage());
+		threeWordMemoByBIPMnemonicCodeAlgorithmPage.pressTopMenuBackArrow();
+		assertTrue(decryptedBallotPage.isOnPage());
 	}
 }

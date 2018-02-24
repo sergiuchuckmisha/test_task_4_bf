@@ -1,10 +1,8 @@
 package selenium.utils;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import base.SeleniumBaseTest;
 import org.openqa.selenium.By;
-import selenium.browsers.WebDriverFactory;
+import org.testng.annotations.Test;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,15 +12,7 @@ import selenium.browsers.WebDriverFactory;
  * purpose of the class is to contain simple smoke web UI basicNavigation which calls factory for Chrome browser, opens google
  * todo: perform some search
  */
-public class DriverHelperTest {
-
-	@Before
-	@After
-	/**purpose of the method is to clear possible browser initializations*/
-	public void closeBrowser()
-	{
-		WebDriverFactory.clearDriver();
-	}
+public class DriverHelperTest extends SeleniumBaseTest {
 
 	@Test
 	public void navigateToCertainUrlTest()
@@ -30,6 +20,6 @@ public class DriverHelperTest {
 		DriverHelper.navigateToCertainUrl("http://google.com");
 		DriverHelper.waitUntilPageIsLoaded();
 		System.out.println(DriverHelper.getTitle());
-		org.junit.Assert.assertTrue(DriverHelper.isElementPresent(By.name("q")));
+		org.testng.Assert.assertTrue(DriverHelper.isElementPresent(By.name("q")));
 	}
 }

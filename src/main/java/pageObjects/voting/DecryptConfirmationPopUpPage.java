@@ -13,9 +13,4 @@ import pageObjects.voting.pageElements.iDecryptConfirmationPopUp;
  */
 public class DecryptConfirmationPopUpPage implements iDecryptConfirmationPopUp {
 
-    //this method should not be called
-    @Override
-    public String getUrl() {
-        return "null";
-    }
 }

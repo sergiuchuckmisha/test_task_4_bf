@@ -19,10 +19,4 @@ public class VoteConfirmationPopUpActions extends ActionsBase<VoteConfirmationPo
 		super();
 		page = new VoteConfirmationPopUpPage();
 	}
-
-	//this method should not be called
-	@Override
-	public String getUrl() {
-		return "null";
-	}
 }

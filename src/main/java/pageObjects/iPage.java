@@ -11,6 +11,6 @@ package pageObjects;
  */
 public interface iPage {
 
-	String getUrl();
+//	String getUrl();
 	boolean isOnPage();
 }

@@ -1,4 +1,4 @@
-package e2e.navigation;
+package e2e.navigation.navi2;
 
 import base.SeleniumBaseTest;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ import static org.testng.Assert.assertTrue;
  * Time: 3:01 PM
  * purpose of the class is to contain relatively "long" scenarios like navigation
  */
-public class BasicNavigation extends SeleniumBaseTest {
+public class BasicNavigation2 extends SeleniumBaseTest {
 
 	private static final WelcomePage welcomePage = new WelcomePage();
 	private static final MonitorPage monitorPage = new MonitorPage();

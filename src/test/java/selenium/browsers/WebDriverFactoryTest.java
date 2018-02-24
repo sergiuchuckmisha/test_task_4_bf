@@ -1,8 +1,8 @@
 package selenium.browsers;
 
 import base.SeleniumBaseTest;
-import org.junit.Test;
 import org.openqa.selenium.By;
+import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
@@ -38,9 +38,9 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 			method.setAccessible(true);
 			method.invoke(null, browsers.HtmlUnit);
 
-			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver());
+			org.testng.Assert.assertNotNull(WebDriverFactory.getDriver());
 			WebDriverFactory.getDriver().get("http://www.google.com");
-			org.junit.Assert.assertNotNull(WebDriverFactory.getDriver().findElement(By.name("q")));
+			org.testng.Assert.assertNotNull(WebDriverFactory.getDriver().findElement(By.name("q")));
 
 //		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
     } catch (Exception e) {                                                                   //this is for Java6

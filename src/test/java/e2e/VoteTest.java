@@ -1,11 +1,14 @@
 package e2e;
 
-import actions.voting.*;
 import base.SeleniumBaseTest;
-import org.junit.Test;
+import org.testng.annotations.Test;
+import pageObjects.voting.CandidatesOfElectionPage;
+import pageObjects.voting.ElectionsPage;
+import pageObjects.voting.VoteConfirmationPopUpPage;
+import pageObjects.voting.WelcomePage;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,10 +19,10 @@ import static org.junit.Assert.assertTrue;
  */
 public class VoteTest extends SeleniumBaseTest {
 
-	private static final WelcomeActions welcomeActions = new WelcomeActions();
-	private static final ElectionsActions electionsActions = new ElectionsActions();
-	private static final CandidatesOfElectionActions candidatesOfElectionActions = new CandidatesOfElectionActions();
-	private static final VoteConfirmationPopUpActions voteConfirmationPopUpActions = new VoteConfirmationPopUpActions();
+	private static final WelcomePage welcomePage = new WelcomePage();
+	private static final ElectionsPage electionsPage = new ElectionsPage();
+	private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
+	private static final VoteConfirmationPopUpPage voteConfirmationPopUpPage = new VoteConfirmationPopUpPage();
 
 	/**
 	 *  * purpose of the method is to check following scenario:
@@ -30,34 +33,34 @@ public class VoteTest extends SeleniumBaseTest {
 	 * */
 	@Test
 	public void voteForSmbTest() {
-		welcomeActions.navigateTo();
+		welcomePage.navigateTo();
 
 		//welcome page check 'VOTE IN ELECTION'
-		welcomeActions.pressVoteInElectionButton();
-		assertTrue(electionsActions.isOnPage());
+		welcomePage.pressVoteInElectionButton();
+		assertTrue(electionsPage.isOnPage());
 
 		//only one option can be selected
-		assertEquals(1, electionsActions.howManyOptionsChecked());
+		assertEquals(1, electionsPage.howManyOptionsChecked());
 
 		//select voting
-		electionsActions.pressVoteInElectionButton();
-		assertTrue(candidatesOfElectionActions.isOnPage());
+		electionsPage.pressVoteInElectionButton();
+		assertTrue(candidatesOfElectionPage.isOnPage());
 
 		//vote for smb
-		assertEquals(1, candidatesOfElectionActions.howManyOptionsChecked());
-		candidatesOfElectionActions.pressVoteInElectionButton();
+		assertEquals(1, candidatesOfElectionPage.howManyOptionsChecked());
+		candidatesOfElectionPage.pressVoteInElectionButton();
 
-		assertTrue(voteConfirmationPopUpActions.isOnPage());
+		assertTrue(voteConfirmationPopUpPage.isOnPage());
 
-		voteConfirmationPopUpActions.pressVoteConfirmationPopUpCancelButton();
-		assertTrue(candidatesOfElectionActions.isOnPage());
+		voteConfirmationPopUpPage.pressVoteConfirmationPopUpCancelButton();
+		assertTrue(candidatesOfElectionPage.isOnPage());
 
 		//vote for smb
-		assertEquals(1, candidatesOfElectionActions.howManyOptionsChecked());
-		candidatesOfElectionActions.pressVoteInElectionButton();
+		assertEquals(1, candidatesOfElectionPage.howManyOptionsChecked());
+		candidatesOfElectionPage.pressVoteInElectionButton();
 
-		assertTrue(voteConfirmationPopUpActions.isOnPage());
-		voteConfirmationPopUpActions.pressVoteConfirmationPopUpYesButton();
+		assertTrue(voteConfirmationPopUpPage.isOnPage());
+		voteConfirmationPopUpPage.pressVoteConfirmationPopUpYesButton();
 	}
 
 }

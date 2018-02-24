@@ -19,10 +19,4 @@ public class DecryptConfirmationPopUpActions extends ActionsBase<DecryptConfirma
 		super();
 		page = new DecryptConfirmationPopUpPage();
 	}
-
-	//this method should not be called
-	@Override
-	public String getUrl() {
-		return "null";
-	}
 }

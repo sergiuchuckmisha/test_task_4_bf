@@ -1,17 +1,17 @@
 package e2e;
 
-import actions.voting.*;
 import com.guerrillamail.www.EmailChecker;
 import config.Config;
 import dataModels.CryptoDetails;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import pageObjects.voting.*;
 import selenium.browsers.WebDriverFactory;
 
 import java.util.logging.Logger;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * purpose of the class is to contain scenarios which go after vote: decrypt and sign
@@ -20,39 +20,39 @@ public class EmailWaitTest {
 
     private static final Logger log = Logger.getLogger(AfterVoteTest.class.toString());
 
-    private static final WelcomeActions welcomeActions = new WelcomeActions();
-    private static final ElectionsActions electionsActions = new ElectionsActions();
-    private static final CandidatesOfElectionActions candidatesOfElectionActions = new CandidatesOfElectionActions();
-    private static final VoteConfirmationPopUpActions voteConfirmationPopUpActions = new VoteConfirmationPopUpActions();
-    private static final UnsignedBallotActions unsignedBallotActions = new UnsignedBallotActions();
-    private static final SignConfirmationPopUpActions signConfirmationPopUpActions = new SignConfirmationPopUpActions();
-    private static final SignedBallotActions signedBallotActions = new SignedBallotActions();
-    private static final SubmittedBallotActions submittedBallotActions = new SubmittedBallotActions();
+    private static final WelcomePage welcomePage = new WelcomePage();
+    private static final ElectionsPage electionsPage = new ElectionsPage();
+    private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
+    private static final VoteConfirmationPopUpPage voteConfirmationPopUpPage = new VoteConfirmationPopUpPage();
+    private static final UnsignedBallotPage unsignedBallotPage = new UnsignedBallotPage();
+    private static final SignConfirmationPopUpPage signConfirmationPopUpPage = new SignConfirmationPopUpPage();
+    private static final SignedBallotPage signedBallotPage = new SignedBallotPage();
+    private static final SubmittedBallotPage submittedBallotPage = new SubmittedBallotPage();
 
     /**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
-    @Before
+    @BeforeTest
     public void voteForSmbPrerequisite() {
-        welcomeActions.navigateTo();
+        welcomePage.navigateTo();
 
         //welcome page check 'VOTE IN ELECTION'
-        welcomeActions.pressVoteInElectionButton();
-        assertTrue(electionsActions.isOnPage());
+        welcomePage.pressVoteInElectionButton();
+        assertTrue(electionsPage.isOnPage());
 
         //only one option can be selected
-        assertEquals(1, electionsActions.howManyOptionsChecked());
+        assertEquals(1, electionsPage.howManyOptionsChecked());
 
         //select voting
-        electionsActions.pressVoteInElectionButton();
-        assertTrue(candidatesOfElectionActions.isOnPage());
+        electionsPage.pressVoteInElectionButton();
+        assertTrue(candidatesOfElectionPage.isOnPage());
 
         //vote for smb
-        assertEquals(1, candidatesOfElectionActions.howManyOptionsChecked());
-        candidatesOfElectionActions.pressVoteInElectionButton();
+        assertEquals(1, candidatesOfElectionPage.howManyOptionsChecked());
+        candidatesOfElectionPage.pressVoteInElectionButton();
 
-        assertTrue(voteConfirmationPopUpActions.isOnPage());
-        voteConfirmationPopUpActions.pressVoteConfirmationPopUpYesButton();
+        assertTrue(voteConfirmationPopUpPage.isOnPage());
+        voteConfirmationPopUpPage.pressVoteConfirmationPopUpYesButton();
 
-        assertTrue(unsignedBallotActions.isOnPage());
+        assertTrue(unsignedBallotPage.isOnPage());
     }
 
     /**
@@ -67,22 +67,22 @@ public class EmailWaitTest {
         EmailChecker emailChecker = new EmailChecker();
         log.info("current email: " + emailChecker.getCurrentEmail());
 
-        CryptoDetails cryptoDetailsOnUnsignedPage = unsignedBallotActions.getCryptoDetails();
+        CryptoDetails cryptoDetailsOnUnsignedPage = unsignedBallotPage.getCryptoDetails();
 
-        unsignedBallotActions.signButtonClick();
-        assertTrue(signConfirmationPopUpActions.isOnPage());
+        unsignedBallotPage.signButtonClick();
+        assertTrue(signConfirmationPopUpPage.isOnPage());
 
-        signConfirmationPopUpActions.enterSomePINCode();
-        signConfirmationPopUpActions.pressSignConfirmationPopUpYesButton();
-        assertTrue(signedBallotActions.isOnPage());
+        signConfirmationPopUpPage.enterSomePINCode();
+        signConfirmationPopUpPage.pressSignConfirmationPopUpYesButton();
+        assertTrue(signedBallotPage.isOnPage());
 
-        signedBallotActions.typeEmail(emailChecker.getCurrentEmail());
+        signedBallotPage.typeEmail(emailChecker.getCurrentEmail());
 
-        signedBallotActions.pressSubmitButton();
-        assertTrue(submittedBallotActions.isOnPage());
+        signedBallotPage.pressSubmitButton();
+        assertTrue(submittedBallotPage.isOnPage());
 
 
-        assertEquals(submittedBallotActions.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
+        assertEquals(submittedBallotPage.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
 
         //no need to keep page while waiting for email
         WebDriverFactory.clearDriver();

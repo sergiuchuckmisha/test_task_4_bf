@@ -1,4 +1,4 @@
-package pageObjects.voting;
+package actions.interfaces;
 
 import pageObjects.iPage;
 import pageObjects.voting.pageElements.NavigateTo;

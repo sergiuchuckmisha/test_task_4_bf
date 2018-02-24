@@ -1,7 +1,6 @@
 package base;
 
-import org.junit.After;
-import org.junit.Before;
+import org.testng.annotations.*;
 import selenium.browsers.WebDriverFactory;
 
 /**
@@ -12,8 +11,12 @@ import selenium.browsers.WebDriverFactory;
  * purpose of this class is to contain methods common to all basicNavigation classes. e.g. clear browser before/after each basicNavigation
  */
 public abstract class SeleniumBaseTest {
-	@Before
-	@After
+//	@BeforeSuite
+//	@AfterSuite
+//	@BeforeTest
+//	@AfterTest
+	@BeforeMethod
+	@AfterMethod
 	/**purpose of the method is to clear possible browser initializations*/
 	public void closeBrowser()
 	{

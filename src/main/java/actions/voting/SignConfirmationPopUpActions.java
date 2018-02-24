@@ -20,12 +20,6 @@ public class SignConfirmationPopUpActions extends ActionsBase<SignConfirmationPo
 		page = new SignConfirmationPopUpPage();
 	}
 
-	//this method should not be called
-	@Override
-	public String getUrl() {
-		return "null";
-	}
-
 	public void pressNumber(int i){
 		page.pressNumber(i);
 	}

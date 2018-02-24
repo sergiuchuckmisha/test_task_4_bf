@@ -2,7 +2,9 @@ package selenium.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import selenium.browsers.WebDriverFactory;
@@ -22,6 +24,8 @@ import java.util.logging.Logger;
 public class DriverHelper {
 	private static final Logger log = Logger.getLogger(DriverHelper.class.toString());
 	public static final int DEFAULT_TIMEOUT_SECONDS = 20; //wait up to this time for element to appear or page to be loaded
+	public static final int DEFAULT_IMPLICITLY_WAIT_TIMEOUT_SECONDS = 5; //wait up to this time for element to appear or page to be loaded
+	public static final int DEFAULT_JS_ASYNC_WAIT_TIMEOUT_MILLISECONDS = 5; //wait up to this time for element to appear or page to be loaded
 
 	/**
 	 * Gets text from element
@@ -58,27 +62,48 @@ public class DriverHelper {
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			WebDriverFactory.getDriver().quit();
+			WebDriverFactory.clearDriver();
 		}
 	}
 
 	public static void waitForJsAsync(){
-		WebDriverFactory.getDriver().manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
+		WebDriverFactory.getDriver().manage().timeouts().setScriptTimeout(DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
 
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) WebDriverFactory.getDriver();
 
 		try {
-			jsExecutor.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 10);");
+			jsExecutor.executeAsyncScript(String.format("window.setTimeout(arguments[arguments.length - 1], %d);", DEFAULT_JS_ASYNC_WAIT_TIMEOUT_MILLISECONDS));
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
 	}
 
+	public static void waitUntilExpectedCondition(ExpectedCondition<Boolean> condition){
+
+//		waitUntilExpectedCondition(driver -> AjaxHelper.isPageLoaded());
+
+		WebDriverWait wait = new WebDriverWait(WebDriverFactory.getDriver(), DEFAULT_TIMEOUT_SECONDS);
+
+		try {
+			wait.until(condition);
+		} catch (Exception ignored) {
+		}
+
+//		try {
+//			wait.until(new ExpectedCondition<Boolean>() {
+//				public Boolean apply(WebDriver driver) {
+//					return AjaxHelper.isPageLoaded();
+//				}
+//			});
+//		} catch (Exception ignored) {
+//		}
+	}
+
 	public static void waitUntilPageIsLoaded()
 	{
-		WebDriverFactory.getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		WebDriverFactory.getDriver().manage().timeouts().pageLoadTimeout(DEFAULT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+		WebDriverFactory.getDriver().manage().timeouts().implicitlyWait(DEFAULT_IMPLICITLY_WAIT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
 
 
 		WebDriverWait wait = new WebDriverWait(WebDriverFactory.getDriver(), DEFAULT_TIMEOUT_SECONDS);
