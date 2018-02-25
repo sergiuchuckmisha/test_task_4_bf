@@ -1,13 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="All" verbose="1" >
-    <test name="all"   >
+<suite name="All" verbose="1"  parallel="classes" thread-count="4" >
+    <test name="navigation"   >
         <packages>
             <package name=".*" />
         </packages>
     </test>
 
     <listeners>
-        <listener class-name="testng.TestListener"/>
+        <listener class-name="com.sergiuchuckmisha.bf.testng.TestListener"/>
     </listeners>
 </suite>

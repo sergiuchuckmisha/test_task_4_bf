@@ -1,6 +1,6 @@
 package com.guerrillamail.www;
 
-import dataModels.CryptoDetails;
+import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.impl.client.BasicCookieStore;
@@ -40,7 +40,7 @@ public class EmailChecker {
         tester = new GuerrillaMail();
         httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
         emailIdsToDelete = new ArrayList<>();
-        emailIdsToDelete.add(1);//copypaste from GuerrillaMailTest
+        emailIdsToDelete.add(1);//copy-paste from GuerrillaMailTest
         emailIdsToDelete.add(2);
     }
 
@@ -96,6 +96,6 @@ public class EmailChecker {
             }
             Thread.sleep(1000L*60);
         }
-        throw new IllegalStateException(String.format("%d minutes have expired. Email with Cryptodetails: %s is not observed yet ", minutesToWait, cryptoDetails));
+        throw new IllegalStateException(String.format("%d minutes have expired. Email with Crypto details: %s is not observed yet ", minutesToWait, cryptoDetails));
     }
 }
