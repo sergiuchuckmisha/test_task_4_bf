@@ -27,6 +27,8 @@ import java.util.List;
  * @url documentation: https://docs.google.com/document/d/1Qw5KQP1j57BPTDmms5nspe-QAjNEsNg8cQHpAAycYNM/edit?hl=en
  */
 public class GuerrillaMail {
+
+	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(GuerrillaMail.class);
 	
 	//For requests
 	private HttpClient httpclient = new DefaultHttpClient();
@@ -187,7 +189,7 @@ public class GuerrillaMail {
 		httpResponse = httpclient.execute(httpPost);
         stringResponse = EntityUtils.toString(httpResponse.getEntity());
         
-        System.out.println("RESPONSE: "+stringResponse);
+        log.info("RESPONSE: "+stringResponse);
         
         jSonObject = new JSONObject(stringResponse);
         
@@ -294,7 +296,7 @@ public class GuerrillaMail {
 		httpResponse = httpclient.execute(httpPost);
         stringResponse = EntityUtils.toString(httpResponse.getEntity());
         
-        //System.out.println("RESPONSE: "+stringResponse);
+        //log.info("RESPONSE: "+stringResponse);
 	}
 	
 	/**

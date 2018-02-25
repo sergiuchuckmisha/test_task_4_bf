@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.testng;
 
+import com.sergiuchuckmisha.bf.selenium.browsers.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -7,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import com.sergiuchuckmisha.bf.selenium.browsers.WebDriverManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,10 +17,11 @@ import static com.sergiuchuckmisha.bf.config.Config.SCREENSHOTS_PATH;
 
 //used code from http://www.seleniumeasy.com/testng-tutorials/how-to-take-screenshot-for-only-failed-tests-using-webdriver
 public class TestListener implements ITestListener {
+    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(TestListener.class);
     WebDriver driver=null;
     @Override
     public void onTestFailure(ITestResult result) {
-        System.out.println("***** Error "+result.getName()+" test has failed *****");
+        log.info("***** Error "+result.getName()+" test has failed *****");
         String methodName= result.getName().trim();
         takeScreenShot(methodName);
     }
@@ -34,9 +35,9 @@ public class TestListener implements ITestListener {
 
 
             FileUtils.copyFile(scrFile, Paths.get(SCREENSHOTS_PATH, methodName+".png").toFile());
-            System.out.println("***Place screenshot to "+SCREENSHOTS_PATH+" ***");
+            log.info("***Place screenshot to "+SCREENSHOTS_PATH+" ***");
         } catch (IOException e) {
-            e.printStackTrace();
+            log.warn(e);
         }
     }
     public void onFinish(ITestContext context) {}

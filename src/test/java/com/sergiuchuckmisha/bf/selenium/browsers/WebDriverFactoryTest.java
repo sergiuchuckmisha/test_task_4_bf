@@ -1,6 +1,7 @@
 package com.sergiuchuckmisha.bf.selenium.browsers;
 
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
@@ -16,6 +17,7 @@ import java.lang.reflect.Method;
  * purpose of the class is to contain unit tests for WebDriverFactory class
  */
 public class WebDriverFactoryTest  extends SeleniumBaseTest {
+	final static Logger log = Logger.getLogger(WebDriverFactoryTest.class);
 
 	@Test
 	public void testEnumBrowsers()
@@ -24,7 +26,7 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 			assert WebDriverFactory.Browser.CHROME.equals(WebDriverFactory.Browser.fromString("CH"));
 			assert WebDriverFactory.Browser.HTML_UNIT.equals(WebDriverFactory.Browser.fromString("HU"));
 		} catch (Exception e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+			log.info(e);
 		}
 	}
 
@@ -44,7 +46,7 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 
 //		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
     } catch (Exception e) {                                                                   //this is for Java6
-			e.printStackTrace();
+			log.info(e);
 		}
 	}
 }
