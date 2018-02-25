@@ -9,8 +9,7 @@ package pageObjects;
  * contains one static method: isOnPage()
  * https://code.google.com/p/selenium/wiki/PageObjects
  */
-public interface iPage {
+public interface IPage {
 
-//	String getUrl();
 	boolean isOnPage();
 }

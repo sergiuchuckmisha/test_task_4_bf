@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 /**
  * Representation of an email. This contains the message, the forwarder and the remaining information in an email.
- * @author <a reef="https://github.com/DavidePastore">DavidePastore</a>
+ * @author <a ref="https://github.com/DavidePastore">DavidePastore</a>
  *
  */
 public class EMail {

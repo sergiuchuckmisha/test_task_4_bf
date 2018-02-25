@@ -1,6 +1,6 @@
 package pageObjects.voting;
 
-import pageObjects.voting.pageElements.iVoteConfirmationPopUp;
+import pageObjects.voting.pageElements.IVoteConfirmationPopUp;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,5 +11,5 @@ import pageObjects.voting.pageElements.iVoteConfirmationPopUp;
  * https://exonum.com/demo/voting/#/elections/candidates when confirming vote
  * pageObject pattern is implemented
  */
-public class VoteConfirmationPopUpPage implements iVoteConfirmationPopUp {
+public class VoteConfirmationPopUpPage implements IVoteConfirmationPopUp {
 }

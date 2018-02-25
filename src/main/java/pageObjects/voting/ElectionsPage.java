@@ -1,11 +1,11 @@
 package pageObjects.voting;
 
-import pageObjects.iPage;
-import pageObjects.voting.pageElements.iNavigateTo;
-import pageObjects.voting.pageElements.checkboxTableElements.iCheckboxTable;
-import pageObjects.voting.pageElements.iBottomMenu;
-import pageObjects.voting.pageElements.iTopMenu;
-import pageObjects.voting.pageElements.iVoteInElectionButton;
+import pageObjects.IPage;
+import pageObjects.voting.pageElements.INavigateTo;
+import pageObjects.voting.pageElements.ICheckboxTable;
+import pageObjects.voting.pageElements.IBottomMenu;
+import pageObjects.voting.pageElements.ITopMenu;
+import pageObjects.voting.pageElements.IVoteInElectionButton;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +16,7 @@ import pageObjects.voting.pageElements.iVoteInElectionButton;
  * https://exonum.com/demo/voting/#/elections
  * pageObject pattern is implemented
  */
-public class ElectionsPage implements iPage, iNavigateTo, iTopMenu, iBottomMenu, iVoteInElectionButton, iCheckboxTable {
+public class ElectionsPage implements IPage, INavigateTo, ITopMenu, IBottomMenu, IVoteInElectionButton, ICheckboxTable {
 
     @Override
     public String getTopMenuName() {

@@ -1,10 +1,10 @@
 package pageObjects.voting;
 
-import pageObjects.voting.pageElements.iHasUrl;
-import pageObjects.voting.pageElements.iNavigateTo;
+import pageObjects.voting.pageElements.IHasUrl;
+import pageObjects.voting.pageElements.INavigateTo;
 import org.openqa.selenium.By;
-import pageObjects.iPage;
-import pageObjects.voting.pageElements.iVoteInElectionButton;
+import pageObjects.IPage;
+import pageObjects.voting.pageElements.IVoteInElectionButton;
 import selenium.utils.DriverHelper;
 
 /**
@@ -16,9 +16,12 @@ import selenium.utils.DriverHelper;
  * https://exonum.com/demo/voting/#/welcome
  * pageObject pattern is implemented
  */
-public class WelcomePage implements iPage, iVoteInElectionButton, iHasUrl, iNavigateTo {
-    private static final By headerLocator = By.xpath("//div[@class='app-header' and text()='e-Voting']");
-    private static final By monitorElectionProcessButtonLocator = By.xpath("//div[@class='button' and text()='Monitor election process']");
+public class WelcomePage implements IPage, IVoteInElectionButton, IHasUrl, INavigateTo {
+    private static final By headerLocator =
+            By.xpath("//div[@class='app-header' and text()='e-Voting']");
+
+    private static final By monitorElectionProcessButtonLocator =
+            By.xpath("//div[@class='button' and text()='Monitor election process']");
 
     @Override
     public String getUrl() {

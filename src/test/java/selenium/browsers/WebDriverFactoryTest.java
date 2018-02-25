@@ -7,8 +7,6 @@ import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
-import static selenium.browsers.WebDriverFactory.browsers;
-
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,8 +21,8 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 	public void testEnumBrowsers()
 	{
 		try {
-			assert browsers.Chrome.equals(browsers.getBrowserByLabel("CH"));
-			assert browsers.HtmlUnit.equals(browsers.getBrowserByLabel("HU"));
+			assert WebDriverFactory.Browser.CHROME.equals(WebDriverFactory.Browser.fromString("CH"));
+			assert WebDriverFactory.Browser.HTML_UNIT.equals(WebDriverFactory.Browser.fromString("HU"));
 		} catch (Exception e) {
 			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 		}
@@ -36,13 +34,13 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 	public void testHtmlUnitCreation()
 	{
 		try {
-			Method method = WebDriverFactory.class.getDeclaredMethod("getDriver", browsers.class);
+			Method method = WebDriverFactory.class.getDeclaredMethod("getDriver", WebDriverFactory.Browser.class);
 			method.setAccessible(true);
-			method.invoke(null, browsers.HtmlUnit);
+			method.invoke(null, WebDriverFactory.Browser.HTML_UNIT);
 
-			org.testng.Assert.assertNotNull(WebDriverFactory.getDriver());
-			WebDriverFactory.getDriver().get("http://www.google.com");
-			org.testng.Assert.assertNotNull(WebDriverFactory.getDriver().findElement(By.name("q")));
+			org.testng.Assert.assertNotNull(WebDriverManager.getDriver());
+			WebDriverManager.getDriver().get("http://www.google.com");
+			org.testng.Assert.assertNotNull(WebDriverManager.getDriver().findElement(By.name("q")));
 
 //		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
     } catch (Exception e) {                                                                   //this is for Java6

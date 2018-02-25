@@ -1,5 +1,5 @@
 package pageObjects.voting.pageElements;
 
-public interface iHasUrl {
+public interface IHasUrl {
     String getUrl();
 }

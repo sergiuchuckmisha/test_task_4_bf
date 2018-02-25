@@ -1,6 +1,6 @@
 package pageObjects.voting;
 
-import pageObjects.voting.pageElements.iDecryptConfirmationPopUp;
+import pageObjects.voting.pageElements.IDecryptConfirmationPopUp;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,6 +11,6 @@ import pageObjects.voting.pageElements.iDecryptConfirmationPopUp;
  * https://exonum.com/demo/voting/#/elections/ballot
  * pageObject pattern is implemented
  */
-public class DecryptConfirmationPopUpPage implements iDecryptConfirmationPopUp {
+public class DecryptConfirmationPopUpPage implements IDecryptConfirmationPopUp {
 
 }

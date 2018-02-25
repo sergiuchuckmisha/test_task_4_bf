@@ -7,6 +7,10 @@ import java.util.regex.Pattern;
  * idea of the class is to incapsulate hash and 'MNEMONIC CODE PLAINTEXT' holding and retrieving from email body
  */
 public class CryptoDetails {
+    private static final Pattern HEXADECIMAL_PATTERN = Pattern.compile("HEXADECIMAL: (\\w+)");
+    private static final Pattern MNEMONIC_CODE_PATTERN =
+            Pattern.compile("MNEMONIC CODE PLAINTEXT: ([a-zA-Z]+ [a-zA-Z]+ [a-zA-Z]+)");
+
     private String hash = "";
     private String words = "";
 
@@ -22,8 +26,7 @@ public class CryptoDetails {
 
     //using code from https://stackoverflow.com/a/10432594
     private String getHashFromString(String emailBody) {
-        Pattern pattern = Pattern.compile("HEXADECIMAL: (\\w+)");
-        Matcher mat = pattern.matcher(emailBody);
+        Matcher mat = HEXADECIMAL_PATTERN.matcher(emailBody);
 
         String result;
         if (!mat.find()) {
@@ -39,9 +42,8 @@ public class CryptoDetails {
         return result;
     }
 
-    private String getWordsFromEmailBody(String emailBody){
-        Pattern pattern = Pattern.compile("MNEMONIC CODE PLAINTEXT: ([a-zA-Z]+ [a-zA-Z]+ [a-zA-Z]+)");
-        Matcher mat = pattern.matcher(emailBody);
+    private String getWordsFromEmailBody(String emailBody) {
+        Matcher mat = MNEMONIC_CODE_PATTERN.matcher(emailBody);
 
         String result;
         if (!mat.find()) {

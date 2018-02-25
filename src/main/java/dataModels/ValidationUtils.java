@@ -12,6 +12,6 @@ public class ValidationUtils {
     }
 
     public static boolean is01(String str){
-        return str.matches("^[0-1]+$");
+        return str.matches("^[01]+$");
     }
 }

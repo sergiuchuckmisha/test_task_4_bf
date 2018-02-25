@@ -1,28 +1,31 @@
-package pageObjects.voting.pageElements.checkboxTableElements;
+package pageObjects.voting.pageElements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.pagefactory.ByChained;
 import selenium.utils.DriverHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static selenium.utils.DriverHelper.findElements;
+
 /**
  * idea of the class is to reflect tables with checkboxes (in the middle of the page like on page https://exonum.com/demo/voting/#/monitor)
  * */
-public interface iCheckboxTable {
+public interface ICheckboxTable {
 
     default List<Boolean> getCheckboxes(){
         return DriverHelper
-                .findElements(By.xpath("//table[@class = 'app-list']//td/div[contains(@class, 'checker')]"))
+
+                .findElements(By.cssSelector("table.app-list td>div.checker"))
                 .stream()
-                .map(webElement -> "checker active".equals(webElement.getAttribute("class")))
+                .map(webElement -> "checker active".equals(webElement.getAttribute("class")))   //.isSelected() does not work
                 .collect(Collectors.toList());
     }
-
     default List<String> getCheckBoxTableValues(){
-        return DriverHelper
-                .findElements(By.xpath("//table[@class = 'app-list']//td[@class = 'ng-binding']"))
+        return
+                findElements(By.cssSelector("table.app-list td.ng-binding"))
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
@@ -32,7 +35,8 @@ public interface iCheckboxTable {
         if (null == value || value.isEmpty()) {
             throw new IllegalArgumentException("empty value provided");
         }
-        DriverHelper.click(By.xpath(String.format("//table[@class = 'app-list']//td[text() = '%s']", value)));
+        DriverHelper.click(new ByChained(By.cssSelector("table.app-list"),
+                By.xpath(String.format(".//td[text() = '%s']", value))));
     }
 
     default long howManyOptionsChecked(){

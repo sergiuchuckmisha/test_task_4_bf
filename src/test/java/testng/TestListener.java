@@ -1,8 +1,5 @@
 package testng;
 
-import java.io.File;
-import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -10,8 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import selenium.browsers.WebDriverManager;
 
-import selenium.browsers.WebDriverFactory;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 import static config.Config.SCREENSHOTS_PATH;
 
@@ -21,18 +21,20 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("***** Error "+result.getName()+" test has failed *****");
-        String methodName=result.getName().toString().trim();
+        String methodName= result.getName().trim();
         takeScreenShot(methodName);
     }
 
     public void takeScreenShot(String methodName) {
         //get the driver
-        driver= WebDriverFactory.getDriver();
+        driver= new WebDriverManager().getDriver();
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         //The below method will save the screen shot in d drive with test method name
         try {
-            FileUtils.copyFile(scrFile, new File(SCREENSHOTS_PATH+methodName+".png"));
-            System.out.println("***Placed screen shot in "+SCREENSHOTS_PATH+" ***");
+
+
+            FileUtils.copyFile(scrFile, Paths.get(SCREENSHOTS_PATH, methodName+".png").toFile());
+            System.out.println("***Place screenshot to "+SCREENSHOTS_PATH+" ***");
         } catch (IOException e) {
             e.printStackTrace();
         }

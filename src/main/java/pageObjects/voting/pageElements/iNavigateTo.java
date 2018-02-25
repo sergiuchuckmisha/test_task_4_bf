@@ -1,12 +1,12 @@
 package pageObjects.voting.pageElements;
 
-import pageObjects.iPage;
+import pageObjects.IPage;
 import selenium.utils.DriverHelper;
 
 /**
  * allows navigation (via url or smth else)
  */
-public interface iNavigateTo extends iPage, iHasUrl {
+public interface INavigateTo extends IPage, IHasUrl {
 
     default void navigateTo() {
         if (!isOnPage()) {

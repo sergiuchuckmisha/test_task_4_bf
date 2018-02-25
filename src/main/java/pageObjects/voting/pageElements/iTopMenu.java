@@ -1,26 +1,34 @@
 package pageObjects.voting.pageElements;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.pagefactory.ByChained;
 import selenium.utils.DriverHelper;
 
-@FunctionalInterface
-public interface iTopMenu {
+import static selenium.utils.DriverHelper.wrapClassContainsForxPath;
+
+public interface ITopMenu {
     String getTopMenuName();
 
     default boolean isTopMenuNamePresent(){
-        return DriverHelper.isElementPresent(By.xpath(String.format("//div[@class='toolbar-title']/span[@class='ng-binding' and text()='%s']", getTopMenuName())));
+        return DriverHelper.isElementPresent(
+                new ByChained(
+                        By.cssSelector("div.toolbar-title"),
+                        By.xpath(String.format("./span[@class='ng-binding' and text()='%s']", getTopMenuName()))));
     }
 
     default void pressTopMenuBackArrow(){
-        DriverHelper.click(By.xpath("//div[@class='toolbar-return-button pull-left' and @ng-show='backState']"));
+        DriverHelper.click(By.cssSelector("div.toolbar-return-button[ng-show='backState']"));
     }
 
     default boolean isTopMenuBackArrowVisible(){
-        return DriverHelper.findElement(By.xpath("//div[@class='toolbar-return-button pull-left' and @ng-show='backState']")).isDisplayed();
+        return DriverHelper.findElement(By.cssSelector("div.toolbar-return-button.pull-left[ng-show='backState']")).isDisplayed();
 
     }
 
     default void pressTopMenuHelp(){
-        DriverHelper.click(By.xpath("//div[@class='toolbar-help-button pull-right' and text()='HELP']"));
+        DriverHelper.click(By.xpath(String.format(".//div[%s and %s and text()='HELP']",
+                wrapClassContainsForxPath("toolbar-help-button"),
+                wrapClassContainsForxPath("pull-right")
+        )));
     }
 }

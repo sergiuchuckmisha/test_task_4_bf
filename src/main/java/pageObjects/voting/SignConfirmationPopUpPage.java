@@ -1,7 +1,7 @@
 package pageObjects.voting;
 
 import org.openqa.selenium.By;
-import pageObjects.voting.pageElements.iSignConfirmationPopUp;
+import pageObjects.voting.pageElements.ISignConfirmationPopUp;
 import selenium.utils.DriverHelper;
 
 /**
@@ -13,7 +13,7 @@ import selenium.utils.DriverHelper;
  * https://exonum.com/demo/voting/#/elections/ballot when confirming sign
  * pageObject pattern is implemented
  */
-public class SignConfirmationPopUpPage implements iSignConfirmationPopUp {
+public class SignConfirmationPopUpPage implements ISignConfirmationPopUp {
 
     /**method should be used to enter PIN code*/
     public void pressNumber(int i){

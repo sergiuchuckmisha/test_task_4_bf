@@ -3,7 +3,7 @@ package selenium.utils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import selenium.browsers.WebDriverFactory;
+import selenium.browsers.WebDriverManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,20 +11,20 @@ import selenium.browsers.WebDriverFactory;
  * Date: 9/16/15
  * Time: 2:08 PM
  * purpose of the class is to accumulate methods which works with WebDriver page via JavaScript
- * this class has dependency only on WebDriverFactory to fet instance of WebDriver
+ * this class has dependency only on WebDriverManager to fet instance of WebDriver
  */
-public class AjaxHelper {
+public class JsHelper {
 
-	private AjaxHelper() {}
+	private JsHelper() {}
 
 	private static JavascriptExecutor getJsExecutor() {
-		return (JavascriptExecutor) WebDriverFactory.getDriver();
+		return (JavascriptExecutor) WebDriverManager.getDriver();
 	}
 
 	public static boolean isAjaxComplete() {
 		try {
 			return (Boolean) getJsExecutor().executeScript("return $.active == 0");
-		} catch (WebDriverException ex) {
+		} catch (Exception ignore) {
 			return true;
 		}
 	}
@@ -36,7 +36,7 @@ public class AjaxHelper {
 	public static Boolean isPageLoaded() {
 		try {
 			return ("complete").equals(getJsExecutor().executeScript("return document.readyState"));
-		} catch (WebDriverException ex) {
+		} catch (WebDriverException ignore) {
 			return true;
 		}
 	}
@@ -44,9 +44,8 @@ public class AjaxHelper {
 	public static void click(WebElement element) {
 		try {
 			getJsExecutor().executeScript("arguments[0].click();", element);
-		} catch (WebDriverException ex) {
-			ex.printStackTrace();
-			throw new WebDriverException();
+		} catch (WebDriverException ignore) {
+			getJsExecutor().executeScript("arguments[0].click();", element);
 		}
 	}
 }

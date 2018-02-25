@@ -12,10 +12,10 @@ import selenium.utils.DriverHelper;
  * for example: for page https://exonum.com/demo/voting/#/elections/decrypted this name is 'Full Ballot Encryption Details'
  * pageObject pattern is implemented
  */
-public interface iDecryptedBallotSubPageName {
+public interface IDecryptedBallotSubPageName {
 
     default String getDecryptedBallotSubPageName(){
-        return DriverHelper.getText(By.xpath("//div[@class = 'ng-scope']/div[@class = 'app-content-header ng-scope']/span"));
+        return DriverHelper.getText(By.cssSelector("div.ng-scope > div.app-content-header.ng-scope > span"));
     }
 
 }

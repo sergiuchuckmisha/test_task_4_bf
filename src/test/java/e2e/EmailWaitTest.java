@@ -1,12 +1,11 @@
 package e2e;
 
 import com.guerrillamail.www.EmailChecker;
-import config.Config;
 import dataModels.CryptoDetails;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageObjects.voting.*;
-import selenium.browsers.WebDriverFactory;
+import selenium.browsers.WebDriverManager;
 
 import java.util.logging.Logger;
 
@@ -87,8 +86,8 @@ public class EmailWaitTest {
         assertEquals(submittedBallotPage.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
 
         //no need to keep page while waiting for email
-        WebDriverFactory.clearDriver();
+        WebDriverManager.quiteDriver();
 
-        emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.howManyMinutesToWaitForEmail);
+//        emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.howManyMinutesToWaitForEmail);
     }
 }

@@ -1,7 +1,8 @@
 package base;
 
-import org.testng.annotations.*;
-import selenium.browsers.WebDriverFactory;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import selenium.browsers.WebDriverManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,6 +21,6 @@ public abstract class SeleniumBaseTest {
 	/**purpose of the method is to clear possible browser initializations*/
 	public void closeBrowser()
 	{
-		WebDriverFactory.clearDriver();
+		WebDriverManager.quiteDriver();
 	}
 }
