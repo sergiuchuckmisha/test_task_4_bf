@@ -1,9 +1,8 @@
 package com.sergiuchuckmisha.bf.pages.voting.pageElements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.pagefactory.ByChained;
 import com.sergiuchuckmisha.bf.pages.IPage;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
+import org.openqa.selenium.By;
 
 import static com.sergiuchuckmisha.bf.selenium.utils.DriverHelper.wrapClassContainsForPath;
 
@@ -24,8 +23,7 @@ public interface IDecryptConfirmationPopUp extends IPage {
     @Override
     default boolean isOnPage(){
         return DriverHelper.isElementPresent(
-                new ByChained(
-                        By.cssSelector("div.decrypt-desc"),
-                        By.xpath("./p[text() = 'Are you sure you want to proceed with decrypting your ballot?']")));
+                        By.xpath(String.format(".//div[%s]/p[text() = 'Are you sure you want to proceed with decrypting your ballot?']",
+                                wrapClassContainsForPath("decrypt-desc"))));
     }
 }

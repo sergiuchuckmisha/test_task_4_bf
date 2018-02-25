@@ -1,8 +1,7 @@
 package com.sergiuchuckmisha.bf.pages.voting.pageElements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.pagefactory.ByChained;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
+import org.openqa.selenium.By;
 
 import static com.sergiuchuckmisha.bf.selenium.utils.DriverHelper.wrapClassContainsForPath;
 
@@ -11,9 +10,9 @@ public interface ITopMenu {
 
     default boolean isTopMenuNamePresent(){
         return DriverHelper.isElementPresent(
-                new ByChained(
-                        By.cssSelector("div.toolbar-title"),
-                        By.xpath(String.format("./span[@class='ng-binding' and text()='%s']", getTopMenuName()))));
+                        By.xpath(String.format(".//div[%s]/span[@class='ng-binding' and text()='%s']",
+                                wrapClassContainsForPath("toolbar-title"),
+                                getTopMenuName())));
     }
 
     default void pressTopMenuBackArrow(){

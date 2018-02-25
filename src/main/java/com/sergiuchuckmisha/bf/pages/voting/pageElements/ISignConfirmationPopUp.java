@@ -1,9 +1,8 @@
 package com.sergiuchuckmisha.bf.pages.voting.pageElements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.pagefactory.ByChained;
 import com.sergiuchuckmisha.bf.pages.IPage;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
+import org.openqa.selenium.By;
 
 import static com.sergiuchuckmisha.bf.selenium.utils.DriverHelper.wrapClassContainsForPath;
 
@@ -28,9 +27,9 @@ public interface ISignConfirmationPopUp extends IPage {
     @Override
     default boolean isOnPage(){
         return DriverHelper.isElementPresent(
-                new ByChained(
-                        By.cssSelector("div.decrypt-desc"),
-                        By.xpath("./p[starts-with(text(), 'Input your secret PIN2') " +
-                                "and contains(text(), 'thus signing your anonymous ballot.')]")));
+                        By.xpath(String.format(".//div[%s]/p[starts-with(text(), 'Input your secret PIN2') " +
+                                "and contains(text(), 'thus signing your anonymous ballot.')]",
+                                wrapClassContainsForPath("decrypt-desc")
+                                )));
     }
 }

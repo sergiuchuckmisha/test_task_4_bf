@@ -1,8 +1,7 @@
 package com.sergiuchuckmisha.bf.pages.voting.pageElements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.pagefactory.ByChained;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
+import org.openqa.selenium.By;
 
 import static com.sergiuchuckmisha.bf.selenium.utils.DriverHelper.wrapClassContainsForPath;
 
@@ -17,30 +16,30 @@ import static com.sergiuchuckmisha.bf.selenium.utils.DriverHelper.wrapClassConta
  */
 public interface IBottomMenu {
 
-    default void pressBottomMenuElections(){
+    default void pressBottomMenuElections() {
 
-//        DriverHelper.click(new ByChained(By.cssSelector("div.bottom-menu-item"),
-//                By.xpath(String.format("//div[%s and text()='Elections']",
-//                        wrapClassContainsForPath("bottom-menu-item-title")))));
 
-        DriverHelper.click(new ByChained(
-                By.cssSelector("div.bottom-menu-item"),
-                By.xpath(String.format(".//div[%s and text()='Elections']",
-                        wrapClassContainsForPath("bottom-menu-item-title")))));
+        DriverHelper.click(
+                By.xpath(String.format(".//div[%s]//div[%s and text()='Elections']",
+                        wrapClassContainsForPath("bottom-menu-item"),
+                        wrapClassContainsForPath("bottom-menu-item-title")
+                )));
     }
 
-    default void pressBottomMenuMonitor(){
-        DriverHelper.click(new ByChained(
-                By.cssSelector("div.bottom-menu-item"),
-                By.xpath(String.format(".//div[%s and text()='Monitor']",
-                        wrapClassContainsForPath("bottom-menu-item-title")))));
+    default void pressBottomMenuMonitor() {
+        DriverHelper.click(
+                By.xpath(String.format(".//div[%s]//div[%s and text()='Monitor']",
+                        wrapClassContainsForPath("bottom-menu-item"),
+                        wrapClassContainsForPath("bottom-menu-item-title")
+                )));
 
     }
 
-    default void pressBottomMenuSettings(){
-        DriverHelper.click(new ByChained(
-                By.cssSelector("div.bottom-menu-item"),
-                By.xpath(String.format(".//div[%s and text()='Settings']",
-                        wrapClassContainsForPath("bottom-menu-item-title")))));
+    default void pressBottomMenuSettings() {
+        DriverHelper.click(
+                By.xpath(String.format(".//div[%s]//div[%s and text()='Settings']",
+                        wrapClassContainsForPath("bottom-menu-item"),
+                        wrapClassContainsForPath("bottom-menu-item-title")
+                )));
     }
 }

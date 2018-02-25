@@ -22,6 +22,7 @@ import java.util.logging.Logger;
  */
 public class DriverHelper {
 	private static final Logger log = Logger.getLogger(DriverHelper.class.toString());
+	public static final int DEFAULT_PAGE_LOAD_WAIT_TIMEOUT_SECONDS = 60; //wait up to this time for element to appear or page to be loaded
 	public static final int DEFAULT_TIMEOUT_SECONDS = 20; //wait up to this time for element to appear or page to be loaded
 	public static final int DEFAULT_IMPLICITLY_WAIT_TIMEOUT_SECONDS = 5; //wait up to this time for element to appear or page to be loaded
 	public static final int DEFAULT_JS_ASYNC_WAIT_TIMEOUT_MILLISECONDS = 1; //wait up to this time for element to appear or page to be loaded
@@ -88,11 +89,10 @@ public class DriverHelper {
 		}
 	}
 
-	public static void waitUntilExpectedCondition(ExpectedCondition<Boolean> condition){
+	public static void waitUntilExpectedCondition(ExpectedCondition<Boolean> condition, long timeOutInSeconds){
+		WebDriverWait wait = new WebDriverWait(WebDriverManager.getDriver(), timeOutInSeconds);
 
 //		waitUntilExpectedCondition(driver -> JsHelper.isPageLoaded());
-
-		WebDriverWait wait = new WebDriverWait(WebDriverManager.getDriver(), DEFAULT_TIMEOUT_SECONDS);
 
 		try {
 			wait.until(condition);
@@ -107,6 +107,10 @@ public class DriverHelper {
 //			});
 //		} catch (Exception ignored) {
 //		}
+	}
+
+	public static void waitUntilExpectedCondition(ExpectedCondition<Boolean> condition){
+		waitUntilExpectedCondition(condition, DEFAULT_TIMEOUT_SECONDS);
 	}
 
 	public static void waitUntilPageIsLoaded()

@@ -1,8 +1,7 @@
 package com.sergiuchuckmisha.bf.pages.voting.pageElements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.pagefactory.ByChained;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
+import org.openqa.selenium.By;
 
 import static com.sergiuchuckmisha.bf.selenium.utils.DriverHelper.wrapClassContainsForPath;
 
@@ -11,34 +10,31 @@ public interface IUnsignedBallotPageDiscardDecryptSignButtons {
 
     default void discardButtonClick(){
         DriverHelper.click(
-                new ByChained(
-                    By.cssSelector("div.button-group"),
-                    By.xpath(String.format("./div[%s and %s and text()='DISCARD']",
+                    By.xpath(String.format(".//div[%s]/div[%s and %s and text()='DISCARD']",
+                            wrapClassContainsForPath("button-group"),
                             wrapClassContainsForPath("button"),
                             wrapClassContainsForPath("button-red")
                             ))
-                ));
+                );
     }
 
     default void decryptButtonClick(){
         DriverHelper.click(
-                new ByChained(
-                        By.cssSelector("div.button-group"),
-                        By.xpath(String.format("./div[%s and %s and text()='DECRYPT']",
+                        By.xpath(String.format(".//div[%s]/div[%s and %s and text()='DECRYPT']",
+                                wrapClassContainsForPath("button-group"),
                                 wrapClassContainsForPath("button"),
                                 wrapClassContainsForPath("button-orange")
                         ))
-                ));
+                );
     }
 
     default void signButtonClick(){
         DriverHelper.click(
-                new ByChained(
-                        By.cssSelector("div.button-group"),
-                        By.xpath(String.format("./div[%s and %s and text()='SIGN']",
+                        By.xpath(String.format(".//div[%s]/div[%s and %s and text()='SIGN']",
+                                wrapClassContainsForPath("button-group"),
                                 wrapClassContainsForPath("button"),
                                 wrapClassContainsForPath("button-green")
                         ))
-                ));
+                );
     }
 }
