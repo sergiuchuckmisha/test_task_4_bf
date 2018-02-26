@@ -1,7 +1,7 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateTo;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ICheckboxTable;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
@@ -16,7 +16,7 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.IVoteInElectionButton;
  * https://exonum.com/demo/voting/#/elections/candidates
  * pageObject pattern is implemented
  */
-public class CandidatesOfElectionPage implements IPage, INavigateTo, IBottomMenu, ITopMenu,ICheckboxTable, IVoteInElectionButton {
+public class CandidatesOfElectionPage implements IPage, INavigateToUrl, IBottomMenu, ITopMenu,ICheckboxTable, IVoteInElectionButton {
 
     @Override
     public String getUrl() {

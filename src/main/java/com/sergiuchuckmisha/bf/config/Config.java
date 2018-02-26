@@ -25,12 +25,13 @@ public class Config {
     @Named("SCREENSHOTS_PATH")
     public static String SCREENSHOTS_PATH = "screenshots/";//used in TestListener
 
-
-    public static final int HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL = 60;//meaning email with CryptoDetails
+    @com.google.inject.Inject(optional = true)
+    @Named("HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL")
+    public static int HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL = 60;//meaning email with CryptoDetails
 
     @com.google.inject.Inject(optional = true)
     @Named("EMAIL_TO_RECEIVE_CRYPTO_DETAILS")
-    public static final String EMAIL_TO_RECEIVE_CRYPTO_DETAILS = "ahfkvwnf@guerrillamailblock.com";//meaning email to receive confirmations with CryptoDetails
+    public static String EMAIL_TO_RECEIVE_CRYPTO_DETAILS = "ahfkvwnf@guerrillamailblock.com";//meaning email to receive confirmations with CryptoDetails
 
 
     static {

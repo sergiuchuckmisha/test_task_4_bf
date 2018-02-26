@@ -30,7 +30,7 @@ public class BasicNavigation extends SeleniumBaseTest {
 	 * */
 	@Test()
 	public void basicNavigation() {
-		welcomePage.navigateTo();
+		welcomePage.navigateToUrl();
 
 		//welcome page check 'Monitor election process'
 		welcomePage.pressMonitorElectionProcess();

@@ -12,7 +12,7 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
  * https://exonum.com/demo/voting/#/elections/memo
  * pageObject pattern is implemented
  */
-public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage implements IPage, INavigateTo, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
 
     @Override
     public String getUrl() {

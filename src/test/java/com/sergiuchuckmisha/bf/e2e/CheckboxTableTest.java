@@ -37,7 +37,7 @@ public class CheckboxTableTest extends SeleniumBaseTest {
 	 * */
 	@Test
 	public void checkboxTablesTest() {
-		welcomePage.navigateTo();
+		welcomePage.navigateToUrl();
 
 		//welcome page check 'VOTE IN ELECTION'
 		welcomePage.pressVoteInElectionButton();

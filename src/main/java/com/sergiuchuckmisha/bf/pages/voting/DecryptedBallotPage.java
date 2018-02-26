@@ -2,7 +2,7 @@ package com.sergiuchuckmisha.bf.pages.voting;
 
 import org.openqa.selenium.By;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateTo;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
@@ -16,7 +16,7 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
  * https://exonum.com/demo/voting/#/elections/decrypted
  * pageObject pattern is implemented
  */
-public class DecryptedBallotPage implements IPage, INavigateTo, ITopMenu, IBottomMenu {
+public class DecryptedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu {
 
     @Override
     public String getUrl() {

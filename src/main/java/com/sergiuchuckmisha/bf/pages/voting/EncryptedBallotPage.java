@@ -12,7 +12,7 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
  * https://exonum.com/demo/voting/#/elections/encrypted
  * pageObject pattern is implemented
  */
-public class EncryptedBallotPage implements IPage, INavigateTo, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+public class EncryptedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
 
     @Override
     public String getUrl() {

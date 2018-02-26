@@ -3,7 +3,7 @@ package com.sergiuchuckmisha.bf.pages.voting;
 import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
 import org.openqa.selenium.By;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateTo;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ICheckboxTable;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
@@ -18,7 +18,7 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
  * https://exonum.com/demo/voting/#/elections/submitted
  * pageObject pattern is implemented
  */
-public class SubmittedBallotPage implements IPage, INavigateTo, ITopMenu, IBottomMenu, ICheckboxTable {
+public class SubmittedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, ICheckboxTable {
 
     @Override
     public String getUrl() {

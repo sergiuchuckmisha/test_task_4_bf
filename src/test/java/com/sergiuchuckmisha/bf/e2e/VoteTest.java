@@ -34,7 +34,7 @@ public class VoteTest extends SeleniumBaseTest {
 	 * */
 	@Test
 	public void voteForSmbTest() {
-		welcomePage.navigateTo();
+		welcomePage.navigateToUrl();
 
 		//welcome page check 'VOTE IN ELECTION'
 		welcomePage.pressVoteInElectionButton();

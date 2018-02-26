@@ -3,7 +3,7 @@ package com.sergiuchuckmisha.bf.pages.voting;
 import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
 import org.openqa.selenium.By;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateTo;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IUnsignedBallotPageDiscardDecryptSignButtons;
@@ -18,7 +18,7 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
  * https://exonum.com/demo/voting/#/elections/ballot
  * pageObject pattern is implemented
  */
-public class UnsignedBallotPage implements IPage, INavigateTo, ITopMenu, IBottomMenu, IUnsignedBallotPageDiscardDecryptSignButtons {
+public class UnsignedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IUnsignedBallotPageDiscardDecryptSignButtons {
 
     public String getBallotReceipt3WordMemo(){
         return DriverHelper.findElement(By.xpath("//div[text() = 'Ballot reciept 3-word memo']/following-sibling::div")).getText();

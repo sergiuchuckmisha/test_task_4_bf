@@ -77,6 +77,7 @@ public class DriverHelper {
     }
 
     public static void navigateToCertainUrl(String url) {
+        wdManager.getDriver().manage().timeouts().pageLoadTimeout(defaultPageLoadWaitTimeoutSeconds, TimeUnit.SECONDS);
         try {
             wdManager.getDriver().get(url);
         } catch (Exception e) {

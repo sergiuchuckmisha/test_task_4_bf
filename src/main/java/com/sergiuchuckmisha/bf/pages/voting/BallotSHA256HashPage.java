@@ -12,7 +12,7 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
  * https://exonum.com/demo/voting/#/elections/hash
  * pageObject pattern is implemented
  */
-public class BallotSHA256HashPage implements IPage, INavigateTo, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+public class BallotSHA256HashPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
 
     @Override
     public String getUrl() {

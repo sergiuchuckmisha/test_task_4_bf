@@ -37,7 +37,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
 	@BeforeMethod
 	public void voteForSmbPrerequisite() {
-		welcomePage.navigateTo();
+		welcomePage.navigateToUrl();
 
 		//welcome page check 'VOTE IN ELECTION'
 		welcomePage.pressVoteInElectionButton();

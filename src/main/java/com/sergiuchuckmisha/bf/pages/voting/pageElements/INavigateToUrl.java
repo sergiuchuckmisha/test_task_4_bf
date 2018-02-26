@@ -6,11 +6,14 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
 import static com.sergiuchuckmisha.bf.selenium.utils.DriverHelper.getDefaultPageLoadWaitTimeoutSeconds;
 
 /**
- * allows navigation (via url or something else)
+ * allows navigation (via url)
  */
-public interface INavigateTo extends IPage, IHasUrl {
+public interface INavigateToUrl extends IPage {
 
-    default void navigateTo() {
+    String getUrl();
+
+    default void navigateToUrl() {
+        
         if (!isOnPage()) {
             DriverHelper.navigateToCertainUrl(getUrl());
         }
