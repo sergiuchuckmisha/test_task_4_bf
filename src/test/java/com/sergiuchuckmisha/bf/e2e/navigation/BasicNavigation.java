@@ -23,18 +23,9 @@ import static org.testng.Assert.assertTrue;
 
 public class BasicNavigation extends SeleniumBaseTest {
 
-//	private static final WelcomePage welcomePage = new WelcomePage();
-//	private static final MonitorPage monitorPage = new MonitorPage();
-//	private static final ElectionsPage electionsPage = new ElectionsPage();
-
-	@Inject
-	private WelcomePage welcomePage;
-
-	@Inject
-	private MonitorPage monitorPage;
-
-	@Inject
-	private ElectionsPage electionsPage;
+	@Inject private WelcomePage welcomePage;
+	@Inject private MonitorPage monitorPage;
+	@Inject private ElectionsPage electionsPage;
 
 
 	@Inject @Named("host") String host;

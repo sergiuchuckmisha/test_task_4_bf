@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.e2e;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
 import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
 import com.sergiuchuckmisha.bf.pages.voting.*;
@@ -22,16 +23,16 @@ public class AfterVoteTest extends SeleniumBaseTest {
 
 	private static final Logger log = Logger.getLogger(AfterVoteTest.class.toString());
 
-	private static final WelcomePage welcomePage = new WelcomePage();
-	private static final ElectionsPage electionsPage = new ElectionsPage();
-	private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
-	private static final VoteConfirmationPopUpPage voteConfirmationPopUpPage = new VoteConfirmationPopUpPage();
-	private static final UnsignedBallotPage unsignedBallotPage = new UnsignedBallotPage();
-	private static final DecryptConfirmationPopUpPage decryptConfirmationPopUpPage = new DecryptConfirmationPopUpPage();
-	private static final DecryptedBallotPage decryptedBallotPage = new DecryptedBallotPage();
-	private static final SignConfirmationPopUpPage signConfirmationPopUpPage = new SignConfirmationPopUpPage();
-	private static final SignedBallotPage signedBallotPage = new SignedBallotPage();
-	private static final SubmittedBallotPage submittedBallotPage = new SubmittedBallotPage();
+	@Inject private WelcomePage welcomePage;
+	@Inject private ElectionsPage electionsPage;
+	@Inject private CandidatesOfElectionPage candidatesOfElectionPage;
+	@Inject private VoteConfirmationPopUpPage voteConfirmationPopUpPage;
+	@Inject private UnsignedBallotPage unsignedBallotPage;
+	@Inject private DecryptConfirmationPopUpPage decryptConfirmationPopUpPage;
+	@Inject private DecryptedBallotPage decryptedBallotPage;
+	@Inject private SignConfirmationPopUpPage signConfirmationPopUpPage;
+	@Inject private SignedBallotPage signedBallotPage;
+	@Inject private SubmittedBallotPage submittedBallotPage;
 
 	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
 	@BeforeMethod

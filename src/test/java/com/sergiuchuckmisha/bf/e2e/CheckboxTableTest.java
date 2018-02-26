@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.e2e;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
 import org.testng.annotations.Test;
 import com.sergiuchuckmisha.bf.pages.voting.CandidatesOfElectionPage;
@@ -22,10 +23,10 @@ public class CheckboxTableTest extends SeleniumBaseTest {
 
 	private static Logger log = Logger.getLogger(CheckboxTableTest.class.toString());
 
-	private static final WelcomePage welcomePage = new WelcomePage();
-//	private static final MonitorPage monitorPage = new MonitorPage();//is not used because monitor page is unfinished
-	private static final ElectionsPage electionsPage = new ElectionsPage();
-	private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
+	@Inject private WelcomePage welcomePage;
+//	@Inject private static final MonitorPage monitorPage;//is not used because monitor page is unfinished
+	@Inject private ElectionsPage electionsPage;
+	@Inject private CandidatesOfElectionPage candidatesOfElectionPage;
 
 	/**
 	 *  * purpose of the method is to check following scenario:

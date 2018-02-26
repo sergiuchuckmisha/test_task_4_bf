@@ -24,20 +24,19 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 
 	private static final Logger log = Logger.getLogger(NavigationOnDecryptedPagesTest.class.toString());
 
-	@Inject
-	private WelcomePage welcomePage;
-//	private static final WelcomePage welcomePage = new WelcomePage();
-	private static final ElectionsPage electionsPage = new ElectionsPage();
-	private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
-	private static final VoteConfirmationPopUpPage voteConfirmationPopUpPage = new VoteConfirmationPopUpPage();
-	private static final UnsignedBallotPage unsignedBallotPage = new UnsignedBallotPage();
-	private static final DecryptConfirmationPopUpPage decryptConfirmationPopUpPage = new DecryptConfirmationPopUpPage();
-	private static final DecryptedBallotPage decryptedBallotPage = new DecryptedBallotPage();
-	private static final TallyingAuthoritiesAggregatePublicKeyPage tallyingAuthoritiesAggregatePublicKeyPage = new TallyingAuthoritiesAggregatePublicKeyPage();
-	private static final CandidateOptionSelectedAndEncryptionRandomnessPage candidateOptionSelectedAndEncryptionRandomnessPage = new CandidateOptionSelectedAndEncryptionRandomnessPage();
-	private static final EncryptedBallotPage encryptedBallotPage = new EncryptedBallotPage();
-	private static final BallotSHA256HashPage ballotSHA256HashPage = new BallotSHA256HashPage();
-	private static final ThreeWordMemoByBIPMnemonicCodeAlgorithmPage threeWordMemoByBIPMnemonicCodeAlgorithmPage = new ThreeWordMemoByBIPMnemonicCodeAlgorithmPage();
+
+	@Inject private WelcomePage welcomePage;
+	@Inject private ElectionsPage electionsPage;
+	@Inject private CandidatesOfElectionPage candidatesOfElectionPage;
+	@Inject private VoteConfirmationPopUpPage voteConfirmationPopUpPage;
+	@Inject private UnsignedBallotPage unsignedBallotPage;
+	@Inject private DecryptConfirmationPopUpPage decryptConfirmationPopUpPage;
+	@Inject private DecryptedBallotPage decryptedBallotPage;
+	@Inject private TallyingAuthoritiesAggregatePublicKeyPage tallyingAuthoritiesAggregatePublicKeyPage;
+	@Inject private CandidateOptionSelectedAndEncryptionRandomnessPage candidateOptionSelectedAndEncryptionRandomnessPage;
+	@Inject private EncryptedBallotPage encryptedBallotPage;
+	@Inject private BallotSHA256HashPage ballotSHA256HashPage;
+	@Inject private ThreeWordMemoByBIPMnemonicCodeAlgorithmPage threeWordMemoByBIPMnemonicCodeAlgorithmPage;
 
 	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
 	@BeforeMethod

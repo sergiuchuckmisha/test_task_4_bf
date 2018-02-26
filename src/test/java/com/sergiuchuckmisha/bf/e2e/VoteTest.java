@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.e2e;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
 import org.testng.annotations.Test;
 import com.sergiuchuckmisha.bf.pages.voting.CandidatesOfElectionPage;
@@ -19,10 +20,10 @@ import static org.testng.Assert.assertTrue;
  */
 public class VoteTest extends SeleniumBaseTest {
 
-	private static final WelcomePage welcomePage = new WelcomePage();
-	private static final ElectionsPage electionsPage = new ElectionsPage();
-	private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
-	private static final VoteConfirmationPopUpPage voteConfirmationPopUpPage = new VoteConfirmationPopUpPage();
+	@Inject private WelcomePage welcomePage;
+	@Inject private ElectionsPage electionsPage;
+	@Inject private CandidatesOfElectionPage candidatesOfElectionPage;
+	@Inject private VoteConfirmationPopUpPage voteConfirmationPopUpPage;
 
 	/**
 	 *  * purpose of the method is to check following scenario:
