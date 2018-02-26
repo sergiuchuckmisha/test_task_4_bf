@@ -1,9 +1,9 @@
 package com.sergiuchuckmisha.bf.e2e.navigation;
 
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
+import com.sergiuchuckmisha.bf.pages.voting.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.sergiuchuckmisha.bf.pages.voting.*;
 
 import java.util.logging.Logger;
 

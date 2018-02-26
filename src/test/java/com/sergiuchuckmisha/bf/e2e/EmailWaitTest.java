@@ -1,10 +1,10 @@
 package com.sergiuchuckmisha.bf.e2e;
 
 import com.guerrillamail.www.EmailChecker;
+import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
 import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
-import org.testng.annotations.Test;
 import com.sergiuchuckmisha.bf.pages.voting.*;
-import com.sergiuchuckmisha.bf.selenium.browsers.WebDriverManager;
+import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
 
@@ -14,7 +14,9 @@ import static org.testng.Assert.assertTrue;
 /**
  * purpose of the class is to contain scenarios which go after vote: decrypt and sign
  * */
-public class EmailWaitTest {
+public class EmailWaitTest extends SeleniumBaseTest {
+
+
 
     private static final Logger log = Logger.getLogger(AfterVoteTest.class.toString());
 
@@ -87,7 +89,7 @@ public class EmailWaitTest {
         assertEquals(submittedBallotPage.getCryptoDetails(), cryptoDetailsOnUnsignedPage);
 
         //no need to keep page while waiting for email
-        WebDriverManager.quiteDriver();
+        closeBrowser();
 
 //        emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL);
     }

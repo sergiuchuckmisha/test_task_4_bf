@@ -1,9 +1,10 @@
 package com.sergiuchuckmisha.bf.selenium.utils;
 
+import com.google.inject.Inject;
+import com.sergiuchuckmisha.bf.selenium.browsers.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import com.sergiuchuckmisha.bf.selenium.browsers.WebDriverManager;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,37 +16,42 @@ import com.sergiuchuckmisha.bf.selenium.browsers.WebDriverManager;
  */
 public class JsHelper {
 
-	private JsHelper() {}
+    private static WebDriverManager wdManager;
 
-	private static JavascriptExecutor getJsExecutor() {
-		return (JavascriptExecutor) WebDriverManager.getDriver();
-	}
+    @Inject
+    public JsHelper(WebDriverManager wdManager) {
+        this.wdManager = wdManager;
+    }
 
-	public static boolean isAjaxComplete() {
-		try {
-			return (Boolean) getJsExecutor().executeScript("return $.active == 0");
-		} catch (Exception ignore) {
-			return true;
-		}
-	}
+    private static JavascriptExecutor getJsExecutor() {
+        return (JavascriptExecutor) wdManager.getDriver();
+    }
 
-	public static void navigate(String url){
-		getJsExecutor().executeScript(String.format("window.location.href = '%s'", url));
-	}
+    public static boolean isAjaxComplete() {
+        try {
+            return (Boolean) getJsExecutor().executeScript("return $.active == 0");
+        } catch (Exception ignore) {
+            return true;
+        }
+    }
 
-	public static Boolean isPageLoaded() {
-		try {
-			return ("complete").equals(getJsExecutor().executeScript("return document.readyState"));
-		} catch (WebDriverException ignore) {
-			return true;
-		}
-	}
+    public static void navigate(String url) {
+        getJsExecutor().executeScript(String.format("window.location.href = '%s'", url));
+    }
 
-	public static void click(WebElement element) {
-		try {
-			getJsExecutor().executeScript("arguments[0].click();", element);
-		} catch (WebDriverException ignore) {
-			getJsExecutor().executeScript("arguments[0].click();", element);
-		}
-	}
+    public static Boolean isPageLoaded() {
+        try {
+            return ("complete").equals(getJsExecutor().executeScript("return document.readyState"));
+        } catch (WebDriverException ignore) {
+            return true;
+        }
+    }
+
+    public static void click(WebElement element) {
+        try {
+            getJsExecutor().executeScript("arguments[0].click();", element);
+        } catch (WebDriverException ignore) {
+            getJsExecutor().executeScript("arguments[0].click();", element);
+        }
+    }
 }

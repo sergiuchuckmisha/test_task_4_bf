@@ -2,6 +2,8 @@ package com.sergiuchuckmisha.bf.config;
 
 import com.sergiuchuckmisha.bf.selenium.browsers.WebDriverFactory;
 
+import javax.inject.Named;
+
 import static com.sergiuchuckmisha.bf.selenium.browsers.WebDriverFactory.Browser.CHROME;
 import static com.sergiuchuckmisha.bf.selenium.browsers.WebDriverFactory.Browser.UNKNOWN;
 
@@ -14,8 +16,15 @@ import static com.sergiuchuckmisha.bf.selenium.browsers.WebDriverFactory.Browser
  */
 public class Config {
     public static final WebDriverFactory.Browser BROWSER;
-    public static final String DRIVER_CHROME_PATH = "C:/dev/programs/drivers/chromedriver.exe";
-    public static final String SCREENSHOTS_PATH = "screenshots/";//used in TestListener
+
+    @com.google.inject.Inject(optional = true)
+    @Named("DRIVER_CHROME_PATH")
+    public static String DRIVER_CHROME_PATH = "C:/dev/programs/drivers/chromedriver.exe";
+
+    @com.google.inject.Inject(optional = true)
+    @Named("SCREENSHOTS_PATH")
+    public static String SCREENSHOTS_PATH = "screenshots/";//used in TestListener
+
 
     public static final int HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL = 60;//meaning email with CryptoDetails
     public static final String EMAIL_TO_RECEIVE_CRYPTO_DETAILS = "ahfkvwnf@guerrillamailblock.com";//meaning email to receive confirmations with CryptoDetails

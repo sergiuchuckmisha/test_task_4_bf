@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="All" verbose="1"  parallel="classes" thread-count="4" >
+<suite name="All" verbose="1"  parallel="classes" thread-count="2" >
     <test name="navigation"   >
         <packages>
             <package name=".*" />
@@ -8,6 +8,6 @@
     </test>
 
     <listeners>
-        <listener class-name="com.sergiuchuckmisha.bf.testng.TestListener"/>
+        <listener class-name="com.sergiuchuckmisha.bf.testng.TakeScreenshotListener"/>
     </listeners>
 </suite>

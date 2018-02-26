@@ -1,10 +1,15 @@
 package com.sergiuchuckmisha.bf.e2e.navigation;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
-import org.testng.annotations.Test;
 import com.sergiuchuckmisha.bf.pages.voting.ElectionsPage;
 import com.sergiuchuckmisha.bf.pages.voting.MonitorPage;
 import com.sergiuchuckmisha.bf.pages.voting.WelcomePage;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import javax.inject.Named;
+import javax.inject.Provider;
 
 import static org.testng.Assert.assertTrue;
 
@@ -15,20 +20,51 @@ import static org.testng.Assert.assertTrue;
  * Time: 3:01 PM
  * purpose of the class is to contain relatively "long" scenarios like navigation
  */
+
 public class BasicNavigation extends SeleniumBaseTest {
 
-	private static final WelcomePage welcomePage = new WelcomePage();
-	private static final MonitorPage monitorPage = new MonitorPage();
-	private static final ElectionsPage electionsPage = new ElectionsPage();
+//	private static final WelcomePage welcomePage = new WelcomePage();
+//	private static final MonitorPage monitorPage = new MonitorPage();
+//	private static final ElectionsPage electionsPage = new ElectionsPage();
+
+	@Inject
+	private WelcomePage welcomePage;
+
+	@Inject
+	private MonitorPage monitorPage;
+
+	@Inject
+	private ElectionsPage electionsPage;
+
+
+	@Inject @Named("host") String host;
+	@Inject @Named("path") String path;
+	@Inject @Named("host2") String host2;
+	@Inject @Named("site-url") String siteUrl;
+	@Inject @Named("int-data") Integer intS;
+	@Inject @Named("float-data") Float fl;
+	@Inject @Named("email") String email;
+	@Inject @Named("email")
+    Provider<String> emailProvider;
+
+
+    @DataProvider(parallel = true)
+    public Object[][] dp(){
+        return new Object[2][0];
+    }
 
 	/**
 	 *  * purpose of the method is to check following scenario:
 	 * 1. Opens https://exonum.com/demo/voting/#/welcome in browser
 	 * 2. navigate over com.sergiuchuckmisha.bf.pages, check buttons and top and bottom menus
 	 * */
-	@Test
+//	@Test(dataProvider = "dp")
+	@Test()
 	public void basicNavigation() {
 		welcomePage.navigateTo();
+
+        if (false)
+            throw new RuntimeException();
 
 		//welcome page check 'Monitor election process'
 		welcomePage.pressMonitorElectionProcess();

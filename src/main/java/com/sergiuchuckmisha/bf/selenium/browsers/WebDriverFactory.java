@@ -23,7 +23,6 @@ import static com.sergiuchuckmisha.bf.config.Config.DRIVER_CHROME_PATH;
  * currently only one instance of WebDriver is supported
  * type of this single WebDriver is defined in Config file or in enviroment variable "browser"
  * currently the only public method  getDriver() should be used
- * todo: support multiple WebDriver instances
  */
 public class WebDriverFactory {
 

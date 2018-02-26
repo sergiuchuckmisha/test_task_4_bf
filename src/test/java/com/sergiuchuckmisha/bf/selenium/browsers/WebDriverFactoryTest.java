@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
+import javax.inject.Inject;
 import java.lang.reflect.Method;
 
 
@@ -18,6 +19,10 @@ import java.lang.reflect.Method;
  */
 public class WebDriverFactoryTest  extends SeleniumBaseTest {
 	final static Logger log = Logger.getLogger(WebDriverFactoryTest.class);
+
+	@Inject
+	private WebDriverManager wdManager;
+
 
 	@Test
 	public void testEnumBrowsers()
@@ -40,9 +45,9 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 			method.setAccessible(true);
 			method.invoke(null, WebDriverFactory.Browser.HTML_UNIT);
 
-			org.testng.Assert.assertNotNull(WebDriverManager.getDriver());
-			WebDriverManager.getDriver().get("http://www.google.com");
-			org.testng.Assert.assertNotNull(WebDriverManager.getDriver().findElement(By.name("q")));
+			org.testng.Assert.assertNotNull(wdManager.getDriver());
+			wdManager.getDriver().get("http://www.google.com");
+			org.testng.Assert.assertNotNull(wdManager.getDriver().findElement(By.name("q")));
 
 //		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
     } catch (Exception e) {                                                                   //this is for Java6
