@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.e2e.navigation;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
 import com.sergiuchuckmisha.bf.pages.voting.*;
 import org.testng.annotations.BeforeMethod;
@@ -23,7 +24,9 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 
 	private static final Logger log = Logger.getLogger(NavigationOnDecryptedPagesTest.class.toString());
 
-	private static final WelcomePage welcomePage = new WelcomePage();
+	@Inject
+	private WelcomePage welcomePage;
+//	private static final WelcomePage welcomePage = new WelcomePage();
 	private static final ElectionsPage electionsPage = new ElectionsPage();
 	private static final CandidatesOfElectionPage candidatesOfElectionPage = new CandidatesOfElectionPage();
 	private static final VoteConfirmationPopUpPage voteConfirmationPopUpPage = new VoteConfirmationPopUpPage();
