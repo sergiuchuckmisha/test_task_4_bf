@@ -21,7 +21,7 @@ import static com.sergiuchuckmisha.bf.config.Config.DRIVER_CHROME_PATH;
  * pattern Factory
  * purpose of the class is to generate com.sergiuchuckmisha.bf.selenium browsers objects
  * currently only one instance of WebDriver is supported
- * type of this single WebDriver is defined in Config file or in enviroment variable "browser"
+ * type of this single WebDriver is defined in Config file or in environment variable "browser"
  * currently the only public method  getDriver() should be used
  */
 public class WebDriverFactory {
@@ -92,7 +92,7 @@ public class WebDriverFactory {
 
     private static WebDriver newHtmlUnitDiver() {
 //		capabilities = new DesiredCapabilities().htmlUnitWithJs();
-        capabilities = new DesiredCapabilities().htmlUnit();
+        capabilities = DesiredCapabilities.htmlUnit();
         capabilities.setBrowserName("HtmlUnit");
         setCommonCapabilities();
 

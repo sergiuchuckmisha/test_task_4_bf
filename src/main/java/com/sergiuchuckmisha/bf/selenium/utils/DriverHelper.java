@@ -43,10 +43,6 @@ public class DriverHelper {
     private static Integer defaultTimeoutSeconds = 20; //wait up to this time for element to appear or page to be loaded
 
     @com.google.inject.Inject(optional = true)
-    @Named("defaultImplicitlyWaitTimeoutSeconds")
-    private static Integer defaultImplicitlyWaitTimeoutSeconds = 5; //wait up to this time for element to appear or page to be loaded
-
-    @com.google.inject.Inject(optional = true)
     @Named("defaultJsAsyncWaitTimeoutMilliseconds")
     private static Integer defaultJsAsyncWaitTimeoutMilliseconds = 1; //wait up to this time for element to appear or page to be loaded
 
@@ -138,7 +134,7 @@ public class DriverHelper {
 
     public static void waitUntilPageIsLoaded() {
         wdManager.getDriver().manage().timeouts().pageLoadTimeout(defaultTimeoutSeconds, TimeUnit.SECONDS);
-        wdManager.getDriver().manage().timeouts().implicitlyWait(defaultImplicitlyWaitTimeoutSeconds, TimeUnit.SECONDS);
+        wdManager.getDriver().manage().timeouts().implicitlyWait(defaultTimeoutSeconds, TimeUnit.SECONDS);
 
 
         WebDriverWait wait = new WebDriverWait(wdManager.getDriver(), defaultTimeoutSeconds);
@@ -184,7 +180,7 @@ public class DriverHelper {
         try {
             element.click();
         } catch (Exception ex) {
-            jsHelper.click(element);
+            JsHelper.click(element);
         }
         waitUntilPageIsLoaded();
     }

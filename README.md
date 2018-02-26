@@ -26,7 +26,7 @@ Purpose of this project is to cover https://exonum.com/demo/voting/#/welcome wit
   and because of this I often use same interfaces both for pageObjects and for actions.
   Also, I tried to use interfaces as much as possible.
 
-  # idea of new branch is to get rid of page layer in entities ierarchy. Page interfaces instead of page objects.
+  # idea of new branch is to get rid of page layer in entities hierarchy. Page interfaces instead of page objects.
 
   to work with email I used code from https://github.com/redcodeg/JGuerrillaMail
 
@@ -43,3 +43,5 @@ found issues:
   - this PIN code is not required and is not validated (can sign without and with partially entered PIN code)
  - 'SAVE BALLOT DETAILS' button on page 'Your Decrypted Ballot' does nothing
  - on page https://exonum.com/demo/voting/#/elections/hash BIP 0039 verification instructions are announced, but absent
+ - on page VoteConfirmationPopUp (appears when voting for somebody) in DOM model there are few elements with mistyping in class name:
+ cssSelectors: 'div.confirm-choise-block' and 'div.confirm-choise-block'

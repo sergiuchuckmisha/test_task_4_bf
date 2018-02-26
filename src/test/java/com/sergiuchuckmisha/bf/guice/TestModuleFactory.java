@@ -3,14 +3,11 @@ package com.sergiuchuckmisha.bf.guice;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.google.inject.util.Modules;
 import org.testng.IModuleFactory;
 import org.testng.ITestContext;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-
-import static com.google.inject.util.Modules.override;
 
 
 /**
@@ -31,17 +28,6 @@ public class TestModuleFactory implements IModuleFactory {
 
     private static Module getModule() {
         return new PagesModule();
-    }
-
-    private static Module getModule2() {
-
-       // Module defaultModule = new PagesModule();
-        Module defaultModule = override(new PagesModule()).with(new PagesModule2());  //TODO refactor
-        Module customModule = getCustomModule();
-
-        return customModule != null
-                ? Modules.override(defaultModule).with(customModule)
-                : defaultModule;
     }
 
     /**

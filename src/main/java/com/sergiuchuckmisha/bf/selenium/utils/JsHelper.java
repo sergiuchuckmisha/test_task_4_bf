@@ -20,7 +20,7 @@ public class JsHelper {
 
     @Inject
     public JsHelper(WebDriverManager wdManager) {
-        this.wdManager = wdManager;
+        JsHelper.wdManager = wdManager;
     }
 
     private static JavascriptExecutor getJsExecutor() {
