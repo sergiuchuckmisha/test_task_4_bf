@@ -3,6 +3,7 @@ package com.sergiuchuckmisha.bf.e2e;
 import com.google.inject.Inject;
 import com.guerrillamail.www.EmailChecker;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
+import com.sergiuchuckmisha.bf.config.Config;
 import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
 import com.sergiuchuckmisha.bf.pages.voting.*;
 import org.testng.annotations.Test;
@@ -92,6 +93,6 @@ public class EmailWaitTest extends SeleniumBaseTest {
         //no need to keep page while waiting for email
         closeBrowser();
 
-//        emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL);
+        emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL);
     }
 }
