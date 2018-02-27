@@ -175,6 +175,7 @@ public class DriverHelper {
      * purpose of the method is to enrich standard click with try/catch and possible click with JavaScript
      */
     public static void click(By locator) {
+        log.warn("click element: " + locator);
         waitUntilPageIsLoaded();
         WebElement element = findElement(locator);
         try {

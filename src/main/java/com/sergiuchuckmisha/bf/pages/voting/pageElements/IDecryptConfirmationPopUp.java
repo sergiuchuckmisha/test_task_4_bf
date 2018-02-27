@@ -13,7 +13,7 @@ public interface IDecryptConfirmationPopUp extends IPage {
     default void pressDecryptBallotConfirmationPopUpButton() {
         DriverHelper.click(By.xpath(
                 String.format(".//div[%s and @ng-click='submitDecrypt()' and text() = 'DECRYPT BALLOT']",
-                wrapClassContainsForPath("button button-orange"))));
+                        wrapClassContainsForPath("button button-orange"))));
     }
 
     default void pressDecryptConfirmationPopUpCancelButton() {
@@ -21,9 +21,16 @@ public interface IDecryptConfirmationPopUp extends IPage {
     }
 
     @Override
-    default boolean isOnPage(){
+    default boolean isOnPage() {
         return DriverHelper.isElementPresent(
-                        By.xpath(String.format(".//div[%s]/p[text() = 'Are you sure you want to proceed with decrypting your ballot?']",
-                                wrapClassContainsForPath("decrypt-desc"))));
+                By.xpath(String.format(".//div[%s]/p[text() = 'Are you sure you want to proceed with decrypting your ballot?']",
+                        wrapClassContainsForPath("decrypt-desc"))))
+                && DriverHelper.isElementPresent(
+                By.xpath(
+                        String.format(".//div[%s and @ng-click='submitDecrypt()' and text() = 'DECRYPT BALLOT']",
+                                wrapClassContainsForPath("button button-orange"))))
+                && DriverHelper.isElementPresent(
+                By.xpath(".//div[@data-dismiss='modal' and text() = 'CANCEL']"));
+
     }
 }
