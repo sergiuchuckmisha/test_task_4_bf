@@ -7,6 +7,7 @@ import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import javax.inject.Inject;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
@@ -49,8 +50,7 @@ public class WebDriverFactoryTest  extends SeleniumBaseTest {
 			wdManager.getDriver().get("http://www.google.com");
 			org.testng.Assert.assertNotNull(wdManager.getDriver().findElement(By.name("q")));
 
-//		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
-    } catch (Exception e) {                                                                   //this is for Java6
+		} catch ( NoSuchMethodException | IllegalAccessException |InvocationTargetException e) {  //this is for Java7
 			log.info(e);
 		}
 	}
