@@ -19,16 +19,6 @@ Purpose of this project is to cover https://exonum.com/demo/voting/#/welcome wit
 
   * need to note that it is possible to to run all tests successfully. Approximately 4 times out of 5 green build is observed.
 
-  Few notes about testing framework: it contains 3 logical layers: pageObjects, actions and tests.
-  Theoretically, pageObjects deal with locators and primitive types (String, boolean),
-  actions deal with complex types (business logic entities) (like CryptoDetails which are received in email)
-  tests are series of actions.
-  In this particular case often there is no reason between pageObjects functionality and actions functionality (because business logic entities are represented with primitive types)
-  and because of this I often use same interfaces both for pageObjects and for actions.
-  Also, I tried to use interfaces as much as possible.
-
-  # idea of new branch is to get rid of page layer in entities hierarchy. Page interfaces instead of page objects.
-
   to work with email I used code from https://github.com/redcodeg/JGuerrillaMail
 
 
