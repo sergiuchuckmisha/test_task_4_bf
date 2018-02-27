@@ -1,10 +1,8 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ICheckboxTable;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,6 +14,9 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
  * pageObject pattern is implemented
  */
 public class MonitorPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, ICheckboxTable {
+
+    @Inject
+    private WelcomePage welcomePage;
 
     @Override
     public String getUrl() {
@@ -30,5 +31,15 @@ public class MonitorPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu
     @Override
     public String getTopMenuName() {
         return "Monitor election";
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        welcomePage.defaultNavigateTo();
+        welcomePage.pressMonitorElectionProcess();
+        return isOnPage();
     }
 }

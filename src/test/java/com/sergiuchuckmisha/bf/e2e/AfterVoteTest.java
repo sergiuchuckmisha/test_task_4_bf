@@ -20,9 +20,6 @@ import static org.testng.Assert.*;
 public class AfterVoteTest extends SeleniumBaseTest {
 
 	@Inject private WelcomePage welcomePage;
-	@Inject private ElectionsPage electionsPage;
-	@Inject private CandidatesOfElectionPage candidatesOfElectionPage;
-	@Inject private VoteConfirmationPopUpPage voteConfirmationPopUpPage;
 	@Inject private UnsignedBallotPage unsignedBallotPage;
 	@Inject private DecryptConfirmationPopUpPage decryptConfirmationPopUpPage;
 	@Inject private DecryptedBallotPage decryptedBallotPage;
@@ -33,27 +30,7 @@ public class AfterVoteTest extends SeleniumBaseTest {
 	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
 	@BeforeMethod
 	public void voteForSmbPrerequisite() {
-		welcomePage.navigateToUrl();
-
-		//welcome page check 'VOTE IN ELECTION'
-		welcomePage.pressVoteInElectionButton();
-		assertTrue(electionsPage.isOnPage());
-
-		//only one option can be selected
-		assertEquals(1, electionsPage.howManyOptionsChecked());
-
-		//select voting
-		electionsPage.pressVoteInElectionButton();
-		assertTrue(candidatesOfElectionPage.isOnPage());
-
-		//vote for smb
-		assertEquals(1, candidatesOfElectionPage.howManyOptionsChecked());
-		candidatesOfElectionPage.pressVoteInElectionButton();
-
-		assertTrue(voteConfirmationPopUpPage.isOnPage());
-		voteConfirmationPopUpPage.pressVoteConfirmationPopUpYesButton();
-
-		assertTrue(unsignedBallotPage.isOnPage());
+		assertTrue(unsignedBallotPage.defaultNavigateTo());
 	}
 
 

@@ -1,5 +1,7 @@
 package com.sergiuchuckmisha.bf.pages;
 
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.IDefaultNavigation;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sergiuchuckmisha
@@ -9,7 +11,7 @@ package com.sergiuchuckmisha.bf.pages;
  * contains one static method: isOnPage()
  * https://code.google.com/p/selenium/wiki/PageObjects
  */
-public interface IPage {
+public interface IPage extends IDefaultNavigation {
 
-	boolean isOnPage();
+    boolean isOnPage();
 }

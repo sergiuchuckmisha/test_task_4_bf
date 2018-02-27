@@ -1,11 +1,8 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ICheckboxTable;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.IVoteInElectionButton;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +14,8 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.IVoteInElectionButton;
  * pageObject pattern is implemented
  */
 public class ElectionsPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IVoteInElectionButton, ICheckboxTable {
+
+    @Inject private WelcomePage welcomePage;
 
     @Override
     public String getTopMenuName() {
@@ -31,5 +30,15 @@ public class ElectionsPage implements IPage, INavigateToUrl, ITopMenu, IBottomMe
     @Override
     public boolean isOnPage() {
         return isTopMenuNamePresent();
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        welcomePage.defaultNavigateTo();
+        welcomePage.pressVoteInElectionButton();
+        return isOnPage();
     }
 }

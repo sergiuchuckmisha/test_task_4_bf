@@ -1,8 +1,9 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
-import org.openqa.selenium.By;
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ISignConfirmationPopUp;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
+import org.openqa.selenium.By;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,6 +15,8 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
  * pageObject pattern is implemented
  */
 public class SignConfirmationPopUpPage implements ISignConfirmationPopUp {
+
+    @Inject private UnsignedBallotPage unsignedBallotPage;
 
     /**method should be used to enter PIN code*/
     public void pressNumber(int i){
@@ -28,5 +31,15 @@ public class SignConfirmationPopUpPage implements ISignConfirmationPopUp {
         pressNumber(2);
         pressNumber(3);
         pressNumber(4);
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        unsignedBallotPage.defaultNavigateTo();
+        unsignedBallotPage.signButtonClick();
+        return isOnPage();
     }
 }

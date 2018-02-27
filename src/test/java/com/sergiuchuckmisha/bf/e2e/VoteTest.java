@@ -2,11 +2,10 @@ package com.sergiuchuckmisha.bf.e2e;
 
 import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
-import org.testng.annotations.Test;
 import com.sergiuchuckmisha.bf.pages.voting.CandidatesOfElectionPage;
-import com.sergiuchuckmisha.bf.pages.voting.ElectionsPage;
+import com.sergiuchuckmisha.bf.pages.voting.UnsignedBallotPage;
 import com.sergiuchuckmisha.bf.pages.voting.VoteConfirmationPopUpPage;
-import com.sergiuchuckmisha.bf.pages.voting.WelcomePage;
+import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -20,10 +19,9 @@ import static org.testng.Assert.assertTrue;
  */
 public class VoteTest extends SeleniumBaseTest {
 
-	@Inject private WelcomePage welcomePage;
-	@Inject private ElectionsPage electionsPage;
 	@Inject private CandidatesOfElectionPage candidatesOfElectionPage;
 	@Inject private VoteConfirmationPopUpPage voteConfirmationPopUpPage;
+	@Inject private UnsignedBallotPage unsignedBallotPage;
 
 	/**
 	 *  * purpose of the method is to check following scenario:
@@ -34,18 +32,8 @@ public class VoteTest extends SeleniumBaseTest {
 	 * */
 	@Test
 	public void voteForSmbTest() {
-		welcomePage.navigateToUrl();
 
-		//welcome page check 'VOTE IN ELECTION'
-		welcomePage.pressVoteInElectionButton();
-		assertTrue(electionsPage.isOnPage());
-
-		//only one option can be selected
-		assertEquals(1, electionsPage.howManyOptionsChecked());
-
-		//select voting
-		electionsPage.pressVoteInElectionButton();
-		assertTrue(candidatesOfElectionPage.isOnPage());
+		assertTrue(candidatesOfElectionPage.defaultNavigateTo());
 
 		//vote for smb
 		assertEquals(1, candidatesOfElectionPage.howManyOptionsChecked());
@@ -62,6 +50,8 @@ public class VoteTest extends SeleniumBaseTest {
 
 		assertTrue(voteConfirmationPopUpPage.isOnPage());
 		voteConfirmationPopUpPage.pressVoteConfirmationPopUpYesButton();
+
+		assertTrue(unsignedBallotPage.isOnPage());
 	}
 
 }

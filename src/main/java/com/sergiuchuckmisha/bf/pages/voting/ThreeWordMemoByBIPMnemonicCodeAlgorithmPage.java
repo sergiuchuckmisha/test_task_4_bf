@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.IPage;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
 
@@ -12,7 +13,12 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
  * https://exonum.com/demo/voting/#/elections/memo
  * pageObject pattern is implemented
  */
-public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage
+        implements IPage, INavigateToUrl, ITopMenu, IBottomMenu,
+        IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+
+    @Inject
+    private DecryptedBallotPage decryptedBallotPage;
 
     @Override
     public String getUrl() {
@@ -31,5 +37,15 @@ public class ThreeWordMemoByBIPMnemonicCodeAlgorithmPage implements IPage, INavi
 
     public String getMnemonicCodePlaintext(){
         return getDecryptedBallotSubPageName("Mnemonic code plaintext");
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        decryptedBallotPage.defaultNavigateTo();
+        decryptedBallotPage.press3WordMemoByBIPMnemonicCodeAlgorithm();
+        return isOnPage();
     }
 }

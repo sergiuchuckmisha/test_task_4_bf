@@ -1,11 +1,8 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ICheckboxTable;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.IVoteInElectionButton;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +13,10 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.IVoteInElectionButton;
  * https://exonum.com/demo/voting/#/elections/candidates
  * pageObject pattern is implemented
  */
-public class CandidatesOfElectionPage implements IPage, INavigateToUrl, IBottomMenu, ITopMenu,ICheckboxTable, IVoteInElectionButton {
+public class CandidatesOfElectionPage
+        implements IPage, INavigateToUrl, IBottomMenu, ITopMenu,ICheckboxTable, IVoteInElectionButton {
+
+    @Inject private ElectionsPage electionsPage;
 
     @Override
     public String getUrl() {
@@ -31,5 +31,15 @@ public class CandidatesOfElectionPage implements IPage, INavigateToUrl, IBottomM
     @Override
     public String getTopMenuName() {
         return "Candidates of Election";
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        electionsPage.defaultNavigateTo();
+        electionsPage.pressVoteInElectionButton();
+        return isOnPage();
     }
 }

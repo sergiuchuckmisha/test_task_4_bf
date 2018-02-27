@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IVoteConfirmationPopUp;
 
 /**
@@ -12,4 +13,16 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.IVoteConfirmationPopUp;
  * pageObject pattern is implemented
  */
 public class VoteConfirmationPopUpPage implements IVoteConfirmationPopUp {
+
+    @Inject private CandidatesOfElectionPage candidatesOfElectionPage;
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        candidatesOfElectionPage.defaultNavigateTo();
+        candidatesOfElectionPage.pressVoteInElectionButton();
+        return isOnPage();
+    }
 }

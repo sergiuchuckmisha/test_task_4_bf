@@ -3,12 +3,10 @@ package com.sergiuchuckmisha.bf.e2e.navigation;
 import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
 import com.sergiuchuckmisha.bf.pages.voting.*;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.sergiuchuckmisha.bf.dataModels.ValidationUtils.is01;
 import static com.sergiuchuckmisha.bf.dataModels.ValidationUtils.isHexadecimal;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -18,14 +16,8 @@ import static org.testng.Assert.assertTrue;
  * Time: 3:01 PM
  * purpose of the class is to contain scenarios with navigation between decrypted com.sergiuchuckmisha.bf.pages: TallyingAuthoritiesAggregatePublicKeyPage and so on
  */
-public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
+public class DecryptedPagesTest extends SeleniumBaseTest {
 
-	@Inject private WelcomePage welcomePage;
-	@Inject private ElectionsPage electionsPage;
-	@Inject private CandidatesOfElectionPage candidatesOfElectionPage;
-	@Inject private VoteConfirmationPopUpPage voteConfirmationPopUpPage;
-	@Inject private UnsignedBallotPage unsignedBallotPage;
-	@Inject private DecryptConfirmationPopUpPage decryptConfirmationPopUpPage;
 	@Inject private DecryptedBallotPage decryptedBallotPage;
 	@Inject private TallyingAuthoritiesAggregatePublicKeyPage tallyingAuthoritiesAggregatePublicKeyPage;
 	@Inject private CandidateOptionSelectedAndEncryptionRandomnessPage candidateOptionSelectedAndEncryptionRandomnessPage;
@@ -33,50 +25,29 @@ public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
 	@Inject private BallotSHA256HashPage ballotSHA256HashPage;
 	@Inject private ThreeWordMemoByBIPMnemonicCodeAlgorithmPage threeWordMemoByBIPMnemonicCodeAlgorithmPage;
 
-	/**prerequisite for another tests in this class: get to 'Your Unsigned Ballot' page*/
-	@BeforeMethod
-	public void decryptedBallotPagePrecondition() {
-		welcomePage.navigateToUrl();
 
-		//welcome page check 'VOTE IN ELECTION'
-		welcomePage.pressVoteInElectionButton();
-		assertTrue(electionsPage.isOnPage());
 
-		//only one option can be selected
-		assertEquals(1, electionsPage.howManyOptionsChecked());
-
-		//select voting
-		electionsPage.pressVoteInElectionButton();
-		assertTrue(candidatesOfElectionPage.isOnPage());
-
-		//vote for smb
-		assertEquals(1, candidatesOfElectionPage.howManyOptionsChecked());
-		candidatesOfElectionPage.pressVoteInElectionButton();
-
-		assertTrue(voteConfirmationPopUpPage.isOnPage());
-		voteConfirmationPopUpPage.pressVoteConfirmationPopUpYesButton();
-
-		assertTrue(unsignedBallotPage.isOnPage());
-
-		unsignedBallotPage.decryptButtonClick();
-		assertTrue(decryptConfirmationPopUpPage.isOnPage());
-
-		decryptConfirmationPopUpPage.pressDecryptBallotConfirmationPopUpButton();
-		assertTrue(decryptedBallotPage.isOnPage());
+	/**idea of test is to visit each DecryptedBallotSubPage*/
+	@Test
+	public void navigationOnDecryptedBallotSubPagesTest(){
+		// TODO: 2/27/2018 use dataProvider
 	}
 
 	/**
 	 *  * purpose of the method is to check following scenario:
 	 * 1. vote for smb and get decrypted Ballot
-	 * 2. navigate to TallyingAuthoritiesAggregatePublicKeyPage and come back
+	 * 2. navigate to TallyingAuthoritiesAggregatePublicKeyPage
+	 * 2.1. verify ModulusHexadecimal and PublicExponent and come back
 	 * 3. navigate to CandidateOptionSelectedAndEncryptionRandomnessPage and come back
-	 * 4. navigate to EncryptedBallotPage and come back
-	 * 5. navigate to BallotSHA256HashPage and come back
+	 * 4. navigate to EncryptedBallotPage
+	 * 4.1. verify EncryptedBallotHexadecimal and come back
+	 * 5. navigate to BallotSHA256HashPage
+	 * 5.1. verify HashHexadecimal and HashPrefixHexadecimal and come back
 	 * 6. navigate to ThreeWordMemoByBIPMnemonicCodeAlgorithmPage and come back
 	 * */
 	@Test
-	public void navigationOnDecryptedBallotSubPagesTest(){
-		assertTrue(decryptedBallotPage.isOnPage());
+	public void validationOnDecryptedBallotSubPagesTest(){
+		assertTrue(decryptedBallotPage.defaultNavigateTo());
 
 		//navigate to TallyingAuthoritiesAggregatePublicKeyPage and come back
 		decryptedBallotPage.pressTallyingAuthoritiesAggregatePublicKey();

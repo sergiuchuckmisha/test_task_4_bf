@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.IPage;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
 
@@ -12,7 +13,11 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
  * https://exonum.com/demo/voting/#/elections/randomness
  * pageObject pattern is implemented
  */
-public class CandidateOptionSelectedAndEncryptionRandomnessPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+public class CandidateOptionSelectedAndEncryptionRandomnessPage
+        implements IPage, INavigateToUrl, ITopMenu, IBottomMenu,
+        IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+
+    @Inject private DecryptedBallotPage decryptedBallotPage;
 
     @Override
     public String getUrl() {
@@ -35,5 +40,15 @@ public class CandidateOptionSelectedAndEncryptionRandomnessPage implements IPage
 
     public String getPlaintextCandidateAndRandomness(){
         return getDecryptedBallotSubPageName("Plaintext candidate + randomness");
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        decryptedBallotPage.defaultNavigateTo();
+        decryptedBallotPage.pressCandidateOptionSelectedAndEncryptionRandomness();
+        return isOnPage();
     }
 }

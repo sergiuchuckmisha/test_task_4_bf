@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IDecryptConfirmationPopUp;
 
 /**
@@ -13,4 +14,15 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.IDecryptConfirmationPop
  */
 public class DecryptConfirmationPopUpPage implements IDecryptConfirmationPopUp {
 
+    @Inject private UnsignedBallotPage unsignedBallotPage;
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        unsignedBallotPage.defaultNavigateTo();
+        unsignedBallotPage.decryptButtonClick();
+        return isOnPage();
+    }
 }

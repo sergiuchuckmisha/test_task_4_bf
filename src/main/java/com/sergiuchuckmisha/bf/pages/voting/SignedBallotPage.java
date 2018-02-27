@@ -1,11 +1,12 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
-import org.openqa.selenium.By;
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
+import org.openqa.selenium.By;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +18,8 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
  * pageObject pattern is implemented
  */
 public class SignedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu {
+
+    @Inject private SignConfirmationPopUpPage signConfirmationPopUpPage;
 
     @Override
     public String getUrl() {
@@ -49,5 +52,16 @@ public class SignedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBotto
 
     public void typeEmail(String email){
         DriverHelper.type(By.xpath("//div[text() = 'E-mail:']/following-sibling::input"), email);
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        signConfirmationPopUpPage.defaultNavigateTo();
+        signConfirmationPopUpPage.enterSomePINCode();
+        signConfirmationPopUpPage.pressSignConfirmationPopUpYesButton();
+        return isOnPage();
     }
 }

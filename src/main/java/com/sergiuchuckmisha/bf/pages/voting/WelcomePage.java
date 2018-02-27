@@ -35,4 +35,13 @@ public class WelcomePage implements IPage, IVoteInElectionButton, INavigateToUrl
     public void pressMonitorElectionProcess() {
         DriverHelper.click(monitorElectionProcessButtonLocator);
     }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        navigateToUrl();
+        return isOnPage();
+    }
 }

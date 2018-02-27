@@ -1,5 +1,6 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.IPage;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
 
@@ -12,7 +13,11 @@ import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
  * https://exonum.com/demo/voting/#/elections/encrypted
  * pageObject pattern is implemented
  */
-public class EncryptedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+public class EncryptedBallotPage
+        implements IPage, INavigateToUrl, ITopMenu, IBottomMenu,
+        IDecryptedBallotSubPageName, IGetTextFromFieldWithCertainName {
+
+    @Inject private DecryptedBallotPage decryptedBallotPage;
 
     @Override
     public String getUrl() {
@@ -31,5 +36,15 @@ public class EncryptedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBo
 
     public String getEncryptedBallotHexadecimal(){
         return getDecryptedBallotSubPageName("Encrypted ballot hexadecimal");
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        decryptedBallotPage.defaultNavigateTo();
+        decryptedBallotPage.pressEncryptedBallot();
+        return isOnPage();
     }
 }

@@ -1,12 +1,10 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
 import org.openqa.selenium.By;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ICheckboxTable;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
 
 /**
@@ -19,6 +17,8 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
  * pageObject pattern is implemented
  */
 public class SubmittedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, ICheckboxTable {
+
+    @Inject private SignedBallotPage signedBallotPage;
 
     @Override
     public String getUrl() {
@@ -52,5 +52,15 @@ public class SubmittedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBo
 
     public CryptoDetails getCryptoDetails(){
         return new CryptoDetails(getBallotReceiptHash(), getBallotReceipt3WordMemo());
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        signedBallotPage.defaultNavigateTo();
+        signedBallotPage.pressSubmitButton();
+        return isOnPage();
     }
 }

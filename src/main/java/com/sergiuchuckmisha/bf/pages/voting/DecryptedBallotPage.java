@@ -1,11 +1,12 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
-import org.openqa.selenium.By;
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
 import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
+import org.openqa.selenium.By;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +18,8 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
  * pageObject pattern is implemented
  */
 public class DecryptedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu {
+
+    @Inject private DecryptConfirmationPopUpPage decryptConfirmationPopUpPage;
 
     @Override
     public String getUrl() {
@@ -61,5 +64,15 @@ public class DecryptedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBo
 
     public void press3WordMemoByBIPMnemonicCodeAlgorithm(){
         DriverHelper.click(By.xpath("//td[contains(text(), '3-word memo by BIP 0039 Mnemonic')]"));
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        decryptConfirmationPopUpPage.defaultNavigateTo();
+        decryptConfirmationPopUpPage.pressDecryptBallotConfirmationPopUpButton();
+        return isOnPage();
     }
 }

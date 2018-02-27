@@ -33,11 +33,7 @@ public class CheckboxTableTest extends SeleniumBaseTest {
 	 * */
 	@Test
 	public void checkboxTablesTest() {
-		welcomePage.navigateToUrl();
-
-		//welcome page check 'VOTE IN ELECTION'
-		welcomePage.pressVoteInElectionButton();
-		assertTrue(electionsPage.isOnPage());
+		assertTrue(electionsPage.defaultNavigateTo());
 
 		//only one option can be selected
 		assertEquals(1, electionsPage.howManyOptionsChecked());

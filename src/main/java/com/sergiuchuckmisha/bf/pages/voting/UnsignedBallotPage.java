@@ -1,12 +1,10 @@
 package com.sergiuchuckmisha.bf.pages.voting;
 
+import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
+import com.sergiuchuckmisha.bf.pages.voting.pageElements.*;
 import org.openqa.selenium.By;
 import com.sergiuchuckmisha.bf.pages.IPage;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.INavigateToUrl;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.IBottomMenu;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.ITopMenu;
-import com.sergiuchuckmisha.bf.pages.voting.pageElements.IUnsignedBallotPageDiscardDecryptSignButtons;
 import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
 
 /**
@@ -20,14 +18,18 @@ import com.sergiuchuckmisha.bf.selenium.utils.DriverHelper;
  */
 public class UnsignedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBottomMenu, IUnsignedBallotPageDiscardDecryptSignButtons {
 
-    public String getBallotReceipt3WordMemo(){
+    @Inject
+    private VoteConfirmationPopUpPage voteConfirmationPopUpPage;
+
+    public String getBallotReceipt3WordMemo() {
         return DriverHelper.findElement(By.xpath("//div[text() = 'Ballot reciept 3-word memo']/following-sibling::div")).getText();
     }
-    public String getBallotSHA256Hash(){
+
+    public String getBallotSHA256Hash() {
         return DriverHelper.findElement(By.xpath("//div[text() = 'Ballot  SHA256 hash']/following-sibling::div")).getText();
     }
 
-    public CryptoDetails getCryptoDetails(){
+    public CryptoDetails getCryptoDetails() {
         return new CryptoDetails(getBallotSHA256Hash(), getBallotReceipt3WordMemo());
     }
 
@@ -44,5 +46,15 @@ public class UnsignedBallotPage implements IPage, INavigateToUrl, ITopMenu, IBot
     @Override
     public String getTopMenuName() {
         return "Your Unsigned Ballot";
+    }
+
+    @Override
+    public boolean defaultNavigateTo() {
+        if (isOnPage()) {
+            return true;
+        }
+        voteConfirmationPopUpPage.defaultNavigateTo();
+        voteConfirmationPopUpPage.pressVoteConfirmationPopUpYesButton();
+        return isOnPage();
     }
 }
