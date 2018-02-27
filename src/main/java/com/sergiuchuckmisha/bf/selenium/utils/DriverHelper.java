@@ -35,7 +35,6 @@ public class DriverHelper {
 //        public static final int defaultPageLoadWaitTimeoutSeconds = 60; //wait up to this time for element to appear or page to be loaded
     @com.google.inject.Inject(optional = true)
     @Named("defaultPageLoadWaitTimeoutSeconds")
-//    @Getter
     private static Integer defaultPageLoadWaitTimeoutSeconds = 60;
 
     @com.google.inject.Inject(optional = true)
