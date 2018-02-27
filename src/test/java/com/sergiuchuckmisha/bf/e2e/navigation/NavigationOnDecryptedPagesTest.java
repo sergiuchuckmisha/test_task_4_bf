@@ -6,8 +6,6 @@ import com.sergiuchuckmisha.bf.pages.voting.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.logging.Logger;
-
 import static com.sergiuchuckmisha.bf.dataModels.ValidationUtils.is01;
 import static com.sergiuchuckmisha.bf.dataModels.ValidationUtils.isHexadecimal;
 import static org.testng.Assert.assertEquals;
@@ -21,9 +19,6 @@ import static org.testng.Assert.assertTrue;
  * purpose of the class is to contain scenarios with navigation between decrypted com.sergiuchuckmisha.bf.pages: TallyingAuthoritiesAggregatePublicKeyPage and so on
  */
 public class NavigationOnDecryptedPagesTest extends SeleniumBaseTest {
-
-	private static final Logger log = Logger.getLogger(NavigationOnDecryptedPagesTest.class.toString());
-
 
 	@Inject private WelcomePage welcomePage;
 	@Inject private ElectionsPage electionsPage;

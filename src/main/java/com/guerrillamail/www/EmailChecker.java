@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.sergiuchuckmisha.bf.config.Config.HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL;
+
 /**idea of class is to provide object which can create email and check it. Also it can retrieve hash and 'MNEMONIC CODE PLAINTEXT' from email*/
 public class EmailChecker {
 
@@ -81,16 +83,19 @@ public class EmailChecker {
 
     /**idea of method is to wait until email with certain details is obtained*/
     public void waitForCertainCryptoDetails(CryptoDetails cryptoDetails) throws Exception {
-        waitForCertainCryptoDetails(cryptoDetails, 60);
+        waitForCertainCryptoDetails(cryptoDetails, HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL);
     }
 
     /**idea of method is to wait until email with certain details is obtained*/
     public void waitForCertainCryptoDetails(CryptoDetails cryptoDetails, int minutesToWait) throws Exception {
+        log.info("cryptoDetails: " + String.valueOf(cryptoDetails));
+        log.info(String.valueOf(currentVotingCryptoDetails()));
         if(currentVotingCryptoDetails().contains(cryptoDetails)){
             return;
         }
         for(int i = 0; i < minutesToWait; i++){
             if(currentVotingCryptoDetails().contains(cryptoDetails)){
+                log.info(String.valueOf(currentVotingCryptoDetails()));
                 return;
             }
             Thread.sleep(1000L*60);

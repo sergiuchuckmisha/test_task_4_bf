@@ -1,7 +1,6 @@
 package com.sergiuchuckmisha.bf.selenium.browsers;
 
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
@@ -19,7 +18,6 @@ import java.lang.reflect.Method;
  * purpose of the class is to contain unit tests for WebDriverFactory class
  */
 public class WebDriverFactoryTest  extends SeleniumBaseTest {
-	final static Logger log = Logger.getLogger(WebDriverFactoryTest.class);
 
 	@Inject
 	private WebDriverManager wdManager;

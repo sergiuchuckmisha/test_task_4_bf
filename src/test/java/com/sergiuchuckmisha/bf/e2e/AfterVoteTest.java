@@ -7,8 +7,6 @@ import com.sergiuchuckmisha.bf.pages.voting.*;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.logging.Logger;
-
 import static com.sergiuchuckmisha.bf.config.Config.EMAIL_TO_RECEIVE_CRYPTO_DETAILS;
 import static org.testng.Assert.*;
 
@@ -20,8 +18,6 @@ import static org.testng.Assert.*;
  * purpose of the class is to contain scenarios which go after vote: decrypt and sign
  */
 public class AfterVoteTest extends SeleniumBaseTest {
-
-	private static final Logger log = Logger.getLogger(AfterVoteTest.class.toString());
 
 	@Inject private WelcomePage welcomePage;
 	@Inject private ElectionsPage electionsPage;

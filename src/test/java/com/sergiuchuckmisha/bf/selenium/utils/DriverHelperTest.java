@@ -13,7 +13,6 @@ import org.testng.annotations.Test;
  * purpose of the class is to contain simple smoke web UI basicNavigation which calls factory for Chrome browser, opens google
  */
 public class DriverHelperTest extends SeleniumBaseTest {
-	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(DriverHelperTest.class);
 
 	@Ignore
 	@Test

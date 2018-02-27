@@ -2,12 +2,10 @@ package com.sergiuchuckmisha.bf.e2e;
 
 import com.google.inject.Inject;
 import com.sergiuchuckmisha.bf.base.SeleniumBaseTest;
-import org.testng.annotations.Test;
 import com.sergiuchuckmisha.bf.pages.voting.CandidatesOfElectionPage;
 import com.sergiuchuckmisha.bf.pages.voting.ElectionsPage;
 import com.sergiuchuckmisha.bf.pages.voting.WelcomePage;
-
-import java.util.logging.Logger;
+import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -20,8 +18,6 @@ import static org.testng.Assert.assertTrue;
  * purpose of the class is to contain relatively "long" scenarios like navigation
  */
 public class CheckboxTableTest extends SeleniumBaseTest {
-
-	private static Logger log = Logger.getLogger(CheckboxTableTest.class.toString());
 
 	@Inject private WelcomePage welcomePage;
 //	@Inject private static final MonitorPage monitorPage;//is not used because monitor page is unfinished

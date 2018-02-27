@@ -8,8 +8,6 @@ import com.sergiuchuckmisha.bf.dataModels.CryptoDetails;
 import com.sergiuchuckmisha.bf.pages.voting.*;
 import org.testng.annotations.Test;
 
-import java.util.logging.Logger;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -17,11 +15,6 @@ import static org.testng.Assert.assertTrue;
  * purpose of the class is to contain scenarios which go after vote: decrypt and sign
  * */
 public class EmailWaitTest extends SeleniumBaseTest {
-
-
-
-    private static final Logger log = Logger.getLogger(AfterVoteTest.class.toString());
-
     @Inject private WelcomePage welcomePage;
     @Inject private ElectionsPage electionsPage;
     @Inject private CandidatesOfElectionPage candidatesOfElectionPage;
@@ -93,6 +86,7 @@ public class EmailWaitTest extends SeleniumBaseTest {
         //no need to keep page while waiting for email
         closeBrowser();
 
+        log.info("waiting for cryptoDetails: " + String.valueOf(cryptoDetailsOnUnsignedPage));
         emailChecker.waitForCertainCryptoDetails(cryptoDetailsOnUnsignedPage, Config.HOW_MANY_MINUTES_TO_WAIT_FOR_EMAIL);
     }
 }
